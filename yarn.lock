@@ -8242,6 +8242,11 @@ vue-ref@^1.0.4:
   resolved "https://registry.npm.taobao.org/vue-ref/download/vue-ref-1.0.6.tgz#b9b3d7d0e290ee2fd3d50d5d7bdac520806cb265"
   integrity sha1-ubPX0OKQ7i/T1Q1de9rFIIBssmU=
 
+vue-router@^3.0.3:
+  version "3.0.6"
+  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.0.6.tgz#2e4f0f9cbb0b96d0205ab2690cfe588935136ac3"
+  integrity sha1-Lk8PnLsLltAgWrJpDP5YiTUTasM=
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
