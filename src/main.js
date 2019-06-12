@@ -1,14 +1,17 @@
 import Vue from 'vue'
-import './plugins/axios'
 import App from './App.vue'
-import './plugins/ant-design-vue.js'
 import router from './router'
 import store from './store'
+import './plugins/ant-design-vue.js'
+import nprogress from './plugins/nprogress'
+import './plugins/axios'
+
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
+  nprogress,
   render: h => h(App)
 }).$mount('#app')

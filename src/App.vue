@@ -1,20 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <nprogress-container></nprogress-container>
     <router-view/>
   </div>
 </template>
 
-<style>
+<script>
+import NprogressContainer from "vue-nprogress/src/NprogressContainer";
+
+export default {
+  components: {
+    NprogressContainer
+  }
+};
+</script>
+
+<style lang="less">
+@import "antd-variables";
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#nprogress .bar {
+  background: @primary-color !important;
 }
 </style>
