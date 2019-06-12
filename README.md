@@ -203,7 +203,7 @@ export default new Router({
 
 开发过程中 需要在`config/index.js`文件中 加入`proxyTable`的配置，具体如下：
 
-```json
+```js
 module.exports = {
   dev: {
 
@@ -255,7 +255,7 @@ module.exports={
 
 注：以下文件内容 除了 `server`当中的两个 `location`属性需要配置之外，其他都是默认配置,因此，注意两个location的配置
 
-```Json
+```nginx
 worker_processes  1;
 
 events {
