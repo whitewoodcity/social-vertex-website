@@ -112,7 +112,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   //----  Parent.vue ---
   <template>
   	<div>
-          <SubComponent/>    <!-- <<-- 注意此处,在渲染过程中，父组件通过这种方式，来使用子组件 -->
+          <SubComponent/>    <!-- 注意此处,在渲染过程中，父组件通过这种方式，来使用子组件 -->
       </div>
   </template>
   <script>
@@ -127,7 +127,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
           }
       }
   </script>
-  <style scoped>...</style>
+  <style scoped></style>
   ```
 
   `<script/>`标签主要作用是封装业务逻辑、Vue组件，以及负责组件的依赖和导出工作。
