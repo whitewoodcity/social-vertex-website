@@ -2,10 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './plugins/ant-design-vue.js'
+import './plugins/ant-design-vue.ts'
 import nprogress from './plugins/nprogress'
 import './plugins/axios'
-
 
 Vue.config.productionTip = false
 

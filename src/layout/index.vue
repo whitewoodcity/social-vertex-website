@@ -6,27 +6,36 @@
           <a-col :span="6">
             <router-link to="/">
               <div class="layout-header-logo">
-                <img src="https://vertx.io/assets/logo-sm.png" alt height="58">
+                <img src="https://vertx.io/assets/logo-sm.png" alt height="50">
               </div>
             </router-link>
           </a-col>
-          <a-col :span="8">
+          <a-col :span="10">
             <a-menu mode="horizontal">
               <a-menu-item>
-                <router-link to="/">
-                  <a-icon type="info"/>主页
+                <router-link to="/publish">
+                  <a-icon type="sound"/>发布
                 </router-link>
               </a-menu-item>
               <a-menu-item>
-                <router-link to="/about">
-                  <a-icon type="flag"/>关于
+                <router-link to="/document">
+                  <a-icon type="book"/>文档
                 </router-link>
               </a-menu-item>
               <a-menu-item>
-                <router-link to="/awesome">文档</router-link>
+                <router-link to="/community">
+                  <a-icon type="message"/>社区
+                </router-link>
               </a-menu-item>
               <a-menu-item>
-                <router-link to="/awesome">Awesome-Vert.x</router-link>
+                <router-link to="/awesome">
+                  <a-icon type="like"/>Awesome-Vert.x
+                </router-link>
+              </a-menu-item>
+              <a-menu-item>
+                <a href="https://start.vertx.io/">
+                  <a-icon type="rocket"/>Starter
+                </a>
               </a-menu-item>
             </a-menu>
           </a-col>
@@ -38,10 +47,10 @@
           </a-col>
         </a-row>
       </a-layout-header>
-      <a-layout-content>
+      <a-layout-content class="layout-content">
         <router-view/>
       </a-layout-content>
-      <a-layout-footer>Footer</a-layout-footer>
+      <!-- <a-layout-footer>Footer</a-layout-footer> -->
     </a-layout>
   </div>
 </template>
@@ -57,6 +66,9 @@ export default {};
   background-color: #ffffff;
 }
 .layout-header-logo {
+}
+.layout-content {
+  height: 92.5vh;
 }
 </style>
 
