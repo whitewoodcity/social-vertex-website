@@ -2,7 +2,7 @@
   <div id="app">
     <nprogress-container></nprogress-container>
     <router-view/>
-    <a-back-top />
+    <a-back-top/>
   </div>
 </template>
 
