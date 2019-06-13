@@ -21,29 +21,21 @@
             <div class="nav-bar">
               <a-menu v-model="current" mode="horizontal">
                 <a-menu-item key="mail">
-                  <a-icon type="mail" />Navigation One
+                  <a-icon type="mail" />推荐
                 </a-menu-item>
-                <a-menu-item key="app" disabled>
-                  <a-icon type="appstore" />Navigation Two
+                <a-menu-item key="app">
+                  <a-icon type="heart" />关注
                 </a-menu-item>
-                <a-sub-menu>
-                  <span slot="title" class="submenu-title-wrapper"><a-icon type="setting" />Navigation Three - Submenu</span>
-                  <a-menu-item-group title="Item 1">
-                    <a-menu-item key="setting:1">Option 1</a-menu-item>
-                    <a-menu-item key="setting:2">Option 2</a-menu-item>
-                  </a-menu-item-group>
-                  <a-menu-item-group title="Item 2">
-                    <a-menu-item key="setting:3">Option 3</a-menu-item>
-                    <a-menu-item key="setting:4">Option 4</a-menu-item>
-                  </a-menu-item-group>
-                </a-sub-menu>
                 <a-menu-item key="alipay">
-                  <a href="https://ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
+                  <a-icon type="appstore"/>最热
                 </a-menu-item>
               </a-menu>
             </div>
 
             <div>滚动列表</div>
+            <recomondation></recomondation>
+            <popular></popular>
+            <following></following>
 
           </a-col>
 
@@ -52,24 +44,26 @@
             <div class="icon-group">
               <div class="icon-item">
                 <div class="icon">
-                  <a-icon type="profile" />
+                  <a-button icon="profile" />
                 </div>
               <span>action1</span>
               </div>
               <div class="icon-item">
                 <div class="icon">
-                  <a-icon type="user" />
+                  <a-button icon="user" />
                 </div>
                 <span>action1</span>
               </div>
               <div class="icon-item">
                 <div class="icon">
-                  <a-icon type="message" />
+                  <a-button icon="message" />
                 </div>
                 <span>action1</span>
               </div>
             </div>
             <br><br><br>
+            <div>sadf</div>
+            <div>sadf</div>
             <div>sadf</div>
           </a-col>
         </a-row>
@@ -82,8 +76,11 @@
 <script>
 import ARow from "ant-design-vue/es/grid/Row";
 import ACol from "ant-design-vue/es/grid/Col";
+import Following from "./following/following";
+import Popular from "./popular/popular";
+import Recomondation from "./recomondation/recomondation";
 export default {
-  components: {ACol, ARow}
+  components: {ACol, ARow,Recomondation,Following,Popular}
 };
 </script>
 
