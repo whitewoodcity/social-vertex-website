@@ -3,7 +3,7 @@
         <!-- 利用virtual scroller实现动态无限滚动 -->
         <a-list itemLayout="vertical" size="large" :dataSource="listData">
             <div slot="footer"><b>ant design vue</b> footer part</div>
-            <a-list-item slot="renderItem" slot-scope="item, index" key="item.title">
+            <a-list-item slot="renderItem" slot-scope="item" key="item.title">
                 <template slot="actions" v-for="{type, text} in actions">
                       <span :key="type">
                         <a-icon :type="type" style="margin-right: 8px" />
@@ -24,7 +24,7 @@
 </template>
 <script>
     const listData = []
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 1; i++) {
         listData.push({
             href: 'https://vue.ant.design/',
             title: `ant design vue part ${i}`,
@@ -37,12 +37,6 @@
         data () {
             return {
                 listData,
-                pagination: {
-                    onChange: (page) => {
-                        console.log(page);
-                    },
-                    pageSize: 3,
-                },
                 actions: [
                     { type: 'star-o', text: '156' },
                     { type: 'like-o', text: '156' },
