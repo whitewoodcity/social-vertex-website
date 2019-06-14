@@ -2,7 +2,7 @@
     <div class="article-list">
         <a-list itemLayout="vertical" size="large" :dataSource="listData">
             <div slot="footer"><b>ant design vue</b> footer part</div>
-            <a-list-item slot="renderItem" slot-scope="item, index" key="item.title">
+            <a-list-item slot="renderItem" slot-scope="item" key="item.title">
                 <template slot="actions" v-for="{type, text} in actions">
                       <span :key="type">
                         <a-icon :type="type" style="margin-right: 8px" />
@@ -36,12 +36,6 @@
         data () {
             return {
                 listData,
-                pagination: {
-                    onChange: (page) => {
-                        console.log(page);
-                    },
-                    pageSize: 3,
-                },
                 actions: [
                     { type: 'star-o', text: '156' },
                     { type: 'like-o', text: '156' },
