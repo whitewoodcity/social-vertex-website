@@ -5,8 +5,12 @@ import store from './store'
 import './plugins/ant-design-vue.js'
 import nprogress from './plugins/nprogress'
 import './plugins/axios'
+import Icon from "./components/Icon";
 
-
+let requireAll = requireContext => requireContext.keys().map(requireContext)
+const req = require.context('./assets/icons', false, /\.svg$/);
+requireAll(req)
+Vue.use(Icon)
 Vue.config.productionTip = false
 
 new Vue({

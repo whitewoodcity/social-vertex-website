@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <Icon name="test"></Icon>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,8 +32,10 @@
 </template>
 
 <script>
+import Icon from "./Icon";
 export default {
   name: 'HelloWorld',
+  components: {Icon},
   props: {
     msg: String
   }
