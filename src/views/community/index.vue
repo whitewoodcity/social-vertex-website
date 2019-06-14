@@ -176,7 +176,7 @@ export default {
   }
   .icon-item{
     float: left;
-    padding-left: 40px;
+    padding-left: 12%;
   }
   .icon{
     text-align: center;
@@ -190,7 +190,7 @@ export default {
   }
   .block-icon-item{
     float: left;
-    padding-left: 50px;
+    padding-left: 13%;
   }
   .block-label{
     text-align: center;
