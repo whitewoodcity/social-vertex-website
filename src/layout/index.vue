@@ -79,7 +79,8 @@ export default {
 .layout-header-logo {
 }
 .layout-content {
-  min-height: 92.5vh;
+  height: 93vh;
+  min-height: 93vh;
 }
 </style>
 

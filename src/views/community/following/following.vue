@@ -37,7 +37,6 @@
         data () {
             return {
                 listData,
-
                 actions: [
                     { type: 'star-o', text: '156' },
                     { type: 'like-o', text: '156' },
