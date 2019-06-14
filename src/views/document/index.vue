@@ -21,6 +21,8 @@ export default {
 }
 .document-iframe {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
+  //fixed by liucx 此处iframe显示高度过小
+  height: 720px;
 }
 </style>
