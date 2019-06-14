@@ -145,6 +145,11 @@ import Recomondation from "./recomondation/recomondation";
 
 export default {
   components: {ACol, ARow,Recomondation,Following,Popular},
+  methods:{
+    placement:function (arg) {
+      alert(arg);
+    }
+  }
 };
 </script>
 

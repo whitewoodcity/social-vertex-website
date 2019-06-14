@@ -6,6 +6,10 @@ import Publish from './views/publish/index.vue'
 import Document from './views/document/index.vue'
 import Community from './views/community/index.vue'
 import Awesome from './views/awesome/index.vue'
+import Error from './views/common/error-pages/error'
+import NotFound from './views/common/error-pages/not-found-404'
+import Login from './views/common/login/login'
+import Register from './views/common/register/register'
 
 Vue.use(Router)
 
@@ -34,6 +38,22 @@ export default new Router({
       path: '/awesome',
       name: 'Awesome',
       component: Awesome,
+    }, {
+      path: '/error',
+      name: 'Error',
+      component: Error,
+    },{
+        path: '/not-found',
+        name: 'NotFound',
+        component: NotFound,
+      },{
+      path: '/login',
+      name: 'Login',
+      component: Login,
+    },{
+      path: '/register',
+      name: 'Register',
+      component: Register,
     }]
   }]
 })

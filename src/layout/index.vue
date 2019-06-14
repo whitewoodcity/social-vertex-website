@@ -41,8 +41,8 @@
           </a-col>
           <a-col :span="4">
             <a-button-group>
-              <a-button icon="login" size="large">登录</a-button>
-              <a-button icon="thunderbolt" size="large" type="primary">注册</a-button>
+              <a-button icon="login" size="large" v-on:click="toLogin">登录</a-button>
+              <a-button icon="thunderbolt" size="large" v-on:click="toRegister" type="primary">注册</a-button>
             </a-button-group>
           </a-col>
         </a-row>
@@ -56,7 +56,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    toLogin: function () {
+      // console.log(evt);
+      this.$router.push('/login')
+    },
+    toRegister: function () {
+      // console.log(evt);
+      this.$router.push('/register')
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
