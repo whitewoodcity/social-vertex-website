@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import './plugins/ant-design-vue'
 import './plugins/lottie'
+import './plugins/markdown'
 import nprogress from './plugins/nprogress'
 import './plugins/axios'
 
