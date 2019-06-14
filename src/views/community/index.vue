@@ -2,7 +2,7 @@
   <div class="community">
     <a-row><div class="guiding-line"></div></a-row>
     <a-row>
-      <a-col :span="3"><div class="white-side"></div></a-col>
+      <a-col :span="3"><div class="purple-side"></div></a-col>
       <a-col :span="18">
         <!-- community body -->
         <a-row>
@@ -10,12 +10,28 @@
             <a-col :span="5">
               <a-input-search class="search-input" placeholder="input search text" enterButton/>
             </a-col>
-            <a-col :span="4">nother things</a-col>
+            <a-col :span="4">
+              <a-dropdown :placement="placement">
+                <a-button>选择搜索专题</a-button>
+                <a-menu slot="overlay">
+                  <a-menu-item>
+                    <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">专题1</a>
+                  </a-menu-item>
+                  <a-menu-item>
+                    <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">专题2</a>
+                  </a-menu-item>
+                  <a-menu-item>
+                    <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">专题3</a>
+                  </a-menu-item>
+                </a-menu>
+              </a-dropdown>
+            </a-col>
+            <a-col></a-col>
           </div>
         </a-row>
 
         <!-- real content -->
-        <a-row>
+        <a-row :gutter="20">
           <!-- left bar -->
           <a-col :span="18">
             <div class="nav-bar">
@@ -32,9 +48,11 @@
               </a-menu>
             </div>
 
-            <div>滚动列表</div>
-            <recomondation></recomondation>
-            <popular></popular>
+            <div>
+
+            </div>
+<!--            <recomondation></recomondation>-->
+<!--            <popular></popular>-->
             <following></following>
 
           </a-col>
@@ -46,29 +64,78 @@
                 <div class="icon">
                   <a-button icon="profile" />
                 </div>
-              <span>action1</span>
+              <span>发帖子</span>
               </div>
               <div class="icon-item">
                 <div class="icon">
                   <a-button icon="user" />
                 </div>
-                <span>action1</span>
+                <span>个人主页</span>
               </div>
               <div class="icon-item">
                 <div class="icon">
                   <a-button icon="message" />
                 </div>
-                <span>action1</span>
+                <span>发状态</span>
               </div>
             </div>
             <br><br><br>
-            <div>sadf</div>
-            <div>sadf</div>
-            <div>sadf</div>
+            <div class="links-block">
+              <a-button type="primary" block>收藏</a-button>
+              <a-button block>关注的人</a-button>
+              <a-button type="dashed" block>服务中心</a-button>
+            </div>
+            <div><a-divider /></div>
+            <div class="subjects-blocks-group">
+              <div class="subjects-blocks-group-label">
+                <span>扩展版块</span>
+              </div>
+              <div class="subjects-blocks">
+                <div class="block-icon-item">
+                  <div class="icon">
+                    <a-button icon="shopping" />
+                  </div>
+                  <span class="block-label">版块1</span>
+                </div>
+                <div class="block-icon-item">
+                  <div class="icon">
+                    <a-button icon="profile" />
+                  </div>
+                  <span class="block-label">版块2</span>
+                </div>
+                <div class="block-icon-item">
+                  <div class="icon">
+                    <a-button icon="profile" />
+                  </div>
+                  <span class="block-label">版块3</span>
+                </div>
+              </div>
+              <br><br>
+              <div class="subjects-blocks">
+                <div class="block-icon-item">
+                  <div class="icon">
+                    <a-button icon="shopping" />
+                  </div>
+                  <span class="block-label">版块1</span>
+                </div>
+                <div class="block-icon-item">
+                  <div class="icon">
+                    <a-button icon="profile" />
+                  </div>
+                  <span class="block-label">版块2</span>
+                </div>
+                <div class="block-icon-item">
+                  <div class="icon">
+                    <a-button icon="profile" />
+                  </div>
+                  <span class="block-label">版块3</span>
+                </div>
+              </div>
+            </div>
           </a-col>
         </a-row>
       </a-col>
-      <a-col :span="3"><div class="white-side"></div></a-col>
+      <a-col :span="3"><div class="purple-side"></div></a-col>
     </a-row>
   </div>
 </template>
@@ -79,8 +146,9 @@ import ACol from "ant-design-vue/es/grid/Col";
 import Following from "./following/following";
 import Popular from "./popular/popular";
 import Recomondation from "./recomondation/recomondation";
+
 export default {
-  components: {ACol, ARow,Recomondation,Following,Popular}
+  components: {ACol, ARow,Recomondation,Following,Popular},
 };
 </script>
 
@@ -90,7 +158,7 @@ export default {
     width: 100%;
     background-color: #6f338b;
   }
-  .white-side{
+  .purple-side{
     background-color: #6f338b;
     height: 92.5vh;
   }
@@ -108,9 +176,29 @@ export default {
   }
   .icon-item{
     float: left;
-    padding-left: 12%;
+    padding-left: 40px;
   }
   .icon{
     text-align: center;
+  }
+  .links-block{
+    padding-right: 10px;
+  }
+  .subjects-blocks{
+    margin-top: 20px;
+    text-align: center;
+  }
+  .block-icon-item{
+    float: left;
+    padding-left: 50px;
+  }
+  .block-label{
+    text-align: center;
+  }
+  .subjects-blocks-group{
+  }
+  .subjects-blocks-group-label{
+    text-align: center;
+    horiz-align: center;
   }
 </style>
