@@ -24,7 +24,7 @@
 </template>
 <script>
     const listData = []
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 1; i++) {
         listData.push({
             href: 'https://vue.ant.design/',
             title: `ant design vue part ${i}`,
