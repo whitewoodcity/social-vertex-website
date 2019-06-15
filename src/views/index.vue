@@ -73,31 +73,33 @@
       </a-row>
     </div>
     <div class="index-polyglot">
-      <a-row align="middle" justify="center" type="flex">
+      <a-row justify="center" type="flex">
         <a-col :span="8">
-          <a-tabs defaultActiveKey="Java">
-            <a-tab-pane tab="Java" key="Java">
-              <vue-simple-markdown :source="javaCode"></vue-simple-markdown>
-            </a-tab-pane>
-            <a-tab-pane tab="JavaScript" key="JavaScript">
-              <vue-simple-markdown :source="jsCode"></vue-simple-markdown>
-            </a-tab-pane>
-            <a-tab-pane tab="Groovy" key="Groovy">
-              <vue-simple-markdown :source="groovyCode"></vue-simple-markdown>
-            </a-tab-pane>
-            <a-tab-pane tab="Ruby" key="Ruby">
-              <vue-simple-markdown :source="rubyCode"></vue-simple-markdown>
-            </a-tab-pane>
-            <a-tab-pane tab="Ceylon" key="Ceylon">
-              <vue-simple-markdown :source="ceylonCode"></vue-simple-markdown>
-            </a-tab-pane>
-            <a-tab-pane tab="Scala" key="Scala">
-              <vue-simple-markdown :source="scalaCode"></vue-simple-markdown>
-            </a-tab-pane>
-            <a-tab-pane tab="Kotlin" key="Kotlin">
-              <vue-simple-markdown :source="kotlinCode"></vue-simple-markdown>
-            </a-tab-pane>
-          </a-tabs>
+          <div class="index-polyglot-code">
+            <a-tabs defaultActiveKey="Java">
+              <a-tab-pane tab="Java" key="Java">
+                <vue-simple-markdown :source="javaCode"></vue-simple-markdown>
+              </a-tab-pane>
+              <a-tab-pane tab="JavaScript" key="JavaScript">
+                <vue-simple-markdown :source="jsCode"></vue-simple-markdown>
+              </a-tab-pane>
+              <a-tab-pane tab="Groovy" key="Groovy">
+                <vue-simple-markdown :source="groovyCode"></vue-simple-markdown>
+              </a-tab-pane>
+              <a-tab-pane tab="Ruby" key="Ruby">
+                <vue-simple-markdown :source="rubyCode"></vue-simple-markdown>
+              </a-tab-pane>
+              <a-tab-pane tab="Ceylon" key="Ceylon">
+                <vue-simple-markdown :source="ceylonCode"></vue-simple-markdown>
+              </a-tab-pane>
+              <a-tab-pane tab="Scala" key="Scala">
+                <vue-simple-markdown :source="scalaCode"></vue-simple-markdown>
+              </a-tab-pane>
+              <a-tab-pane tab="Kotlin" key="Kotlin">
+                <vue-simple-markdown :source="kotlinCode"></vue-simple-markdown>
+              </a-tab-pane>
+            </a-tabs>
+          </div>
         </a-col>
         <a-col :span="2"></a-col>
         <a-col :span="8">
@@ -301,6 +303,9 @@ export default {
   height: 66vh;
   color: @primary-color;
   font-size: 1.5em;
+}
+.index-polyglot-code {
+  margin-top: 20%;
 }
 .index-polyglot-content {
   height: 60vh;
