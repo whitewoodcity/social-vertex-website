@@ -66,7 +66,7 @@
     }
 
     .reg-form{
-        background-color: #c0c0c0;
+        background-color: #dcdcdc;
         border: 4px solid #6f338b;
         border-radius: 20px;
         width: 500px;
