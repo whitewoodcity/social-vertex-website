@@ -11,7 +11,7 @@
               <a-input-search class="search-input" placeholder="input search text" enterButton/>
             </a-col>
             <a-col :span="4">
-              <a-dropdown :placement="placement">
+              <a-dropdown>
                 <a-button>选择搜索专题</a-button>
                 <a-menu slot="overlay">
                   <a-menu-item>
@@ -77,7 +77,8 @@
             </div>
             <br><br><br>
             <div class="links-block">
-              <a-button type="primary" block>收藏</a-button>
+              <a-button type="primary" block>我的收藏</a-button>
+              <a-button block>我的消息</a-button>
               <a-button block>关注的人</a-button>
               <a-button type="dashed" block>服务中心</a-button>
             </div>
@@ -145,6 +146,11 @@ import Recomondation from "./recomondation/recomondation";
 
 export default {
   components: {ACol, ARow,Recomondation,Following,Popular},
+  methods:{
+    // placement:function (arg) {
+    //   alert(arg);
+    // }
+  }
 };
 </script>
 
@@ -156,7 +162,7 @@ export default {
   }
   .purple-side{
     background-color: #6f338b;
-    height: 92.5vh;
+    height: 100vh;
   }
   .search-bar{
     padding-top: 10px;
