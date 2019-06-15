@@ -29,7 +29,7 @@
     }
     .purple-side{
         background-color: #6f338b;
-        height: 92.5vh;
+        height: 100vh;
     }
 
 </style>

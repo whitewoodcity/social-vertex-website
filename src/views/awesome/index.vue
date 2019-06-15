@@ -43,7 +43,7 @@ export default {
 }
 .purple-side{
   background-color: #6f338b;
-  height: 92.5vh;
+  height: 100vh;
 }
 .blog-item-group{
   margin-left: 30px;
