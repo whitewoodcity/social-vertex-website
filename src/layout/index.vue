@@ -68,8 +68,8 @@ export default {};
 .layout-header-logo {
 }
 .layout-content {
-  height: 93vh;
-  min-height: 93vh;
+  height: 92.5vh;
+  min-height: 92.5vh;
 }
 </style>
 
