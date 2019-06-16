@@ -1303,10 +1303,10 @@ ant-design-palettes@^1.1.3:
   dependencies:
     tinycolor2 "^1.4.1"
 
-ant-design-vue@^1.2.4:
+ant-design-vue@^1.3.10:
   version "1.3.10"
-  resolved "https://registry.npm.taobao.org/ant-design-vue/download/ant-design-vue-1.3.10.tgz?cache=0&sync_timestamp=1560262531225&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fant-design-vue%2Fdownload%2Fant-design-vue-1.3.10.tgz#82813f90888f77dd0e56c8a71e14efa0f8d8e3da"
-  integrity sha1-goE/kIiPd90OVsinHhTvoPjY49o=
+  resolved "https://registry.yarnpkg.com/ant-design-vue/-/ant-design-vue-1.3.10.tgz#82813f90888f77dd0e56c8a71e14efa0f8d8e3da"
+  integrity sha512-C+2i0P1DirL+Bc+gpJI9Ys3FXWMza3E8bHD/OpkDnVRV4VegOBuy5eMJsmOzmiGJQM/WQBw8t1v+ma+xIasNXw==
   dependencies:
     "@ant-design/icons" "^1.1.15"
     "@ant-design/icons-vue" "^1.0.1"
@@ -3884,6 +3884,11 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+github-markdown-css@^2.8.0:
+  version "2.10.0"
+  resolved "https://registry.npm.taobao.org/github-markdown-css/download/github-markdown-css-2.10.0.tgz#0612fed22816b33b282f37ef8def7a4ecabfe993"
+  integrity sha1-BhL+0igWszsoLzfvje96Tsq/6ZM=
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/glob-parent/download/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -4100,6 +4105,11 @@ highlight.js@^9.6.0:
   version "9.15.8"
   resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-9.15.8.tgz#f344fda123f36f1a65490e932cf90569e4999971"
   integrity sha1-80T9oSPzbxplSQ6TLPkFaeSZmXE=
+
+highlightjs@^9.10.0:
+  version "9.12.0"
+  resolved "https://registry.npm.taobao.org/highlightjs/download/highlightjs-9.12.0.tgz#9b84eb42a7aa8488eb69ac79fec44cf495bf72a1"
+  integrity sha1-m4TrQqeqhIjraax5/sRM9JW/cqE=
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -5058,6 +5068,11 @@ lodash.memoize@^4.1.2:
   resolved "https://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
 
+lodash.toarray@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.npm.taobao.org/lodash.toarray/download/lodash.toarray-4.4.0.tgz#24c4bfcd6b2fba38bfd0594db1179d8e9b656561"
+  integrity sha1-JMS/zWsvuji/0FlNsRedjptlZWE=
+
 lodash.transform@^4.6.0:
   version "4.6.0"
   resolved "https://registry.npm.taobao.org/lodash.transform/download/lodash.transform-4.6.0.tgz#12306422f63324aed8483d3f38332b5f670547a0"
@@ -5091,6 +5106,11 @@ loose-envify@^1.0.0:
   integrity sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+lottie-web@^5.1.9:
+  version "5.5.4"
+  resolved "https://registry.npm.taobao.org/lottie-web/download/lottie-web-5.5.4.tgz#d4b9480a68e55c7088b6ebac1481f9f2c698ebe5"
+  integrity sha1-1LlICmjlXHCItuusFIH58saY6+U=
 
 lower-case@^1.1.1:
   version "1.1.4"
@@ -5483,6 +5503,13 @@ no-case@^2.2.0:
   integrity sha1-YLgTOWvjmz8SiKTB7V0efSi0ZKw=
   dependencies:
     lower-case "^1.1.1"
+
+node-emoji@^1.8.1:
+  version "1.10.0"
+  resolved "https://registry.npm.taobao.org/node-emoji/download/node-emoji-1.10.0.tgz#8886abd25d9c7bb61802a658523d1f8d2a89b2da"
+  integrity sha1-iIar0l2ce7YYAqZYUj0fjSqJsto=
+  dependencies:
+    lodash.toarray "^4.4.0"
 
 node-forge@0.7.5:
   version "0.7.5"
@@ -8242,6 +8269,13 @@ vue-loader@^15.7.0:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-lottie@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.npm.taobao.org/vue-lottie/download/vue-lottie-0.2.1.tgz#f9f62c34a276e6834255406118fb05b51f765e4b"
+  integrity sha1-+fYsNKJ25oNCVUBhGPsFtR92Xks=
+  dependencies:
+    lottie-web "^5.1.9"
+
 vue-nprogress@^0.1.5:
   version "0.1.5"
   resolved "https://registry.npm.taobao.org/vue-nprogress/download/vue-nprogress-0.1.5.tgz#574b412f1034012daaf46299d5505d5812f406e6"
@@ -8258,6 +8292,15 @@ vue-router@^3.0.3:
   version "3.0.6"
   resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.0.6.tgz#2e4f0f9cbb0b96d0205ab2690cfe588935136ac3"
   integrity sha1-Lk8PnLsLltAgWrJpDP5YiTUTasM=
+
+vue-simple-markdown@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.npm.taobao.org/vue-simple-markdown/download/vue-simple-markdown-1.0.9.tgz#a2a50a77f52e0b6762e40a23fd5020d09cc909d3"
+  integrity sha1-oqUKd/UuC2di5Aoj/VAg0JzJCdM=
+  dependencies:
+    github-markdown-css "^2.8.0"
+    highlightjs "^9.10.0"
+    node-emoji "^1.8.1"
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
