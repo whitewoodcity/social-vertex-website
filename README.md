@@ -1,5 +1,7 @@
 # vertx-china-community
 
+[![Build Status](https://travis-ci.org/whitewoodcity/social-vertex-website.svg?branch=master)](https://travis-ci.org/whitewoodcity/social-vertex-website)
+
 ## Project setup
 ```
 yarn install
