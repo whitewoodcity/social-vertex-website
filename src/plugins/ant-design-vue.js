@@ -1,7 +1,7 @@
 // ----- todo A miao miao miao
 "use strict";
 import Vue from 'vue'
-import 'ant-design-vue/dist/antd.css';
+// import 'ant-design-vue/dist/antd.css';
 import '../antd-variables.less';
 import { Button,Layout,Row,Col,Menu,Icon,Tabs,Input,Select,Dropdown,List,Avatar,Form,Divider } from 'ant-design-vue';
 Vue.use(Button);

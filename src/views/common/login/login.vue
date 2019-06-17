@@ -43,7 +43,7 @@
         data(){
             return {
                 loginAnimationOption: {animationData:LoginAnimationOption},
-                form: {}
+                // form: {}
             }
         },
         methods:{
