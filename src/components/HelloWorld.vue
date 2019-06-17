@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <a-button>按需引入</a-button>
     <h1>{{ msg }}</h1>
     <Icon name="test"></Icon>
     <p>
