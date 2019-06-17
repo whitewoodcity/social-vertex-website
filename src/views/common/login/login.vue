@@ -14,7 +14,7 @@
                             :width="200">
                     </lottie>
                 </div>
-                <a-form :form="form">
+                <a-form>
                     <a-form-item label="账户" :label-col="{ span: 5 }" :wrapper-col="{ span: 15 }">
                         <a-input v-decorator="['note',{rules: [{ required: true, message: 'Please input your note!' }]}]"/>
                     </a-form-item>
@@ -43,7 +43,6 @@
         data(){
             return {
                 loginAnimationOption: {animationData:LoginAnimationOption},
-                // form: {}
             }
         },
         methods:{
