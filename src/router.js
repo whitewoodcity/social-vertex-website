@@ -10,6 +10,15 @@ import Error from './views/common/error-pages/error'
 import NotFound from './views/common/error-pages/not-found-404'
 import Login from './views/common/login/login'
 import Register from './views/common/register/register'
+import Articles from './views/community/articles/articles'
+import MyCollect from './views/community/my-collect/my-collect'
+import MyFollowing from './views/community/my-following/my-following'
+import MyMsg from './views/community/my-msg/my-msg'
+import ServiceCenter from './views/community/service-center/service-center'
+import PubArticle from './views/community/pub-article/pub-article'
+import PersonalPage from './views/community/personal-page/personal-page'
+import ExBlock1 from './views/community/external-blocks/ex-block1/ex-block1'
+import ExBlock2 from './views/community/external-blocks/ex-block2/ex-block2'
 
 Vue.use(Router)
 
@@ -34,6 +43,36 @@ export default new Router({
       path: '/community',
       name: 'Community',
       component: Community,
+      children: [
+        {
+          path: 'articles',
+          component: Articles
+        },{
+          path: 'my-collect',
+          component: MyCollect
+        },{
+          path: 'my-following',
+          component: MyFollowing
+        },{
+          path: 'my-msg',
+          component: MyMsg
+        },{
+          path: 'service-center',
+          component: ServiceCenter
+        },{
+          path: 'personal-page',
+          component: PersonalPage
+        },{
+          path: 'pub-article',
+          component: PubArticle
+        },{
+          path: 'ex-block1',
+          component: ExBlock1
+        },{
+          path: 'ex-block2',
+          component: ExBlock2
+        }
+      ]
     }, {
       path: '/awesome',
       name: 'Awesome',

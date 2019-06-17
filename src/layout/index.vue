@@ -23,7 +23,7 @@
                 </router-link>
               </a-menu-item>
               <a-menu-item>
-                <router-link to="/community">
+                <router-link to="/community/articles">
                   <a-icon type="message"/>社区
                 </router-link>
               </a-menu-item>
