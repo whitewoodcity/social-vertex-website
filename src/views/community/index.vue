@@ -35,17 +35,6 @@
           <!-- left bar -->
           <a-col :span="18">
             <div class="nav-bar">
-<!--              <a-menu v-model="current" mode="horizontal">-->
-<!--                <a-menu-item key="mail">-->
-<!--                  <a-icon type="mail" />推荐-->
-<!--                </a-menu-item>-->
-<!--                <a-menu-item key="app">-->
-<!--                  <a-icon type="heart" />关注-->
-<!--                </a-menu-item>-->
-<!--                <a-menu-item key="alipay">-->
-<!--                  <a-icon type="appstore"/>最热-->
-<!--                </a-menu-item>-->
-<!--              </a-menu>-->
               <a-tabs size="large" >
                 <a-tab-pane tab="推荐" key="1"><recomondation/></a-tab-pane>
                 <a-tab-pane tab="关注" key="2"><following/></a-tab-pane>
