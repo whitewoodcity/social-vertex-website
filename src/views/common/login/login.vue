@@ -42,7 +42,8 @@
     export default {
         data(){
             return {
-                loginAnimationOption: {animationData:LoginAnimationOption}
+                loginAnimationOption: {animationData:LoginAnimationOption},
+                form: {}
             }
         },
         methods:{
