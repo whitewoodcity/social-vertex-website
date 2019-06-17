@@ -72,9 +72,9 @@
         border-radius: 20px;
         width: 500px;
         height: 600px;
-        float: right;
+        float: left;
         margin-top: 100px;
-        margin-right: 200px;
+        margin-left: 1100px;
         text-align: center;
     }
     .origin-form{
