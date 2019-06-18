@@ -40,10 +40,16 @@
             </a-menu>
           </a-col>
           <a-col :span="4">
-            <a-button-group>
-              <a-button icon="login" size="large" v-on:click="toLogin">登录</a-button>
-              <a-button icon="thunderbolt" size="large" v-on:click="toRegister" type="primary">注册</a-button>
-            </a-button-group>
+            <div class="logged-in-bar" v-if="loggedIn">
+              <span>{{loggedInUserInfo.username}} ---- {{loggedInUserInfo.info}}</span>
+            </div>
+            <div class="non-logged-in-bar" v-else>
+              <a-button-group>
+                <a-button icon="login" size="large" v-on:click="toLogin">登录</a-button>
+                <a-button icon="thunderbolt" size="large" v-on:click="toRegister" type="primary">注册</a-button>
+              </a-button-group>
+            </div>
+
           </a-col>
         </a-row>
       </a-layout-header>
@@ -57,9 +63,15 @@
 
 <script>
 export default {
+  data(){
+    return{
+      loggedIn: this.$store.getters.loggedIn,
+      loggedInUserInfo: this.$store.state.loggedInUserInfo
+    }
+  },
+
   methods:{
     toLogin: function () {
-      // console.log(evt);
       this.$router.push('/login')
     },
     toRegister: function () {

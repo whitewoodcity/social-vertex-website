@@ -14,14 +14,14 @@
                             :width="200">
                     </lottie>
                 </div>
-                <a-form>
+                <a-form :form="loginForm" @submit="doLogin">
                     <a-form-item label="账户" :label-col="{ span: 5 }" :wrapper-col="{ span: 15 }">
-                        <a-input v-decorator="['note',{rules: [{ required: true, message: 'Please input your note!' }]}]"/>
+                        <a-input v-decorator="['account',{rules: [{ required: true, message: '请输入用户名' }]}]"/>
                     </a-form-item>
                     <a-form-item label="密码" :label-col="{ span: 5 }" :wrapper-col="{ span: 15 }">
-                        <a-input v-decorator="['note',{rules: [{ required: true, message: 'Please input your note!' }]}]"/>
+                        <a-input v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }]}]" type="password"/>
                     </a-form-item>
-                    <a-button type="primary">登录</a-button>
+                    <a-button type="primary" html-type="submit">登录</a-button>
                 </a-form>
                 <div class="to-reg-span"><span>还没有账户？请点击<a v-on:click="toReg()">此处</a></span></div>
 
@@ -39,15 +39,50 @@
 
 <script>
     import LoginAnimationOption from '../../../assets/common/login-ripple-loading-animation'
+    import {AxiosInstance as axios} from "axios"
+    import md5 from 'js-md5'
     export default {
         data(){
             return {
                 loginAnimationOption: {animationData:LoginAnimationOption},
+                loginForm: this.$form.createForm(this)
             }
         },
         methods:{
             toReg:function () {
                 this.$router.push('/register')
+            },
+            doLogin:function(e){
+                e.preventDefault();
+                this.loginForm.validateFields((err, values) => {
+                    if (!err) {
+                        //console.log('Received values of form: ', values);
+
+                        //====== todo =============================================
+                        axios.put('/',{
+                            "type":"user",
+                            "subtype":"login",
+                            "id": values.account,
+                            "password":md5(values.password),
+                            "version":0.4
+                        }).then(response=>{
+                            if (response.status == 200){
+                                if(response.data.login){
+                                    this.$message.success('登录成功');
+                                    // this.$store.commit('doLogin',{id : values.account});
+                                    this.$router.push('/');
+                                }else{
+                                    this.$message.error(response.data.info);
+                                }
+
+                            }else{
+                                this.$message.error(response.data);
+                            }
+                        }).catch(error=>{
+                            this.$message.error(error);
+                        });
+                    }
+                });
             }
         }
     };
