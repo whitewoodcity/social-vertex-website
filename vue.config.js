@@ -27,5 +27,16 @@ module.exports = {
             .options({
                 symbolId: '[name]'
             })
+    },
+    devServer:{
+        proxy:{
+            '/':{
+                target:'https://polyglot.net.cn',
+                changeOrigin:true,
+                pathRewrite:{
+                    '^/':'/'
+                }
+            }
+        }
     }
 }
