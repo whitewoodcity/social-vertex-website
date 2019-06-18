@@ -59,7 +59,7 @@
                     if (!err) {
                         // console.log('Received values of form: ', values);
                         //====== todo =============================================
-                        axios.put('/',{
+                        this.$axios.put('/',{
                             "type":"user",
                             "subtype":"register",
                             "id": values.account,
