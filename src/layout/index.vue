@@ -41,7 +41,7 @@
           </a-col>
           <a-col :span="4">
             <div class="logged-in-bar" v-if="loggedIn">
-              <span>{{loggedInUserInfo.username}} ---- {{loggedInUserInfo.info}}</span>
+              <span>您好 &nbsp;{{nickname}} <a v-on:click="doLogoff">注销</a></span>
             </div>
             <div class="non-logged-in-bar" v-else>
               <a-button-group>
@@ -63,11 +63,22 @@
 
 <script>
 export default {
-  data(){
-    return{
-      loggedIn: this.$store.getters.loggedIn,
-      loggedInUserInfo: this.$store.state.loggedInUserInfo
-    }
+
+  computed:{
+      loggedIn: function () {
+        return this.$store.getters.loggedIn;
+      },
+      nickname: function () {
+        let nickname = this.$store.state.loggedInUserInfo.nickname;
+        let displayName;
+        if (nickname && nickname.length > 10){
+          displayName = nickname.substr(0,7)+'...';
+        } else {
+          displayName = nickname;
+        }
+        return displayName;
+      }
+
   },
 
   methods:{
@@ -77,6 +88,10 @@ export default {
     toRegister: function () {
       // console.log(evt);
       this.$router.push('/register')
+    },
+    doLogoff(){
+      this.$store.commit('doLogoff');
+      this.$router.push('/login');
     }
   }
 };

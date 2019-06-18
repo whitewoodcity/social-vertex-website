@@ -13,7 +13,7 @@ export default new Vuex.Store({
 
   getters:{
     loggedIn: (state) => {
-      return state.loggedInUserInfo != null;
+      return state.loggedInUserInfo;
     }
   },
 
@@ -27,7 +27,7 @@ export default new Vuex.Store({
     //注销登录操作
     doLogoff(state){
       state.loggedInUserInfo = null;
-      localStorage.setItem(USER_INFO_LOCAL_STORAGE_KEY,'');
+      localStorage.removeItem(USER_INFO_LOCAL_STORAGE_KEY);
     }
   },
 

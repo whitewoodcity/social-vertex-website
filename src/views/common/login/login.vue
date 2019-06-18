@@ -39,7 +39,6 @@
 
 <script>
     import LoginAnimationOption from '../../../assets/common/login-ripple-loading-animation'
-    import {AxiosInstance as axios} from "axios"
     import md5 from 'js-md5'
     export default {
         data(){
@@ -54,23 +53,31 @@
             },
             doLogin:function(e){
                 e.preventDefault();
+                // let _this = this;
                 this.loginForm.validateFields((err, values) => {
                     if (!err) {
                         //console.log('Received values of form: ', values);
-
-                        //====== todo =============================================
+                        //======todo =============================================
+                        let pwdMd5 = md5(values.password);
                         axios.put('/',{
                             "type":"user",
                             "subtype":"login",
                             "id": values.account,
-                            "password":md5(values.password),
+                            "password":pwdMd5,
                             "version":0.4
                         }).then(response=>{
                             if (response.status == 200){
                                 if(response.data.login){
                                     this.$message.success('登录成功');
-                                    // this.$store.commit('doLogin',{id : values.account});
-                                    this.$router.push('/');
+                                    let storageInfo = {
+                                        id : values.account,
+                                        password : pwdMd5,
+                                        nickname : response.data.nickname,
+                                        friends: response.data.friends,
+                                        notifications: response.data.notifications
+                                    };
+                                    this.$store.commit('doLogin',storageInfo);
+                                    this.$router.push('/community/articles');
                                 }else{
                                     this.$message.error(response.data.info);
                                 }

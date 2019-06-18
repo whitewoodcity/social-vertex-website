@@ -30,11 +30,11 @@ module.exports = {
     },
     devServer:{
         proxy:{
-            '/':{
+            '/api':{
                 target:'https://polyglot.net.cn',
                 changeOrigin:true,
                 pathRewrite:{
-                    '^/':'/'
+                    '^/api':'/'
                 }
             }
         }
