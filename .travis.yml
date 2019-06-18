@@ -24,7 +24,7 @@ deploy:
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: false
-  repo: XiaoFan1519/social-vertex-website
+  repo: whitewoodcity/social-vertex-website
   target-branch: gh-pages
   local-dir: ./dist
   on:
