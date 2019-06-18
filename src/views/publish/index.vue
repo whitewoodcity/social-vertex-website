@@ -35,7 +35,9 @@
             <a-divider></a-divider>
           </div>
         </a-col>
-        <a-col :span="3"><div class="purple-side"></div></a-col>
+        <a-col :span="3">
+          <div class="purple-side"></div>
+        </a-col>
       </a-row>
   </div>
 </template>
@@ -57,7 +59,7 @@
   }
   .purple-side{
     background-color: #6f338b;
-    height: 92.5vh;
+    height: 100vh;
   }
   .recent-posts{
     margin-top: 30px;
@@ -66,6 +68,9 @@
     margin-left: 30px;
     margin-top: 30px;
     padding-right: 30px;
+  }
+  .blog{
+
   }
 
 </style>
