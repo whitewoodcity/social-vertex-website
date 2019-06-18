@@ -123,7 +123,7 @@
     .bkg-img{
         height: 100%;
         background-image: url("../../../assets/common/background.png");
-        background-size: 1600px 904px;
+        background-size: 92.5vw;
         background-repeat: no-repeat;
     }
 
@@ -133,9 +133,11 @@
         border-radius: 20px;
         width: 500px;
         height: 600px;
-        float: left;
         margin-top: 100px;
-        margin-left: 1100px;
+        /*float: left;*/
+        /*margin-left: 60vw;*/
+        float: right;
+        margin-right: 5%;
         text-align: center;
     }
     .origin-form{
