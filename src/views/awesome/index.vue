@@ -1,57 +1,81 @@
 <template>
-<!--  <div class="awesome">-->
-<!--    <a-tabs size="large" >-->
-<!--      <a-tab-pane tab="Tab 1" key="1">Content of Tab Pane 1</a-tab-pane>-->
-<!--      <a-tab-pane tab="Tab 2" key="2" forceRender>Content of Tab Pane 2</a-tab-pane>-->
-<!--      <a-tab-pane tab="Tab 3" key="3">Content of Tab Pane 3</a-tab-pane>-->
-<!--    </a-tabs>-->
-<!--  </div>-->
   <div class="awesome">
-    <a-row><div class="guiding-line"></div></a-row>
-
-    <a-row>
-      <a-col :span="3"><div class="purple-side"></div></a-col>
-      <a-col :span="13">
-          <div class="tabs-group">
-            <a-tabs size="large" >
-              <a-tab-pane tab="Tab 1" key="1">Content of Tab Pane 1</a-tab-pane>
-              <a-tab-pane tab="Tab 2" key="2" forceRender>Content of Tab Pane 2</a-tab-pane>
-              <a-tab-pane tab="Tab 3" key="3">Content of Tab Pane 3</a-tab-pane>
-            </a-tabs>
-          </div>
+    <a-row align="top" justify="space-around" type="flex">
+      <a-col :span="2"></a-col>
+      <a-col :span="12">
+        <a-tabs v-model="awesomeGroupKey" size="large">
+          <template v-for="awesomeGroup in awesomeGroups">
+            <a-tab-pane :key="awesomeGroup.key">
+              <template slot="tab">
+                <span>
+                  <a-icon :type="awesomeGroup.icon"/>
+                  {{awesomeGroup.name}}
+                </span>
+              </template>
+              <template v-if="awesomeGroup.awesomeGroups.length == 0">
+                <a-list :dataSource="awesomeGroup.awesomes">
+                  <a-list-item slot="renderItem" slot-scope="awesomes" key="awesomes.name">
+                    <a-list-item-meta :description="awesomes.author">
+                      <template slot="title">
+                        <a :href="awesomes.url">{{awesomes.name}}</a>
+                      </template>
+                      <template slot="description">
+                        <template v-for="author in awesomes.author">{{author}},</template>
+                      </template>
+                    </a-list-item-meta>
+                    {{awesomes.description}}
+                  </a-list-item>
+                </a-list>
+              </template>
+            </a-tab-pane>
+          </template>
+        </a-tabs>
       </a-col>
-      <a-col :span="5">
+      <a-col :span="6">
+        <a-list
+          header="目录"
+          itemLayout="vertical"
+          size="small"
+          :split="false"
+          :dataSource="awesomeGroups"
+        >
+          <a-list-item slot="renderItem" slot-scope="awesomeGroup">
+            <a @click="onClickCatalog(awesomeGroup.key)">
+              <a-icon :type="awesomeGroup.icon"/>
+              {{awesomeGroup.name}}
+            </a>
+          </a-list-item>
+        </a-list>
       </a-col>
-      <a-col :span="3"><div class="purple-side"></div></a-col>
     </a-row>
   </div>
 </template>
 
 <script>
+import awesomeGroups from "../../assets/data/awesome";
 export default {
-    
-}
+  data() {
+    return {
+      awesomeGroupKey: "books",
+      awesomeGroups: awesomeGroups
+    };
+  },
+  methods: {
+    onClickCatalog(key) {
+      this.awesomeGroupKey = key;
+    }
+  }
+};
 </script>
 
-<style lang="less" scoped>
+<style lang="less" >
 .awesome {
+  margin-top: 20px;
 }
-.guiding-line{
-  height: 10px;
-  width: 100%;
-  background-color: #6f338b;
+.awesome .ant-list-vertical .ant-list-item-content {
+  margin: 0 !important;
 }
-.purple-side{
-  background-color: #6f338b;
-  height: 100vh;
-}
-.blog-item-group{
-  margin-left: 30px;
-  margin-top: 30px;
-  padding-right: 30px;
-}
-.tabs-group{
-  padding-top: 10px;
-  padding-left: 20px;
+.awesome a {
+  font: 1.1em sans-serif;
 }
 </style>

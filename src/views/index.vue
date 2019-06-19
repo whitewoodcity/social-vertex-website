@@ -76,7 +76,7 @@
       <a-row justify="center" type="flex">
         <a-col :span="8">
           <div class="index-polyglot-code">
-            <a-tabs defaultActiveKey="Java">
+            <a-tabs defaultActiveKey="Java" size="small">
               <a-tab-pane tab="Java" key="Java">
                 <vue-simple-markdown :source="javaCode"></vue-simple-markdown>
               </a-tab-pane>
