@@ -65,8 +65,7 @@
                             "id": values.account,
                             "password":md5(values.password),
                             "password2":md5(values.passwordConfirm),
-                            "nickname":values.nickname,
-                            "version":0.4
+                            "nickname":values.nickname
                         }).then(response=>{
                             if (response.status == 200){
                                 if(response.data.register){

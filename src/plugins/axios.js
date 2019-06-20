@@ -20,6 +20,18 @@ const _axios = axios.create(config);
 _axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
+    // console.log("config.data",config.data);
+    //登录之后的每一次请求都要带着password
+    let pswd = config.data.password;
+    if (!pswd){
+      let loggedInUserInfo = Vue.$store.state.loggedInUserInfo;
+      if (loggedInUserInfo){
+        config.data.password = loggedInUserInfo.password;
+      }
+    }
+    //设置调用版本
+    // console.log('version',process.env.VUE_APP_SERVICE_VERSION);
+    config.data.version = process.env.VUE_APP_SERVICE_VERSION;
     return config;
   },
   function(error) {

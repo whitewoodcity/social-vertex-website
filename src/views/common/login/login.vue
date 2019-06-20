@@ -64,7 +64,7 @@
                             "subtype":"login",
                             "id": values.account,
                             "password":pwdMd5,
-                            "version":0.4
+                            // "version":0.4
                         }).then(response=>{
                             if (response.status == 200){
                                 if(response.data.login){
