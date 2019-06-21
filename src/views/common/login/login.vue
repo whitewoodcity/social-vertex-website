@@ -59,7 +59,7 @@
                         //console.log('Received values of form: ', values);
                         //======todo =============================================
                         let pwdMd5 = md5(values.password);
-                        this.$axios.put('/',{
+                        this.$axios.put('/api',{
                             "type":"user",
                             "subtype":"login",
                             "id": values.account,
@@ -79,7 +79,11 @@
                                     this.$store.commit('doLogin',storageInfo);
                                     this.$router.push('/community/articles');
                                 }else{
-                                    this.$message.error(response.data.info);
+                                    // this.$message.error(response.data.info);
+                                    this.$notification['error']({
+                                        message: '登录失败,用户名或密码错误',
+                                        description: response.data.info
+                                    });
                                 }
 
                             }else{
