@@ -14,14 +14,14 @@
                             :width="200">
                     </lottie>
                 </div>
-                <a-form>
+                <a-form :form="loginForm" @submit="doLogin">
                     <a-form-item label="账户" :label-col="{ span: 5 }" :wrapper-col="{ span: 15 }">
-                        <a-input v-decorator="['note',{rules: [{ required: true, message: 'Please input your note!' }]}]"/>
+                        <a-input v-decorator="['account',{rules: [{ required: true, message: '请输入用户名' }]}]"/>
                     </a-form-item>
                     <a-form-item label="密码" :label-col="{ span: 5 }" :wrapper-col="{ span: 15 }">
-                        <a-input v-decorator="['note',{rules: [{ required: true, message: 'Please input your note!' }]}]"/>
+                        <a-input v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }]}]" type="password"/>
                     </a-form-item>
-                    <a-button type="primary">登录</a-button>
+                    <a-button type="primary" html-type="submit">登录</a-button>
                 </a-form>
                 <div class="to-reg-span"><span>还没有账户？请点击<a v-on:click="toReg()">此处</a></span></div>
 
@@ -39,15 +39,61 @@
 
 <script>
     import LoginAnimationOption from '../../../assets/common/login-ripple-loading-animation'
+    import md5 from 'js-md5'
     export default {
         data(){
             return {
                 loginAnimationOption: {animationData:LoginAnimationOption},
+                loginForm: this.$form.createForm(this)
             }
         },
         methods:{
             toReg:function () {
                 this.$router.push('/register')
+            },
+            doLogin:function(e){
+                e.preventDefault();
+                // let _this = this;
+                this.loginForm.validateFields((err, values) => {
+                    if (!err) {
+                        //console.log('Received values of form: ', values);
+                        //======todo =============================================
+                        let pwdMd5 = md5(values.password);
+                        this.$axios.put('/api',{
+                            "type":"user",
+                            "subtype":"login",
+                            "id": values.account,
+                            "password":pwdMd5,
+                            // "version":0.4
+                        }).then(response=>{
+                            if (response.status == 200){
+                                if(response.data.login){
+                                    this.$message.success('登录成功');
+                                    let storageInfo = {
+                                        id : values.account,
+                                        password : pwdMd5,
+                                        nickname : response.data.nickname,
+                                        friends: response.data.friends,
+                                        notifications: response.data.notifications
+                                    };
+                                    this.$store.commit('doLogin',storageInfo);
+                                    this.$router.push('/community/articles');
+                                }else{
+                                    // this.$message.error(response.data.info);
+                                    this.$notification['error']({
+                                        message: '登录失败,用户名或密码错误',
+                                        description: response.data.info
+                                    });
+                                }
+
+                            }else{
+                                this.$message.error(response.data);
+                            }
+                        }).catch(error=>{
+                            this.$message.error(error);
+                        });
+                    }
+                });
             }
         }
     };

@@ -1,9 +1,8 @@
-// ----- todo A miao miao miao
 "use strict";
 import Vue from 'vue'
 // import 'ant-design-vue/dist/antd.css';
 import '../antd-variables.less';
-import { Button,Layout,Row,Col,Menu,Icon,Tabs,Input,Select,Dropdown,List,Avatar,Form,Divider,BackTop,Modal } from 'ant-design-vue';
+import { Button,Layout,Row,Col,Menu,Icon,Tabs,Input,Select,Dropdown,List,Avatar,Form,Divider,BackTop,Modal,message,notification} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Layout);
 Vue.use(Row);
@@ -20,3 +19,5 @@ Vue.use(Form);
 Vue.use(Divider);
 Vue.use(BackTop);
 Vue.use(Modal);
+Vue.prototype.$message = message;
+Vue.prototype.$notification = notification;

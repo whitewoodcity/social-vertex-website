@@ -10,6 +10,7 @@ import axios from "axios";
 
 let config = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
+  baseURL: process.env.VUE_APP_AXIOS_BAESE,
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
@@ -19,6 +20,18 @@ const _axios = axios.create(config);
 _axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
+    // console.log("config.data",config.data);
+    //登录之后的每一次请求都要带着password
+    let pswd = config.data.password;
+    if (!pswd){
+      let loggedInUserInfo = Vue.$store.state.loggedInUserInfo;
+      if (loggedInUserInfo){
+        config.data.password = loggedInUserInfo.password;
+      }
+    }
+    //设置调用版本
+    // console.log('version',process.env.VUE_APP_SERVICE_VERSION);
+    config.data.version = process.env.VUE_APP_SERVICE_VERSION;
     return config;
   },
   function(error) {

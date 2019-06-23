@@ -40,10 +40,16 @@
             </a-menu>
           </a-col>
           <a-col :span="4">
-            <a-button-group>
-              <a-button icon="login" size="large" v-on:click="toLogin">登录</a-button>
-              <a-button icon="thunderbolt" size="large" v-on:click="toRegister" type="primary">注册</a-button>
-            </a-button-group>
+            <div class="logged-in-bar" v-if="loggedIn">
+              <span>您好 &nbsp;{{nickname}} <a v-on:click="doLogoff">注销</a></span>
+            </div>
+            <div class="non-logged-in-bar" v-else>
+              <a-button-group>
+                <a-button icon="login" size="large" v-on:click="toLogin">登录</a-button>
+                <a-button icon="thunderbolt" size="large" v-on:click="toRegister" type="primary">注册</a-button>
+              </a-button-group>
+            </div>
+
           </a-col>
         </a-row>
       </a-layout-header>
@@ -57,14 +63,35 @@
 
 <script>
 export default {
+
+  computed:{
+      loggedIn: function () {
+        return this.$store.getters.loggedIn;
+      },
+      nickname: function () {
+        let nickname = this.$store.state.loggedInUserInfo.nickname;
+        let displayName;
+        if (nickname && nickname.length > 10){
+          displayName = nickname.substr(0,7)+'...';
+        } else {
+          displayName = nickname;
+        }
+        return displayName;
+      }
+
+  },
+
   methods:{
     toLogin: function () {
-      // console.log(evt);
       this.$router.push('/login')
     },
     toRegister: function () {
       // console.log(evt);
       this.$router.push('/register')
+    },
+    doLogoff(){
+      this.$store.commit('doLogoff');
+      this.$router.push('/login');
     }
   }
 };
