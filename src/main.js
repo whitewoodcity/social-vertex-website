@@ -9,7 +9,7 @@ import './plugins/quill'
 import nprogress from './plugins/nprogress'
 import './plugins/axios'
 import Icon from './components/Icon'
-import i18n from './i18n'
+import i18n from './plugins/i18n'
 
 let requireAll = requireContext => requireContext.keys().map(requireContext);
 const req = require.context('./assets/icons', false, /\.svg$/);
