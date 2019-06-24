@@ -9,6 +9,7 @@ import './plugins/quill'
 import nprogress from './plugins/nprogress'
 import './plugins/axios'
 import Icon from './components/Icon'
+import i18n from './i18n'
 
 let requireAll = requireContext => requireContext.keys().map(requireContext);
 const req = require.context('./assets/icons', false, /\.svg$/);
@@ -20,5 +21,6 @@ new Vue({
   router,
   store,
   nprogress,
+  i18n,
   render: h => h(App)
 }).$mount('#app');

@@ -6,11 +6,15 @@ module.exports = {
     // publicPath: "/",
     //mod 为github，为gh-pages分支编译
     publicPath: process.env.VUE_BRANCHES === 'gh-pages' ? '/social-vertex-website/': '/assets/',
+
     // 输出目录
     outputDir: 'dist',
+
     lintOnSave: true,
+
     // 是否为生产环境构建生成 source map？
     productionSourceMap: false,
+
     // alias 配置
     chainWebpack: (config) => {
         config.resolve.alias
@@ -28,6 +32,7 @@ module.exports = {
                 symbolId: '[name]'
             })
     },
+
     devServer:{
         proxy:{
             '/api':{
@@ -38,5 +43,14 @@ module.exports = {
                 }
             }
         }
+    },
+
+    pluginOptions: {
+      i18n: {
+        locale: 'zh_CN',
+        fallbackLocale: 'en',
+        localeDir: 'locales',
+        enableInSFC: false
+      }
     }
 }
