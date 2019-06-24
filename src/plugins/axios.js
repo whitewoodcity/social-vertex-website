@@ -21,12 +21,14 @@ _axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
     // console.log("config.data",config.data);
-    //登录之后的每一次请求都要带着password
+    //登录之后的每一次请求都要带着password 和 id
     let pswd = config.data.password;
-    if (!pswd){
+    let identity = config.data.id;
+    if (!pswd || !identity){
       let loggedInUserInfo = Vue.$store.state.loggedInUserInfo;
       if (loggedInUserInfo){
         config.data.password = loggedInUserInfo.password;
+        config.data.id = loggedInUserInfo.id;
       }
     }
     //设置调用版本

@@ -44,51 +44,54 @@
               <a-button @click="routeToPage('/service-center')" type="dashed" block>服务中心</a-button>
             </div>
             <div><a-divider /></div>
-            <div class="subjects-blocks-group">
-              <div class="subjects-blocks-group-label">
-                <span>扩展版块</span>
-              </div>
-              <div class="subjects-blocks">
-                <div class="block-icon-item">
-                  <div class="icon">
-                    <a-button icon="shopping" @click="routeToPage('/ex-block1')"/>
-                  </div>
-                  <span class="block-label">版块1</span>
-                </div>
-                <div class="block-icon-item">
-                  <div class="icon">
-                    <a-button icon="profile"  @click="routeToPage('/ex-block2')"/>
-                  </div>
-                  <span class="block-label">版块2</span>
-                </div>
-                <div class="block-icon-item">
-                  <div class="icon">
-                    <a-button icon="profile" />
-                  </div>
-                  <span class="block-label">版块3</span>
-                </div>
-              </div>
-              <br><br>
-              <div class="subjects-blocks">
-                <div class="block-icon-item">
-                  <div class="icon">
-                    <a-button icon="shopping" />
-                  </div>
-                  <span class="block-label">版块1</span>
-                </div>
-                <div class="block-icon-item">
-                  <div class="icon">
-                    <a-button icon="profile" />
-                  </div>
-                  <span class="block-label">版块2</span>
-                </div>
-                <div class="block-icon-item">
-                  <div class="icon">
-                    <a-button icon="profile" />
-                  </div>
-                  <span class="block-label">版块3</span>
-                </div>
-              </div>
+<!--            <div class="subjects-blocks-group">-->
+<!--              <div class="subjects-blocks-group-label">-->
+<!--                <span>扩展版块</span>-->
+<!--              </div>-->
+<!--              <div class="subjects-blocks">-->
+<!--                <div class="block-icon-item">-->
+<!--                  <div class="icon">-->
+<!--                    <a-button icon="shopping" @click="routeToPage('/ex-block1')"/>-->
+<!--                  </div>-->
+<!--                  <span class="block-label">版块1</span>-->
+<!--                </div>-->
+<!--                <div class="block-icon-item">-->
+<!--                  <div class="icon">-->
+<!--                    <a-button icon="profile"  @click="routeToPage('/ex-block2')"/>-->
+<!--                  </div>-->
+<!--                  <span class="block-label">版块2</span>-->
+<!--                </div>-->
+<!--                <div class="block-icon-item">-->
+<!--                  <div class="icon">-->
+<!--                    <a-button icon="profile" />-->
+<!--                  </div>-->
+<!--                  <span class="block-label">版块3</span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <br><br>-->
+<!--              <div class="subjects-blocks">-->
+<!--                <div class="block-icon-item">-->
+<!--                  <div class="icon">-->
+<!--                    <a-button icon="shopping" />-->
+<!--                  </div>-->
+<!--                  <span class="block-label">版块1</span>-->
+<!--                </div>-->
+<!--                <div class="block-icon-item">-->
+<!--                  <div class="icon">-->
+<!--                    <a-button icon="profile" />-->
+<!--                  </div>-->
+<!--                  <span class="block-label">版块2</span>-->
+<!--                </div>-->
+<!--                <div class="block-icon-item">-->
+<!--                  <div class="icon">-->
+<!--                    <a-button icon="profile" />-->
+<!--                  </div>-->
+<!--                  <span class="block-label">版块3</span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+            <div>
+              some messages here
             </div>
           </a-col>
         </a-row>
@@ -97,9 +100,10 @@
     </a-row>
     <div>
       <a-modal title="发状态" v-model="msgSendingViewVisible" @ok="confirm" okText="确认" cancelText="取消">
-        <p>Bla bla ...</p>
-        <p>Bla bla ...</p>
-        <p>Bla bla ...</p>
+        <div class="msg-title">
+          <p>说出你的想法</p>
+        </div>
+        <a-textarea></a-textarea>
       </a-modal>
       <br />
       <br />
@@ -184,5 +188,8 @@ export default {
   .subjects-blocks-group-label{
     text-align: center;
     horiz-align: center;
+  }
+  .msg-title{
+    text-align: center;
   }
 </style>
