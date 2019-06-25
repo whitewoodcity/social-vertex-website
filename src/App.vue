@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <nprogress-container></nprogress-container>
-    <router-view/>
-    <a-back-top/>
+    <a-locale-provider :locale="locale">
+      <nprogress-container></nprogress-container>
+      <router-view/>
+      <a-back-top/>
+    </a-locale-provider>
   </div>
 </template>
 
 <script>
+import zhCN from "ant-design-vue/lib/locale-provider/zh_CN";
 import NprogressContainer from "vue-nprogress/src/NprogressContainer";
 
 export default {
   components: {
     NprogressContainer
+  },
+  data() {
+    return {
+      locale: zhCN
+    };
   }
 };
 </script>
