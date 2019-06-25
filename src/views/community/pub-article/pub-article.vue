@@ -32,22 +32,12 @@
             }
         },
         methods: {
-            onEditorBlur(quill) {
-                // console.log('editor blur!', quill)
-            },
 
-            onEditorFocus(quill) {
-                // console.log('editor focus!', quill)
-            },
 
-            onEditorReady(quill) {
-                // console.log('editor ready!', quill)
-            },
-
-            onEditorChange({ quill, html, text }) {
-                // console.log('editor change!', quill, html, text)
-                this.content = html
-            },
+            // onEditorChange({ quill, html, text }) {
+            //     // console.log('editor change!', quill, html, text)
+            //     this.content = html
+            // },
 
             handleChange(info) {
                 const status = info.file.status;
@@ -66,9 +56,9 @@
                 return this.$refs.myQuillEditor.quill
             }
         },
-        mounted() {
-            console.log('this is current quill instance object', this.editor)
-        }
+        // mounted() {
+        //     console.log('this is current quill instance object', this.editor)
+        // }
     }
 </script>
 <style>
