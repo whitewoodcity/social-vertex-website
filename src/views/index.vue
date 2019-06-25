@@ -90,9 +90,6 @@
               <a-tab-pane tab="Ruby" key="Ruby">
                 <vue-simple-markdown :source="rubyCode"></vue-simple-markdown>
               </a-tab-pane>
-              <a-tab-pane tab="Ceylon" key="Ceylon">
-                <vue-simple-markdown :source="ceylonCode"></vue-simple-markdown>
-              </a-tab-pane>
               <a-tab-pane tab="Scala" key="Scala">
                 <vue-simple-markdown :source="scalaCode"></vue-simple-markdown>
               </a-tab-pane>
@@ -106,16 +103,16 @@
         <a-col :span="8">
           <div class="index-polyglot-content">
             <h2>
-              <a-icon type="deployment-unit"/>&nbsp;多语言
+              <a-icon type="deployment-unit"/>&nbsp;多语言支持
             </h2>
             <p>
-               Java / JavaScript / Groovy / Ruby / Ceylon / Scala / Kotlin.
+               Java / JavaScript / Groovy / Ruby / Scala / Kotlin.
             </p>
             <p>
               Vert.x眼里<strong>没有最好的语言，只有最合适的语言.</strong>
             </p>
             <p>
-              Vert.x社区为您选择的语言提供完全等价的API.
+              Vert.x社区会为您选择的语言提供完全等价的API.
             </p>
          </div>
         </a-col>
@@ -181,21 +178,6 @@ export default {
           .put_header("content-type", "text/plain")
           .end("Hello from Vert.x!")
       }.listen(8080)
-      \`\`\`
-      `,
-      ceylonCode: `
-      \`\`\`
-      import io.vertx.ceylon.core { ... }
-      import io.vertx.ceylon.core.http { ... }
-
-      shared class Server() extends Verticle() {
-        start() => vertx.createHttpServer()
-          .requestHandler((req) =>
-            req.response()
-              .putHeader("content-type", "text/plain")
-              .end("Hello from Vert.x!")
-          ).listen(8080);
-      }
       \`\`\`
       `,
       scalaCode: `
