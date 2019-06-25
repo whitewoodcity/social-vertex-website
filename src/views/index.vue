@@ -120,9 +120,9 @@
 </template>
 
 <script>
-import * as indexBannerData from "../assets/index-banner-animation.json";
-import * as indexEventData from "../assets/index-event-animation.json";
-import * as indexNonBlockingData from "../assets/index-non-blocking-animation.json";
+import * as indexBannerData from "../assets/animation/index-banner-animation.json";
+import * as indexEventData from "../assets/animation/index-event-animation.json";
+import * as indexNonBlockingData from "../assets/animation/index-non-blocking-animation.json";
 
 export default {
   data() {
@@ -245,7 +245,7 @@ export default {
 .index-banner {
   width: 100%;
   height: 93vh;
-  background: url("../assets/index-banner.png");
+  background: url("../assets/image/index-banner.png");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
