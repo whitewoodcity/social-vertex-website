@@ -305,8 +305,5 @@ export default {
   color: @primary-color;
   font-size: 1.5em;
 }
-.vue-simple-markdown {
-   margin-top: -13%;
-   margin-left: -30px;
-}
+
 </style>
