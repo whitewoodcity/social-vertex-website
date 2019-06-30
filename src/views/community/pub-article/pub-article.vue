@@ -75,7 +75,8 @@
                     "subtype":"article",
                     "title":title,
                     "content":content,
-                    "titleImgLink":''
+                    "titleImgLink":'',//todo
+                    "authorNickname":this.$store.state.loggedInUserInfo.nickname
                 }).then(response=>{
                     if (response.status == 200){
                         if(response.data.publication){

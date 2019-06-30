@@ -10,7 +10,7 @@
                       </span>
                 </template>
                 <img slot="extra" width="272" alt="logo" src="{item.titleImgLink}" />
-                <a-list-item-meta>
+                <a-list-item-meta  :description="item.nickname?item.nickname:'by foo'">
                     <a slot="title">{{item.title}}</a>
                     <a-avatar slot="avatar" :src="item.avatar" />
                 </a-list-item-meta>
