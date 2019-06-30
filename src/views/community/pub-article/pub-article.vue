@@ -21,7 +21,6 @@
             <!-- bidirectional data binding（双向数据绑定） -->
            <quill-editor style="height: 100%"
                          v-model="content"
-                         :config="config"
                          ref="myQuillEditor"
                          :options="editorOption"
            >
@@ -36,10 +35,7 @@
                 content: "",
                 editorOption: {
                 // some quill options
-                },
-                config: {
-                    readOnly: true,
-                    placeholder: '请输入内容',
+                    placeholder: '请输入内容'
                 },
                 title:"",
                 //标题图片存储地址
