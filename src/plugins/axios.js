@@ -25,10 +25,11 @@ _axios.interceptors.request.use(
     let pswd = config.data.password;
     let identity = config.data.id;
     if (!pswd || !identity){
-      let loggedInUserInfo = Vue.$store.state.loggedInUserInfo;
+      let loggedInUserInfo = localStorage.loggedInUserInfo;
       if (loggedInUserInfo){
-        config.data.password = loggedInUserInfo.password;
-        config.data.id = loggedInUserInfo.id;
+        let userInfoJsonObj = JSON.parse(loggedInUserInfo);
+        config.data.password = userInfoJsonObj.password;
+        config.data.id = userInfoJsonObj.id;
       }
     }
     //设置调用版本
