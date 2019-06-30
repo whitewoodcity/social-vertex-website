@@ -99,11 +99,11 @@
       <a-col :span="3"><div class="purple-side"></div></a-col>
     </a-row>
     <div>
-      <a-modal title="发状态" v-model="msgSendingViewVisible" @ok="confirm" okText="确认" cancelText="取消">
+      <a-modal title="发状态" v-model="msgSendingViewVisible" @ok="confirmThought" okText="确认" cancelText="取消">
         <div class="msg-title">
           <p>说出你的想法</p>
         </div>
-        <a-textarea></a-textarea>
+        <a-textarea v-model="thought"></a-textarea>
       </a-modal>
       <br />
       <br />
@@ -121,7 +121,8 @@ import ACol from "ant-design-vue/es/grid/Col";
 export default {
   data(){
     return {
-      msgSendingViewVisible: false
+      msgSendingViewVisible: false,
+      thought:""
     }
   },
   components: {ACol, ARow},
@@ -139,9 +140,35 @@ export default {
     hideMsgSendingView() {
       this.msgSendingViewVisible = false;
     },
-    confirm() {
+    confirmThought() {
       //确认发送
-      alert('confirm');
+      let thought = this.thought;
+      if (!thought|| thought == ''){
+        this.$message.error("请说出你的想法！");
+        return;
+      }
+      this.$axios.put('/',{
+        "type":"publication",
+        "subtype":"thought",
+        "thought":thought
+      }).then(response=>{
+        if (response.status == 200){
+          if(response.data.thought){
+            this.$message.success('发表成功');
+            this.hideMsgSendingView();
+          }else{
+            this.$notification['error']({
+              message: '发表失败',
+              description: response.data.info
+            });
+          }
+
+        }else{
+          this.$message.error(response.data);
+        }
+      }).catch(error=>{
+        this.$message.error(error.message);
+      });
     }
   }
 };
@@ -172,23 +199,23 @@ export default {
   .links-block{
     padding-right: 10px;
   }
-  .subjects-blocks{
-    margin-top: 20px;
-    text-align: center;
-  }
-  .block-icon-item{
-    float: left;
-    padding-left: 13%;
-  }
-  .block-label{
-    text-align: center;
-  }
-  .subjects-blocks-group{
-  }
-  .subjects-blocks-group-label{
-    text-align: center;
-    horiz-align: center;
-  }
+  /*.subjects-blocks{*/
+  /*  margin-top: 20px;*/
+  /*  text-align: center;*/
+  /*}*/
+  /*.block-icon-item{*/
+  /*  float: left;*/
+  /*  padding-left: 13%;*/
+  /*}*/
+  /*.block-label{*/
+  /*  text-align: center;*/
+  /*}*/
+  /*.subjects-blocks-group{*/
+  /*}*/
+  /*.subjects-blocks-group-label{*/
+  /*  text-align: center;*/
+  /*  horiz-align: center;*/
+  /*}*/
   .msg-title{
     text-align: center;
   }

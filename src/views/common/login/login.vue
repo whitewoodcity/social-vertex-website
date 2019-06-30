@@ -59,7 +59,7 @@
                         //console.log('Received values of form: ', values);
                         //======todo =============================================
                         let pwdMd5 = md5(values.password);
-                        this.$axios.put('/api',{
+                        this.$axios.put('/',{
                             "type":"user",
                             "subtype":"login",
                             "id": values.account,

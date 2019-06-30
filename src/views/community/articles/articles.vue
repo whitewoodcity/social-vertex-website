@@ -10,13 +10,10 @@
                         <a-button>选择搜索专题</a-button>
                         <a-menu slot="overlay">
                             <a-menu-item>
-                                <a>专题1</a>
+                                <a>文章</a>
                             </a-menu-item>
                             <a-menu-item>
-                                <a>专题2</a>
-                            </a-menu-item>
-                            <a-menu-item>
-                                <a>专题3</a>
+                                <a>问答</a>
                             </a-menu-item>
                         </a-menu>
                     </a-dropdown>
@@ -28,6 +25,7 @@
                 <a-tab-pane tab="推荐" key="1"><recomondation/></a-tab-pane>
                 <a-tab-pane tab="关注" key="2"><following/></a-tab-pane>
                 <a-tab-pane tab="最热" key="3"><popular/></a-tab-pane>
+                <a-tab-pane tab="问答" key="4"><questions/></a-tab-pane>
             </a-tabs>
         </div>
     </div>
@@ -36,8 +34,9 @@
     import Recomondation from './recomondation/recomondation'
     import Following from './following/following'
     import Popular from './popular/popular'
+    import Questions from './questions/questions'
     export default {
-        components:{Recomondation,Following,Popular}
+        components:{Recomondation,Following,Popular,Questions}
     }
 </script>
 <style scoped>

@@ -11,12 +11,20 @@
             </a-upload-dragger>
         </div>
         <div class="title-input">
-            <a-input placeholder="请输入标题"/>
+            <a-input v-model="title" placeholder="请输入标题"/>
         </div>
         <a-divider></a-divider>
-        <div>
+        <div class="commit-button-area">
+            <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
+        </div>
+        <div class="article-content">
             <!-- bidirectional data binding（双向数据绑定） -->
-           <quill-editor style="height:50vh" v-model="content" ref="myQuillEditor" :options="editorOption">
+           <quill-editor style="height: 100%"
+                         v-model="content"
+                         :config="config"
+                         ref="myQuillEditor"
+                         :options="editorOption"
+           >
             </quill-editor>
         </div>
     </div>
@@ -25,29 +33,20 @@
     export default {
         data () {
             return {
-                content: '<h2>请输入内容</h2>',
+                content: "",
                 editorOption: {
                 // some quill options
-                }
+                },
+                config: {
+                    readOnly: true,
+                    placeholder: '请输入内容',
+                },
+                title:"",
+                //标题图片存储地址
+                titleImgLink:""
             }
         },
         methods: {
-            onEditorBlur(quill) {
-                // console.log('editor blur!', quill)
-            },
-
-            onEditorFocus(quill) {
-                // console.log('editor focus!', quill)
-            },
-
-            onEditorReady(quill) {
-                // console.log('editor ready!', quill)
-            },
-
-            onEditorChange({ quill, html, text }) {
-                // console.log('editor change!', quill, html, text)
-                this.content = html
-            },
 
             handleChange(info) {
                 const status = info.file.status;
@@ -59,6 +58,47 @@
                 } else if (status === 'error') {
                     this.$message.error(`${info.file.name} file upload failed.`);
                 }
+            },
+            doPubArticle(){
+                let title = this.title;
+                let content = this.content;
+                // console.log(title,content);
+                if (this.checkPubContent()) {
+                    this.$notification['error']({
+                        message:"请输入标题和内容",
+                        description:"标题和内容不能为空"
+                    });
+                    return;
+                }
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"article",
+                    "title":title,
+                    "content":content,
+                    "titleImgLink":''
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            this.$message.success('发表成功');
+                            this.$router.push('/community/articles');
+                        }else{
+                            this.$notification['error']({
+                                message: '发表失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+            checkPubContent(){
+                let title = this.title;
+                let content = this.content;
+                return !title || !content || title == '' || content == '';
             }
         },
         computed: {
@@ -66,9 +106,7 @@
                 return this.$refs.myQuillEditor.quill
             }
         },
-        mounted() {
-            console.log('this is current quill instance object', this.editor)
-        }
+
     }
 </script>
 <style>
@@ -83,6 +121,12 @@
     margin-bottom: 20px;
 }
 .title-input{
+
+}
+.article-content{
+ height: 40vh;
+}
+.commit-button-area{
 
 }
 </style>
