@@ -10,7 +10,7 @@ import Error from './views/common/error-pages/error'
 import NotFound from './views/common/error-pages/not-found-404'
 import Login from './views/common/login/login'
 import Register from './views/common/register/register'
-import Articles from './views/community/articles/articles'
+import Publications from './views/community/publications/publications'
 import MyCollect from './views/community/my-collect/my-collect'
 import MyFollowing from './views/community/my-following/my-following'
 import MyMsg from './views/community/my-msg/my-msg'
@@ -45,8 +45,8 @@ export default new Router({
       component: Community,
       children: [
         {
-          path: 'articles',
-          component: Articles
+          path: 'publications',
+          component: Publications
         },{
           path: 'my-collect',
           component: MyCollect

@@ -18,18 +18,16 @@
             <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
         </div>
         <div class="article-content">
-            <!-- bidirectional data binding（双向数据绑定） -->
-           <quill-editor style="height: 100%"
-                         v-model="content"
-                         ref="myQuillEditor"
-                         :options="editorOption"
-           >
-            </quill-editor>
+
         </div>
     </div>
 </template>
 <script>
+
     export default {
+        components:{
+
+        },
         data () {
             return {
                 content: "",
@@ -39,7 +37,7 @@
                 },
                 title:"",
                 //标题图片存储地址
-                titleImgLink:""
+                titleImgLink:"",
             }
         },
         methods: {
@@ -110,6 +108,7 @@
 .publication-container{
     margin-top:20px;
     margin-left: 30px;
+    height: auto;
 }
 .pub-page-title{
     padding-left: 45%;

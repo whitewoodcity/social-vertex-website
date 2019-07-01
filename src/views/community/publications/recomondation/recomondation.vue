@@ -17,7 +17,7 @@
                   </span>
                 </template>
                 <img slot="extra" width="272" alt="logo" src="{item.titleImgLink}" />
-                <a-list-item-meta :description="item.authorNickname?item.authorNickname:item.id">
+                <a-list-item-meta :description="item.authorNickname ? item.authorNickname:item.id">
                     <a slot="title">{{item.title}}</a>
                     <a-avatar slot="avatar" :src="item.avatar" />
                 </a-list-item-meta>
@@ -41,6 +41,8 @@
         },
         mounted(){
             //------------------------------------------
+            //listData置空以防止添加重复的articles
+            this.listData = [];
             this.$axios.put('/',{
                 "type":"publication",
                 "subtype":"history"
