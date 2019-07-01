@@ -24,7 +24,7 @@
                 </router-link>
               </a-menu-item>
               <a-menu-item>
-                <router-link to="/community/articles">
+                <router-link to="/community/publications">
                   <a-icon type="message"/>社区
                 </router-link>
               </a-menu-item>

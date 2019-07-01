@@ -18,32 +18,26 @@
             <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
         </div>
         <div class="article-content">
-            <!-- bidirectional data binding（双向数据绑定） -->
-           <quill-editor style="height: 100%"
-                         v-model="content"
-                         :config="config"
-                         ref="myQuillEditor"
-                         :options="editorOption"
-           >
-            </quill-editor>
+            <mavon-editor v-model="content"/>
         </div>
     </div>
 </template>
 <script>
+
     export default {
+        components:{
+
+        },
         data () {
             return {
                 content: "",
                 editorOption: {
                 // some quill options
-                },
-                config: {
-                    readOnly: true,
-                    placeholder: '请输入内容',
+                    placeholder: '请输入内容'
                 },
                 title:"",
                 //标题图片存储地址
-                titleImgLink:""
+                titleImgLink:"",
             }
         },
         methods: {
@@ -75,12 +69,13 @@
                     "subtype":"article",
                     "title":title,
                     "content":content,
-                    "titleImgLink":''
+                    "titleImgLink":'',//todo
+                    "authorNickname":this.$store.state.loggedInUserInfo.nickname
                 }).then(response=>{
                     if (response.status == 200){
                         if(response.data.publication){
                             this.$message.success('发表成功');
-                            this.$router.push('/community/articles');
+                            this.$router.push('/community/publications');
                         }else{
                             this.$notification['error']({
                                 message: '发表失败',
@@ -113,6 +108,7 @@
 .publication-container{
     margin-top:20px;
     margin-left: 30px;
+    height: auto;
 }
 .pub-page-title{
     padding-left: 45%;
