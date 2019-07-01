@@ -16,22 +16,22 @@ module.exports = {
     productionSourceMap: false,
 
     // alias 配置
-    chainWebpack: (config) => {
-        config.resolve.alias
-            .set('@', resolve('src'))
-        config.module.rules.delete("svg");
-        config.module
-            .rule('svg-smart')
-            .test(/\.svg$/)
-            .include
-            .add(resolve('src/assets/icons'))
-            .end()
-            .use('svg-sprite-loader')
-            .loader('svg-sprite-loader')
-            .options({
-                symbolId: '[name]'
-            })
-    },
+    // chainWebpack: (config) => {
+    //     config.resolve.alias
+    //         .set('@', resolve('src'))
+    //     config.module.rules.delete("svg");
+    //     config.module
+    //         .rule('svg-smart')
+    //         .test(/\.svg$/)
+    //         .include
+    //         .add(resolve('src/assets/icons'))
+    //         .end()
+    //         .use('svg-sprite-loader')
+    //         .loader('svg-sprite-loader')
+    //         .options({
+    //             symbolId: '[name]'
+    //         })
+    // },
 
     devServer:{
         proxy:{

@@ -18,7 +18,7 @@
             <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
         </div>
         <div class="article-content">
-
+            <mavon-editor v-model="content"/>
         </div>
     </div>
 </template>
@@ -75,7 +75,7 @@
                     if (response.status == 200){
                         if(response.data.publication){
                             this.$message.success('发表成功');
-                            this.$router.push('/community/articles');
+                            this.$router.push('/community/publications');
                         }else{
                             this.$notification['error']({
                                 message: '发表失败',
