@@ -2,7 +2,7 @@
 import Vue from 'vue'
 // import 'ant-design-vue/dist/antd.css';
 import '../antd-variables.less';
-import { Button,Layout,Row,Col,Menu,Icon,Tabs,Input,Select,Dropdown,List,Avatar,Form,Divider,BackTop,Modal,Upload,message,notification} from 'ant-design-vue';
+import { Button,Layout,Row,Col,Menu,Icon,Tabs,Input,Select,Dropdown,List,Avatar,Form,Divider,BackTop,Modal,Upload,message,notification,Spin} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Layout);
 Vue.use(Row);
@@ -20,5 +20,6 @@ Vue.use(Divider);
 Vue.use(BackTop);
 Vue.use(Modal);
 Vue.use(Upload);
+Vue.use(Spin);
 Vue.prototype.$message = message;
 Vue.prototype.$notification = notification;
