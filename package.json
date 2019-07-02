@@ -21,8 +21,6 @@
     "vue-lottie": "^0.2.1",
     "vue-nprogress": "^0.1.5",
     "vue-router": "^3.0.3",
-    "vue-scroller": "^2.2.4",
-    "vue-virtual-scroller": "^1.0.0-rc.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
