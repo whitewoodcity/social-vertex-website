@@ -1,6 +1,10 @@
 <template>
     <div class="article-list">
         <a-list itemLayout="vertical" size="large" :dataSource="listData">
+            <div v-if="showLoadingMore" slot="loadMore" :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
+                <a-spin v-if="loadingMore" />
+                <a-button v-else @click="onLoadMore">loading more</a-button>
+            </div>
             <a-list-item slot="renderItem" slot-scope="item" key="item.title">
                 <template slot="actions">
                   <span>
@@ -31,17 +35,17 @@
     export default {
         data () {
             return {
-                listData,
-                actions: [
-                    { type: 'star-o', text: '156' },
-                    { type: 'like-o', text: '156' },
-                    { type: 'message', text: '2' },
-                ],
+                listData:listData,
+                loading: false,
+                loadingMore: false,
+                showLoadingMore: true,
+                timePoint:null
             }
         },
         mounted(){
             //------------------------------------------
             //listData置空以防止添加重复的articles
+            this.loading = false;
             this.listData = [];
             this.$axios.put('/',{
                 "type":"publication",
@@ -52,7 +56,7 @@
                         // on query success
                         let listData = this.listData;
                         let ariticleList = response.data.history;
-
+                        this.timePoint = response.data.time;
                         for (let i = 0; i < ariticleList.length; i++) {
                             let oneArticle = ariticleList[i];
                             listData.push({
@@ -74,6 +78,44 @@
                 this.$message.error(error.message);
             });
             //---------------------------------------
+        },
+        methods:{
+            onLoadMore () {
+                this.loadingMore = true
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"history",
+                    "time":this.timePoint
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            // on query success
+                            let listData = this.listData;
+                            let ariticleList = response.data.history;
+                            this.timePoint = response.data.time;
+                            for (let i = 0; i < ariticleList.length; i++) {
+                                let oneArticle = ariticleList[i];
+                                listData.push({
+                                    title: oneArticle.title,
+                                    avatar: oneArticle.avatar,// todo
+                                    titleImgLink: oneArticle.titleImgLink,
+                                    content: oneArticle.content,
+                                    authorNickname:oneArticle.authorNickname,
+                                    id:oneArticle.id
+                                })
+                            }
+                            this.loadingMore = false
+                        }else{
+                            this.$message.error(response.data.info);
+                        }
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+                //---------------------------------------
+            },
         }
     }
 

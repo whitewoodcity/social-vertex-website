@@ -77,7 +77,7 @@
                                         notifications: response.data.notifications
                                     };
                                     this.$store.commit('doLogin',storageInfo);
-                                    this.$router.push('/community/articles');
+                                    this.$router.push('/community/publications');
                                 }else{
                                     // this.$message.error(response.data.info);
                                     this.$notification['error']({
