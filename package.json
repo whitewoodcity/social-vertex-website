@@ -21,6 +21,7 @@
     "vue-lottie": "^0.2.1",
     "vue-nprogress": "^0.1.5",
     "vue-router": "^3.0.3",
+    "vue-simple-markdown": "^1.0.9",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
