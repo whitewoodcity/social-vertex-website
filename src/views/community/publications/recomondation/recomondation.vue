@@ -88,10 +88,9 @@
             //---------------------------------------
         },
         methods:{
-            showArticleDetail(articleItem){
+            showArticleDetail(){
                 // alert(articleItem.title)
                 this.$modal.show("articleDetail");
-
             },
             onLoadMore () {
                 this.loadingMore = true
