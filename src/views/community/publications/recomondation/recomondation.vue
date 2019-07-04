@@ -22,24 +22,32 @@
                 </template>
                 <img slot="extra" width="272" alt="logo" src="{item.titleImgLink}" />
                 <a-list-item-meta :description="item.authorNickname ? item.authorNickname:item.id">
-                    <a slot="title">{{item.title}}</a>
+                    <a slot="title" v-on:click="()=>{showArticleDetail(item)}">{{item.title}}</a>
                     <a-avatar slot="avatar" :src="item.avatar" />
                 </a-list-item-meta>
                 {{item.content}}
             </a-list-item>
         </a-list>
+        <modal name="articleDetail">
+            <ariticle-detail/>
+        </modal>
     </div>
 </template>
 <script>
+    import AriticleDetail from '../article-detail/article-detail'
     const listData = [];
     export default {
+        components:{
+            AriticleDetail
+        },
         data () {
             return {
                 listData:listData,
                 loading: false,
                 loadingMore: false,
                 showLoadingMore: true,
-                timePoint:null
+                timePoint:null,
+                detailVisible:false
             }
         },
         mounted(){
@@ -80,6 +88,11 @@
             //---------------------------------------
         },
         methods:{
+            showArticleDetail(articleItem){
+                // alert(articleItem.title)
+                this.$modal.show("articleDetail");
+
+            },
             onLoadMore () {
                 this.loadingMore = true
                 this.$axios.put('/',{
@@ -93,6 +106,9 @@
                             let listData = this.listData;
                             let ariticleList = response.data.history;
                             this.timePoint = response.data.time;
+                            if (ariticleList.length == 0){
+                                this.$message.info("没有更多了哟");
+                            }
                             for (let i = 0; i < ariticleList.length; i++) {
                                 let oneArticle = ariticleList[i];
                                 listData.push({
@@ -124,4 +140,5 @@
     .article-list{
         margin-left: 30px;
     }
+
 </style>
