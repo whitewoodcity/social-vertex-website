@@ -68,11 +68,11 @@
 
 其中 每一个.vue文件的内容大概分为3部分：
 
-<template></template>标签：主要用来定义组件的html样式，以及组件外观的显示
-<script></script>标签：用于管理.vue文件的依赖导入 以及 组件的导出，此处建议export的元素的name属性要与文件名称(除掉.vue后缀)相同，以规范我们的开发工作。 如果组件之间有依赖，则需要在父组件的 script标签中引入子组件，并注册到 父组件当中。
+`<template/>`标签：主要用来定义组件的html样式，以及组件外观的显示
+`<script/>`标签：用于管理.vue文件的依赖导入 以及 组件的导出，此处建议export的元素的name属性要与文件名称(除掉.vue后缀)相同，以规范我们的开发工作。 如果组件之间有依赖，则需要在父组件的 script标签中引入子组件，并注册到 父组件当中。
 
   例：
-  ```
+  ```vue
       //----  Parent.vue ---
       <template>
       	<div>
@@ -94,8 +94,7 @@
       <style scoped></style>
   ```
 
-  <script/>标签主要作用是封装业务逻辑、Vue组件，以及负责组件的依赖和导出工作。
-- <style scoped></style>标签主要负责样式调整，这个标签里面写css脚本。如果标签内带有scoped属性，则将css样式的作用范围缩小到当前Component当中
+`<style/>`标签主要负责样式调整，这个标签里面写css脚本。如果标签内带有scoped属性，则将css样式的作用范围缩小到当前Component当中
 
 ### assets(静态文件)
 
@@ -107,48 +106,50 @@
 
 样例：
 
-    import Vue from 'vue'
-    import Router from 'vue-router'
-    import Home from './views/Home.vue'
-    import ....blablabla
-    
-    Vue.use(Router)
-    
-    export default new Router({
-      routes: [
-        {
-          path: '/',
-          name: 'home',
-          component: Home
+```js
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from './views/Home.vue'
+import ....blablabla
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+            path: '/common_frame',
+            name: 'CommonFrame',
+            component: CommonFrame,
+            children: [
+                {
+                    path: 'choose_role',
+                    component: ChooseRole
+                },
+                {
+                    path: 'another_path',
+                    component: AnotherPath
+                }
+            ]
         },
-        {
-          path: '/about',
-          name: 'about',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-        },
-        {
-                path: '/common_frame',
-                name: 'CommonFrame',
-                component: CommonFrame,
-                children: [
-                    {
-                        path: 'choose_role',
-                        component: ChooseRole
-                    },
-                    {
-                        path: 'another_path',
-                        component: AnotherPath
-                    }
-                ]
-            },
-      ]
-    })
+  ]
+})
+```
 
 
-其中 存在嵌套关系的页面 采用父子方式的路由(格式如样例中routes的第三个元素CommonFrame),此种设计 需要结合<router-view></router-view>标签使用(nested-router)，具体用法参见此处。
+其中 存在嵌套关系的页面 采用父子方式的路由(格式如样例中routes的第三个元素CommonFrame),此种设计 需要结合`<router-view></router-view>`标签使用(nested-router)，具体用法参见此处。
 
 ### components/views
 
@@ -164,41 +165,45 @@
 
 开发过程中 需要在config/index.js文件中 加入proxyTable的配置，具体如下：
 
-    module.exports = {
-      dev: {
-    
-        // Paths
-        assetsSubDirectory: 'static',
-        assetsPublicPath: '/',
-        //todo 配置代理解决跨域
-        proxyTable: {
-            '/api':{
-                target:'http://127.0.0.1:8081/',
-                changeOrigin:true,
-                pathRewrite:{
-                  '^/api':'/'
-                }
-            }
-        },
-          //..............
-      }
-    }
+```js
+module.exports = {
+  dev: {
 
-这个配置的目的在于，在当前工程中 所有以 /api开头的请求 都会被转发到127.0.0.1:8081的url之下，并将/api替换为空字符串，决跨域问题。（注：这是vue-cli 2.x版本的做法），由于本项目构建时使用的是vue-cli3.x版本，所以没有生成工程目录结构于2.x版本有区别，即webpack相关配置都没有了,3.x版本取而代之需要在项目根目录下建立vue.config文件并在里面填写如下的配置内容(然鹅此配置还没有在本项目dev环境中证实有效，后续开发过程会更新此部分)：
-
-    module.exports={
-      devServer:{
-        proxy:{
-          '/api':{
-            target:'http://localhost:8081',
+    // Paths
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    //todo 配置代理解决跨域
+    proxyTable: {
+        '/api':{
+            target:'http://127.0.0.1:8081/',
             changeOrigin:true,
             pathRewrite:{
               '^/api':'/'
             }
-          }
+        }
+    },
+      //..............
+  }
+}
+```
+
+这个配置的目的在于，在当前工程中 所有以 /api开头的请求 都会被转发到127.0.0.1:8081的url之下，并将/api替换为空字符串，决跨域问题。（注：这是vue-cli 2.x版本的做法），由于本项目构建时使用的是vue-cli3.x版本，所以没有生成工程目录结构于2.x版本有区别，即webpack相关配置都没有了,3.x版本取而代之需要在项目根目录下建立vue.config文件并在里面填写如下的配置内容(然鹅此配置还没有在本项目dev环境中证实有效，后续开发过程会更新此部分)：
+
+```js
+module.exports={
+  devServer:{
+    proxy:{
+      '/api':{
+        target:'http://localhost:8081',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/api':'/'
         }
       }
     }
+  }
+}
+```
 
 
 
@@ -212,39 +217,41 @@
 
 注：以下文件内容 除了 server当中的两个 location属性需要配置之外，其他都是默认配置,因此，注意两个location的配置
 
-    worker_processes  1;
-    
-    events {
-        worker_connections  1024;
-    }
-    
-    http {
-        include       mime.types;
-        default_type  application/octet-stream;
-    
-        sendfile        on;
-        keepalive_timeout  65;
-    
-        server {
-            listen       8090;
-            server_name  localhost;
-    
-            location / {
-                    root /${rootDir}/dist;   # <<<<------ webpack打包之后 文件存放的位置
-                    index Index.html;     # <<<<------ dist目录下的index文件名称
-    	      }
-            location /api/ {
-                    proxy_pass http://127.0.0.1:8081/;  # <<<<------ 请求转发地址
-            }
-    
-            error_page   500 502 503 504  /50x.html;
-            location = /50x.html {
-                root   html;
-            }
-    
+```nginx
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen       8090;
+        server_name  localhost;
+
+        location / {
+                root /${rootDir}/dist;   # <<<<------ webpack打包之后 文件存放的位置
+                index Index.html;     # <<<<------ dist目录下的index文件名称
+	      }
+        location /api/ {
+                proxy_pass http://127.0.0.1:8081/;  # <<<<------ 请求转发地址
         }
-        include servers/*;
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
     }
+    include servers/*;
+}
+```
 
 
 其中 第一个location对应/ 将静态资源的root目录指向到我们刚才创建的 ${rootDir}/dist目录，首页文件指向到Index.html（即dist当中的Index.html，注意大小写，此处webPack生成的首页文件首字母大写）。
