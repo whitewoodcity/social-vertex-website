@@ -1,4 +1,4 @@
-简介
+## 简介
 
 本项目为vert.x论坛的前端工程，基于vue-cli构建。
 
@@ -16,12 +16,12 @@
   - index.js: 项目入口文件
 - public/index.html :单页面应用的根结点
 
-开发规范
+## 开发规范
 
-vue文件
+### vue文件
 
 正常情况下，我们只需要在components目录之下 创建我们自己的 vue组件(即 *.vue文件)。举个例子，来说明开发思路(单页面应用):
-
+```vue
     <template>
       <div class="data-labeler">
         {{msg}}
@@ -62,15 +62,17 @@ vue文件
     <style scoped>
     
     </style>
-    
+```
 
 
 
 其中 每一个.vue文件的内容大概分为3部分：
 
-- <template></template>标签：主要用来定义组件的html样式，以及组件外观的显示
-- <script></script>标签：用于管理.vue文件的依赖导入 以及 组件的导出，此处建议export的元素的name属性要与文件名称(除掉.vue后缀)相同，以规范我们的开发工作。 如果组件之间有依赖，则需要在父组件的 script标签中引入子组件，并注册到 父组件当中。
+<template></template>标签：主要用来定义组件的html样式，以及组件外观的显示
+<script></script>标签：用于管理.vue文件的依赖导入 以及 组件的导出，此处建议export的元素的name属性要与文件名称(除掉.vue后缀)相同，以规范我们的开发工作。 如果组件之间有依赖，则需要在父组件的 script标签中引入子组件，并注册到 父组件当中。
+
   例：
+  ```
       //----  Parent.vue ---
       <template>
       	<div>
@@ -90,14 +92,16 @@ vue文件
           }
       </script>
       <style scoped></style>
+  ```
+
   <script/>标签主要作用是封装业务逻辑、Vue组件，以及负责组件的依赖和导出工作。
 - <style scoped></style>标签主要负责样式调整，这个标签里面写css脚本。如果标签内带有scoped属性，则将css样式的作用范围缩小到当前Component当中
 
-assets(静态文件)
+### assets(静态文件)
 
 用于存储静态文件 例如图片…. ，目录结构与components目录对应相同，即components路径下的组件所引用的静态资源 在assets中的路径相同。
 
-router(路由)
+### router(路由)
 
 由于项目采用单页面应用，所以mvc模型完全由前端实现，即页面跳转 数据封装全部作为前端功能，因此必须把router功能以及规范作为独立模块进行维护。本项目中，router.js 文件做为该功能的维护者。
 
@@ -142,19 +146,19 @@ router(路由)
             },
       ]
     })
-    
+
 
 其中 存在嵌套关系的页面 采用父子方式的路由(格式如样例中routes的第三个元素CommonFrame),此种设计 需要结合<router-view></router-view>标签使用(nested-router)，具体用法参见此处。
 
-components/views
+### components/views
 
 存放项目组件(子页面/组件)，组件目录结构根据实际需求 父子组件关系 业务关系等 自行进行整理，具体做法不作要求，但是结构必须清晰易懂 容易维护！！！
 
-总结
+### 总结
 
 关于具体的开发工作，程序员只需要在components目录当中 封装自己的 组件 ，将所有的文件都以.vue文件存储，每一个.vue文件就是一个component，不要进行dom操作！！！，一切业务以component组合 以及他们之间的数据传输的形式来实现。即(你只需要封装.vue文件，万物皆组件，万物皆component)。
 
-线上部署方式(生产环境)
+### 线上部署方式(生产环境)
 
 目前思路：使用webpack将前端工程打包成静态文件（html和js文件）, js中所有的http请求都强制要求以/api开头，目的在于提供给nginx做动态资源请求的转发标示。
 
@@ -241,7 +245,7 @@ components/views
         }
         include servers/*;
     }
-    
+
 
 其中 第一个location对应/ 将静态资源的root目录指向到我们刚才创建的 ${rootDir}/dist目录，首页文件指向到Index.html（即dist当中的Index.html，注意大小写，此处webPack生成的首页文件首字母大写）。
 
