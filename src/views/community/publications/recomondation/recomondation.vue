@@ -28,9 +28,9 @@
                 {{item.content}}
             </a-list-item>
         </a-list>
-        <modal name="articleDetail">
-            <ariticle-detail/>
-        </modal>
+        <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
+            <ariticle-detail v-bind:selectedarticle="selectedArticle"/>
+        </a-modal>
     </div>
 </template>
 <script>
@@ -47,7 +47,8 @@
                 loadingMore: false,
                 showLoadingMore: true,
                 timePoint:null,
-                detailVisible:false
+                detailVisible:false,
+                selectedArticle:{}
             }
         },
         mounted(){
@@ -73,6 +74,7 @@
                                 titleImgLink: oneArticle.titleImgLink,
                                 content: oneArticle.content,
                                 authorNickname:oneArticle.authorNickname,
+                                dir:oneArticle.dir,
                                 id:oneArticle.id
                             })
                         }
@@ -88,10 +90,11 @@
             //---------------------------------------
         },
         methods:{
-            showArticleDetail(){
-                // alert(articleItem.title)
-                this.$modal.show("articleDetail");
+            showArticleDetail(article){
+                this.selectedArticle = article;
+                this.detailVisible = true;
             },
+
             onLoadMore () {
                 this.loadingMore = true
                 this.$axios.put('/',{
