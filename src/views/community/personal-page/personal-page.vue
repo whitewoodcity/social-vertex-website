@@ -11,11 +11,11 @@
                 </div>
             </a-col>
             <a-col :span="6">
-                <div><h2>我的昵称</h2></div>
+                <div><h2>{{currUserInfo.nickname}}</h2></div>
                 <br>
                 <div><h4>请输入你的个性签名</h4></div>
                 <br>
-                <div><a>编辑个人资料</a></div>
+                <div><a v-on:click="jumpToPersonalEdit">编辑个人资料</a></div>
             </a-col>
             <a-col :span="12">
                 <div class="personal-brief">详细资料</div>
@@ -42,7 +42,18 @@
     import comments from "./comments/comments";
     import questions from "./questions/questions";
     export default {
-        components: {ARow, ACol,actions,personalArticles,comments,questions}
+        components: {ARow, ACol,actions,personalArticles,comments,questions},
+        props:['userId'],
+        data(){
+            return {
+                currUserInfo :this.$store.state.loggedInUserInfo
+            }
+        },
+        methods:{
+            jumpToPersonalEdit(){
+                this.$router.push("/community/personal-edit");
+            }
+        }
     }
 </script>
 <style>
