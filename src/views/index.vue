@@ -112,7 +112,7 @@
               Vert.x眼里<strong>没有最好的语言，只有最合适的语言.</strong>
             </p>
             <p>
-              Vert.x社区会为您选择的语言提供完全等价的API.
+              Vert.x社区会为所有语言提供完全等价的API.
             </p>
          </div>
         </a-col>
@@ -292,6 +292,7 @@ export default {
   font-size: 1.5em;
 }
 .index-polyglot-code {
+  margin-top: 20%;
   margin-top: 10%;
   text-align: left;
 }
@@ -305,5 +306,8 @@ export default {
   color: @primary-color;
   font-size: 1.5em;
 }
-
+.vue-simple-markdown {
+  margin-top: -13%;
+  margin-left: -30px;
+}
 </style>
