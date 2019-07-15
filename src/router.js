@@ -17,8 +17,8 @@ import MyMsg from './views/community/my-msg/my-msg'
 import ServiceCenter from './views/community/service-center/service-center'
 import PubArticle from './views/community/pub-article/pub-article'
 import PersonalPage from './views/community/personal-page/personal-page'
-import ExBlock1 from './views/community/external-blocks/ex-block1/ex-block1'
-import ExBlock2 from './views/community/external-blocks/ex-block2/ex-block2'
+import PersonalEdit from './views/community/personal-edit/personal-edit'
+
 
 Vue.use(Router)
 
@@ -66,11 +66,8 @@ export default new Router({
           path: 'pub-article',
           component: PubArticle
         },{
-          path: 'ex-block1',
-          component: ExBlock1
-        },{
-          path: 'ex-block2',
-          component: ExBlock2
+          path: 'personal-edit',
+          component: PersonalEdit
         }
       ]
     }, {

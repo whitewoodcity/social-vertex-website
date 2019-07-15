@@ -16,16 +16,21 @@
                     {{item.likes ? item.likes: 0}}
                   </span>
                   <span>
+                    <a-icon type="dislike-o" style="margin-right: 8px" />
+                    {{item.dislikes ? item.dislikes: 0}}
+                  </span>
+                  <span>
                     <a-icon type="message" style="margin-right: 8px" />
                     {{item.comments ? item.comments: 0}}
                   </span>
                 </template>
-                <img slot="extra" width="272" alt="logo" src="{item.titleImgLink}" />
+                <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />
                 <a-list-item-meta :description="item.authorNickname ? item.authorNickname:item.id">
                     <a slot="title" v-on:click="()=>{showArticleDetail(item)}">{{item.title}}</a>
                     <a-avatar slot="avatar" :src="item.avatar" />
                 </a-list-item-meta>
                 {{item.content}}
+
             </a-list-item>
         </a-list>
         <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">

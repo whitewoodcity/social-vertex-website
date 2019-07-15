@@ -2,16 +2,19 @@
     <div class="articles-detail-container">
         <!-- 标题头 -->
         <div class="title-area">
-            <div class="article-img">article-img-here</div>
+<!--            <div class="article-img">-->
+<!--                title img here-->
+<!--            </div>-->
+            <br/>
             <div class="article-info">
                 <div class="title-text">
-                    {{article.title}}
+                    <p>{{article.title}}</p>
                 </div>
                 <div class="author-avatar">
                     <a-avatar :src="article.avatar"/>
                 </div>
                 <div class="author-name">
-                    <p>authored by {{article.authorNickname == null ? article.id: article.authorNickname}}</p>
+                    <p>authored by <a>{{article.authorNickname == null ? article.id: article.authorNickname}}</a></p>
                 </div>
             </div>
         </div>
@@ -20,19 +23,27 @@
         <div class="content-area">
             <mavon-editor :value="detail.content" defaultOpen="preview" :editable="false" :toolbarsFlag="false" :subfield="false"/>
         </div>
+        <div class="btn-grp">
+            <span><a-button icon="star" shape="circle"></a-button>6</span>
+            <span><a-button icon="like" shape="circle"></a-button>6</span>
+            <span><a-button icon="dislike" shape="circle"></a-button>6</span>
+            <span><a-button icon="message" shape="circle"></a-button>6</span>
+        </div>
         <!--评论区-->
-        <a-divider/>
+<!--        <a-divider/>-->
         <div class="comment-area">
-            <!--评论区-->
-            评论区
+            <article-comment></article-comment>
         </div>
     </div>
 </template>
 <script>
+    import ArticleComment from './article-comment/article-comment'
     export default {
         props:['selectedarticle'],
+        components:{
+            ArticleComment
+        },
         data(){
-
             return {
                 article: this.selectedarticle,
                 detail:{}
@@ -71,10 +82,13 @@
 
     }
     .comment-area{
-        text-align: center;
+
     }
     .title-text{
         float: left;
+    }
+    .title-text p{
+        font-size: 25px;
     }
     .author-avatar{
         float: right;
@@ -86,6 +100,18 @@
         horiz-align: center;
         float: right;
         margin-left: 20px;
+        padding-top: 5px;
     }
-
+    .author-name p{
+        font-size: 17px;
+    }
+    .btn-grp{
+        margin-top: 5px;
+    }
+    .btn-grp span{
+        margin-right: 20px;
+    }
+    .btn-grp button{
+        margin-right: 3px;
+    }
 </style>
