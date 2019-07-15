@@ -7,22 +7,24 @@
                 <div class="title-text">
                     {{article.title}}
                 </div>
+                <div class="author-avatar">
+                    <a-avatar :src="article.avatar"/>
+                </div>
                 <div class="author-name">
                     <p>authored by {{article.authorNickname == null ? article.id: article.authorNickname}}</p>
-                </div>
-                <div class="author-avatar">
-                    <a-avatar/>
                 </div>
             </div>
         </div>
         <!--正文-->
         <a-divider/>
         <div class="content-area">
-            {{article.content}}
+            <mavon-editor :value="detail.content" defaultOpen="preview" :editable="false" :toolbarsFlag="false" :subfield="false"/>
         </div>
         <!--评论区-->
+        <a-divider/>
         <div class="comment-area">
             <!--评论区-->
+            评论区
         </div>
     </div>
 </template>
@@ -30,21 +32,43 @@
     export default {
         props:['selectedarticle'],
         data(){
+
             return {
-                article: this.selectedarticle
+                article: this.selectedarticle,
+                detail:{}
             }
+        },
+        mounted() {
+            // console.log(this.selectedarticle);
+            this.$axios.put('/',{
+                "type":"publication",
+                "subtype":"retrieve",
+                "dir": this.selectedarticle.dir
+            }).then(response=>{
+                if (response.status == 200){
+                    if(response.data.publication){
+                        this.detail = response.data;
+                    }else{
+                        this.$message.error(response.data.info);
+                    }
+                }else{
+                    this.$message.error(response.data);
+                }
+            }).catch(error=>{
+                this.$message.error(error.message);
+            });
+            //---------------------------------------
         }
     }
 </script>
 <style scoped>
     .articles-detail-container{
-        text-align: center;
     }
     .title-area{
         text-align: center;
     }
     .content-area{
-        text-align: center;
+
     }
     .comment-area{
         text-align: center;
@@ -52,10 +76,16 @@
     .title-text{
         float: left;
     }
-    .author-name{
-        float: left;
-    }
     .author-avatar{
-        float: left;
+        float: right;
+        margin-left: 10px;
+        margin-right: 10px;
     }
+    .author-name{
+        text-align: center;
+        horiz-align: center;
+        float: right;
+        margin-left: 20px;
+    }
+
 </style>

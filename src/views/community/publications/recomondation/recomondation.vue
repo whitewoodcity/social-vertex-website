@@ -28,7 +28,7 @@
                 {{item.content}}
             </a-list-item>
         </a-list>
-        <a-modal v-model="detailVisible" :footer="null" width="65vw" :destroyOnClose="true">
+        <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
             <ariticle-detail v-bind:selectedarticle="selectedArticle"/>
         </a-modal>
     </div>
@@ -74,6 +74,7 @@
                                 titleImgLink: oneArticle.titleImgLink,
                                 content: oneArticle.content,
                                 authorNickname:oneArticle.authorNickname,
+                                dir:oneArticle.dir,
                                 id:oneArticle.id
                             })
                         }
