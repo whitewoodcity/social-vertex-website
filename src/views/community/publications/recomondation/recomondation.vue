@@ -30,7 +30,6 @@
                     <a-avatar slot="avatar" :src="item.avatar" />
                 </a-list-item-meta>
                 {{item.content}}
-
             </a-list-item>
         </a-list>
         <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
