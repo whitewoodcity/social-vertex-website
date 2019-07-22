@@ -1,7 +1,7 @@
 <template>
     <div class="personal-center-container">
         <div class="personal-center-title">
-            <h1>个人中心</h1>
+            <h1>{{currUserInfo.nickname}}的个人主页</h1>
         </div>
         <a-divider></a-divider>
         <a-row>
@@ -41,17 +41,32 @@
     import personalArticles from "./personal-articles/personal-articles";
     import comments from "./comments/comments";
     import questions from "./questions/questions";
+
+    let currUser = {};
     export default {
         components: {ARow, ACol,actions,personalArticles,comments,questions},
         props:['userId'],
         data(){
             return {
-                currUserInfo :this.$store.state.loggedInUserInfo
+                currUserInfo : currUser
             }
         },
         methods:{
             jumpToPersonalEdit(){
                 this.$router.push("/community/personal-edit");
+            }
+        },
+        beforeMount() {
+            let isCurrLoginUser = this.$store.state.personalFlag;
+            let loggedIn = this.$store.getters.loggedIn;
+            if (isCurrLoginUser && loggedIn){
+                currUser = loggedIn;
+            } else {
+                //todo query other user
+                currUser =  {
+                    id:"blablabalbal",
+                    nickname: "aosdfjaosdfijaosfdoj"
+                };
             }
         }
     }

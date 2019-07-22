@@ -84,6 +84,7 @@ export default {
   methods:{
 
     routeToPage: function (subUrl) {
+      this.$store.commit("setToCurrLoginUser");
       this.$router.push('/community'+subUrl);
     },
 
@@ -105,7 +106,10 @@ export default {
       this.$axios.put('/',{
         "type":"publication",
         "subtype":"thought",
-        "thought":thought
+        "publicationType":"thought",
+        "authorId":this.$store.state.loggedInUserInfo.id,
+        "authorNickname":this.$store.state.loggedInUserInfo.nickname,
+        "title":thought
       }).then(response=>{
         if (response.status == 200){
           if(response.data.thought){
