@@ -1,64 +1,30 @@
 <template>
     <div class="article-list">
-        <a-list itemLayout="vertical" size="large" :dataSource="listData">
-            <div v-if="showLoadingMore" slot="loadMore" :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
-                <a-spin v-if="loadingMore" />
-                <a-button v-else @click="onLoadMore">loading more</a-button>
-            </div>
-            <!-- ------------------- article list item ------------------------------ -->
-            <a-list-item slot="renderItem" slot-scope="item" key="item.title">
-                <template slot="actions">
-              <span>
-                <a-icon type="star-o" style="margin-right: 8px" />
-                {{item.stars ? item.stars: 0}}
-              </span>
-                    <span>
-                <a-icon type="like-o" style="margin-right: 8px" />
-                {{item.likes ? item.likes: 0}}
-              </span>
-                    <span>
-                <a-icon type="dislike-o" style="margin-right: 8px" />
-                {{item.dislikes ? item.dislikes: 0}}
-              </span>
-                    <span>
-                <a-icon type="message" style="margin-right: 8px" />
-                {{item.comments ? item.comments: 0}}
-              </span>
-                </template>
-                <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />
-                <a-list-item-meta :description="item.authorNickname ? item.authorNickname:item.id">
-                    <a slot="title" v-on:click="()=>{showArticleDetail(item)}">{{item.title}}</a>
-                    <a-avatar slot="avatar" :src="item.avatar"/>
-                </a-list-item-meta>
-                {{item.content}}
-            </a-list-item>
-            <!-- ---------------------------------------------------------------------------------------------------------- -->
-        </a-list>
-        <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
-            <article-detail v-bind:selectedarticle="selectedArticle"/>
-        </a-modal>
+        <article-list v-bind:listData="listData"/>
+        <div v-if="showLoadingMore" slot="loadMore" :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
+            <a-spin v-if="loadingMore" />
+            <a-button v-else @click="onLoadMore">loading more</a-button>
+        </div>
     </div>
 </template>
 <script>
-    import ArticleDetail from "../../publications/article-detail/article-detail"
-    let listData = [];
+    const listData = [];
+    import ArticleList from "../../publications/common/article-list"
     export default {
         components:{
-            ArticleDetail
+            ArticleList
         },
         props:["currUserInfo"],
         data(){
-            return{
+            return {
                 listData:listData,
-                timePoint: null,
                 loading: false,
                 loadingMore: false,
                 showLoadingMore: true,
-                detailVisible:false,
-                selectedArticle:{}
+                timePoint:null,
             }
         },
-        mounted() {
+        beforeMount() {
             this.loading = false;
             this.listData = [];
 
@@ -98,12 +64,6 @@
             });
         },
         methods:{
-
-            showArticleDetail(article){
-                this.selectedArticle = article;
-                this.detailVisible = true;
-            },
-
             onLoadMore () {
                 this.loadingMore = true
                 this.$axios.put('/',{
