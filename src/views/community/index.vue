@@ -43,8 +43,8 @@
             <div class="links-block">
               <a-button type="primary" name="articles" @click="routeToPage('/publications')" block>去搜帖</a-button>
               <a-button type="default" @click="routeToPage('/my-collect')" block>我的收藏</a-button>
-              <a-button type="danger" @click="routeToPage('/my-msg')" block>我的消息</a-button>
               <a-button @click="routeToPage('/my-following')" block>关注的人</a-button>
+              <a-button type="danger" @click="routeToPage('/my-msg')" block>我的消息</a-button>
               <a-button @click="routeToPage('/service-center')" type="dashed" block>服务中心</a-button>
             </div>
             <div><a-divider /></div>

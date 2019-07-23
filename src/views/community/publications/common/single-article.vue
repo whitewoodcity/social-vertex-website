@@ -2,11 +2,11 @@
     <div class="single-article">
         <a-row class="brief-row">
             <a-col>
-                <div class="article-avatar">
+                <div class="article-avatar" v-on:click="()=>{toPersonalPage(item)}">
                     <a-avatar>{{item.id[0]}}</a-avatar>
                 </div>
                 <div class="article-nickname">
-                    {{item.authorNickname}} 发表了文章：
+                    <a v-on:click="()=>{toPersonalPage(item)}">{{item.authorNickname}}</a> 发表了文章：
                 </div>
             </a-col>
             <a-col>
@@ -65,7 +65,18 @@
             showArticleDetail(article){
                 this.selectedArticle = article;
                 this.detailVisible = true;
-            }
+            },
+            toPersonalPage(item){
+                //todo : (personalIndexUser) get other userInfo by article item userid
+                let userInfo = {
+                    id: item.id,
+                    nickname: item.authorNickname
+                };
+                //set the user Info
+                this.$store.commit("setSelfIndex",false);//flag to false
+                sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
+                this.$router.push("/community/personal-page")
+            },
         }
     }
 
