@@ -9,7 +9,7 @@
         <!-- community body -->
 
         <!-- real content -->
-        <a-row :gutter="20">
+        <a-row :gutter="20" class="real-content">
           <!-- left bar 显示子模块信息 -->
           <a-col :span="18">
             <div class="router-content">
@@ -18,7 +18,7 @@
           </a-col>
 
           <!-- right bar -->
-          <a-col :span="6">
+          <a-col :span="6" class="right-bar">
             <div class="icon-group">
               <div class="icon-item">
                 <div class="icon">
@@ -51,7 +51,7 @@
           </a-col>
         </a-row>
       </a-col>
-      <a-col :span="3" class="purple-side-wrapper"><div class="purple-side"></div></a-col>
+      <a-col :span="3" class="purple-side-wrapper"></a-col>
     </a-row>
     <div>
       <a-modal title="发状态" v-model="msgSendingViewVisible" @ok="confirmThought" okText="确认" cancelText="取消">
@@ -138,7 +138,8 @@ export default {
 <style scoped>
   .community-content{
     /*f0f2f5*/
-    background-color: #f0f2f5;
+    /*background-color: #f0f2f5;*/
+    background-color: #6f338b;
     height: auto;
   }
   .guiding-line{
@@ -158,6 +159,9 @@ export default {
     padding-top: 60px;
 
   }
+  .right-bar{
+    background-color: #f0f2f5;
+  }
   .icon-item{
     float: left;
     padding-left: 12%;
@@ -168,12 +172,15 @@ export default {
   .links-block{
     padding-right: 10px;
   }
-
+  .real-content{
+    background-color: #f0f2f5;
+  }
   .msg-title{
     text-align: center;
   }
   .router-content{
     height: auto;
+    background-color: #f0f2f5;
   }
 
 </style>
