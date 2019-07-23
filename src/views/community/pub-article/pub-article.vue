@@ -67,7 +67,6 @@
                 this.$axios.put('/',{
                     "type":"publication",
                     "subtype":"article",
-                    "publicationType":"article",
                     "title":title,
                     "content":content,
                     "titleImgLink":'',//todo
