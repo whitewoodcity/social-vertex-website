@@ -16,7 +16,7 @@
                     <a-icon type="dislike-o" style="margin-right: 8px" />
                     {{item.dislikes ? item.dislikes: 0}}
                   </span>
-                    <span>
+                  <span>
                     <a-icon type="message" style="margin-right: 8px" />
                     {{item.comments ? item.comments: 0}}
                   </span>
