@@ -25,10 +25,10 @@
         <a-row>
             <a-col>
                 <a-tabs defaultActiveKey="1">
-                    <a-tab-pane tab="动态" key="1"><actions></actions></a-tab-pane>
-                    <a-tab-pane tab="文章" key="2"><personal-articles></personal-articles></a-tab-pane>
-                    <a-tab-pane tab="评论" key="3"><comments></comments></a-tab-pane>
-                    <a-tab-pane tab="提问" key="4"><questions></questions></a-tab-pane>
+                    <a-tab-pane tab="动态" key="1"><actions v-bind:currUserInfo="currUserInfo"></actions></a-tab-pane>
+                    <a-tab-pane tab="文章" key="2"><personal-articles  v-bind:currUserInfo="currUserInfo"></personal-articles></a-tab-pane>
+                    <a-tab-pane tab="评论" key="3"><comments v-bind:currUserInfo="currUserInfo"></comments></a-tab-pane>
+                    <a-tab-pane tab="提问" key="4"><questions v-bind:currUserInfo="currUserInfo"></questions></a-tab-pane>
                 </a-tabs>
             </a-col>
         </a-row>

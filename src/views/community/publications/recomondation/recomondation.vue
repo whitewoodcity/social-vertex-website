@@ -35,16 +35,16 @@
             <!-- ---------------------------------------------------------------------------------------------------------- -->
         </a-list>
         <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
-            <ariticle-detail v-bind:selectedarticle="selectedArticle"/>
+            <article-detail v-bind:selectedarticle="selectedArticle"/>
         </a-modal>
     </div>
 </template>
 <script>
-    import AriticleDetail from '../article-detail/article-detail'
+    import ArticleDetail from '../article-detail/article-detail'
     const listData = [];
     export default {
         components:{
-            AriticleDetail
+            ArticleDetail
         },
         data () {
             return {
