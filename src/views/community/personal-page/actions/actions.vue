@@ -46,6 +46,7 @@
                             listData.push({
                                 title: oneArticle.title,
                                 avatar: oneArticle.avatar,// todo
+                                subtype:oneArticle.subtype,
                                 titleImgLink: oneArticle.titleImgLink,
                                 content: oneArticle.content,
                                 authorNickname:oneArticle.authorNickname,
@@ -86,6 +87,7 @@
                                 listData.push({
                                     title: oneArticle.title,
                                     avatar: oneArticle.avatar,// todo
+                                    subtype:oneArticle.subtype,
                                     titleImgLink: oneArticle.titleImgLink,
                                     content: oneArticle.content,
                                     authorNickname:oneArticle.authorNickname,
