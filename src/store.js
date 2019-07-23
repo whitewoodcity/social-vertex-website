@@ -4,13 +4,13 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 const USER_INFO_LOCAL_STORAGE_KEY ='loggedInUserInfo';
-const USER_OF_PERSONAL_PAGE = 'userOfPersonalPage';
+const PERSON_INDEX_USER_SESSION_STORAGE_KEY = "personalIndexFlag";
 export default new Vuex.Store({
   state: {
     //从localStorage中获取用户信息 如果有 则处于登录状态
     loggedInUserInfo: localStorage.getItem(USER_INFO_LOCAL_STORAGE_KEY) ? JSON.parse(localStorage.getItem(USER_INFO_LOCAL_STORAGE_KEY)) : null,
-    //用于标记personalPage是否显示当前登录用户，true为当前登录用户 false表示查看其他人的主页
-    personalFlag:!!localStorage.getItem(USER_OF_PERSONAL_PAGE)
+    //用于标记personalPage显示的用户
+    selfIndex:sessionStorage.getItem(PERSON_INDEX_USER_SESSION_STORAGE_KEY) == null ? false : sessionStorage.getItem(PERSON_INDEX_USER_SESSION_STORAGE_KEY) === "true"
   },
 
   getters:{
@@ -31,13 +31,9 @@ export default new Vuex.Store({
       state.loggedInUserInfo = null;
       localStorage.removeItem(USER_INFO_LOCAL_STORAGE_KEY);
     },
-    setToCurrLoginUser(state){
-      state.personalFlag = true;
-      localStorage.setItem(USER_OF_PERSONAL_PAGE,"true")
-    },
-    setToOtherUser(state){
-      state.personalFlag = false;
-      localStorage.setItem(USER_OF_PERSONAL_PAGE,null)
+    setSelfIndex(state,flag){
+      sessionStorage.setItem(PERSON_INDEX_USER_SESSION_STORAGE_KEY,""+flag);
+      state.selfIndex = flag;
     }
   },
 

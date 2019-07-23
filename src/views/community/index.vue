@@ -28,7 +28,7 @@
               </div>
               <div class="icon-item">
                 <div class="icon">
-                  <a-button icon="user" @click="routeToPage('/personal-page')"/>
+                  <a-button icon="user" @click="routeToMyPage('/personal-page')"/>
                 </div>
                 <span>个人主页</span>
               </div>
@@ -82,12 +82,14 @@ export default {
   },
   components: {ACol, ARow},
   methods:{
-
+    routeToMyPage: function (subUrl) {
+      this.$store.commit("setSelfIndex",true);
+      this.$router.push('/community'+subUrl);
+      this.$router.go(0);
+    },
     routeToPage: function (subUrl) {
-      this.$store.commit("setToCurrLoginUser");
       this.$router.push('/community'+subUrl);
     },
-
     showMsgSendingView:function () {
       //点击发状态 显示msg框
       this.msgSendingViewVisible = true;

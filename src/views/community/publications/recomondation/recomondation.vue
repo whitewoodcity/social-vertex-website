@@ -28,7 +28,7 @@
                 <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />
                 <a-list-item-meta :description="item.authorNickname ? item.authorNickname:item.id">
                     <a slot="title" v-on:click="()=>{showArticleDetail(item)}">{{item.title}}</a>
-                    <a-avatar slot="avatar" :src="item.avatar" v-on:click="toPersonalPage(item)" />
+                    <a-avatar slot="avatar" :src="item.avatar" v-on:click="toPersonalPage(item)"/>
                 </a-list-item-meta>
                 {{item.content}}
             </a-list-item>
@@ -96,9 +96,16 @@
             //---------------------------------------
         },
         methods:{
-            toPersonalPage(){
-                this.$store.state.commit("setToOtherUser");
-                this.$router.push("/community/personal-page");
+            toPersonalPage(item){
+                //todo : (personalIndexUser) get other userInfo by article item userid
+                let userInfo = {
+                    id: item.id,
+                    nickname: item.authorNickname
+                };
+                //set the user Info
+                this.$store.commit("setSelfIndex",false);//flag to false
+                sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
+                this.$router.push("/community/personal-page")
             },
             showArticleDetail(article){
                 this.selectedArticle = article;

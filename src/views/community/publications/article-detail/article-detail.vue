@@ -14,7 +14,7 @@
                     <a-avatar :src="article.avatar"/>
                 </div>
                 <div class="author-name">
-                    <p>authored by <a>{{article.authorNickname == null ? article.id: article.authorNickname}}</a></p>
+                    <p>authored by <a v-on:click="toPersonalPage(article.id)">{{article.authorNickname == null ? article.id: article.authorNickname}}</a></p>
                 </div>
             </div>
         </div>
@@ -69,6 +69,19 @@
                 this.$message.error(error.message);
             });
             //---------------------------------------
+        },
+        methods:{
+            toPersonalPage(){
+                //todo : (personalIndexUser) get other userInfo by article item userid
+                let userInfo = {
+                    id: this.selectedarticle.id,
+                    nickname: this.selectedarticle.authorNickname
+                };
+                //set the user Info
+                this.$store.commit("setSelfIndex",false);//flag to false
+                sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
+                this.$router.push("/community/personal-page")
+            }
         }
     }
 </script>
