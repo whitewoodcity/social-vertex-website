@@ -268,7 +268,7 @@ http {
 
 `article` ` thought` ` questions`等实体通用数据结构如下(例子)
 
-```json
+```js
 {
   "type":"publication",
   "subtype":"article",
