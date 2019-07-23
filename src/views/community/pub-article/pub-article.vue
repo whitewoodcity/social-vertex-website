@@ -67,9 +67,11 @@
                 this.$axios.put('/',{
                     "type":"publication",
                     "subtype":"article",
+                    "publicationType":"article",
                     "title":title,
                     "content":content,
                     "titleImgLink":'',//todo
+                    "authorId":this.$store.state.loggedInUserInfo.id,
                     "authorNickname":this.$store.state.loggedInUserInfo.nickname
                 }).then(response=>{
                     if (response.status == 200){

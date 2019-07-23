@@ -261,3 +261,33 @@ http {
 随后启动后端服务，过程略。
 
 随后运行nginx启动nginx服务，访问localhost:8090 则可以看到首页。
+
+
+
+## 补充说明
+
+`article` ` thought` ` questions`等实体通用数据结构如下(例子)
+
+```json
+{
+  "type":"publication",
+  "subtype":"article",
+  "publicationType":"${publicationType}",//publication类型，枚举("article","thought","question"...)
+  "title":"title",//题目(thought中只有title字段)
+  "content":"content",//内容 帖子内容(thoutht中没有content)
+  "answers":[
+    {
+      //todo
+    },
+    {}
+  ],
+  "titleImgLink":"link2img",
+  "authorId":"$authorId",//作者用户id
+  "authorNickname":"$authorNickName",//作者的昵称
+  "starts":100,//收藏数量
+  "likes":100,//顶
+  "dislikes":100,//踩
+  "comments":100//回复数量
+}
+```
+

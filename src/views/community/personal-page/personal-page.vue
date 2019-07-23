@@ -1,7 +1,7 @@
 <template>
     <div class="personal-center-container">
         <div class="personal-center-title">
-            <h1>个人中心</h1>
+            <h1>{{currUserInfo.nickname}}的个人主页</h1>
         </div>
         <a-divider></a-divider>
         <a-row>
@@ -15,7 +15,7 @@
                 <br>
                 <div><h4>请输入你的个性签名</h4></div>
                 <br>
-                <div><a v-on:click="jumpToPersonalEdit">编辑个人资料</a></div>
+                <div v-if="selfFlag"><a v-on:click="jumpToPersonalEdit">编辑个人资料</a></div>
             </a-col>
             <a-col :span="12">
                 <div class="personal-brief">详细资料</div>
@@ -41,12 +41,21 @@
     import personalArticles from "./personal-articles/personal-articles";
     import comments from "./comments/comments";
     import questions from "./questions/questions";
+
     export default {
         components: {ARow, ACol,actions,personalArticles,comments,questions},
-        props:['userId'],
         data(){
+            let userInfoToShow = {};
+            let flag = this.$store.state.selfIndex;
+            if (flag) {
+                userInfoToShow = this.$store.state.loggedInUserInfo
+            }else{
+                let item = JSON.parse(sessionStorage.getItem("personalIndexUser"));
+                userInfoToShow = item;
+            }
             return {
-                currUserInfo :this.$store.state.loggedInUserInfo
+                selfFlag:flag,
+                currUserInfo:userInfoToShow
             }
         },
         methods:{
@@ -54,6 +63,7 @@
                 this.$router.push("/community/personal-edit");
             }
         }
+
     }
 </script>
 <style>
