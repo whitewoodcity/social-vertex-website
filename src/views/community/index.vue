@@ -174,6 +174,7 @@ export default {
   }
   .real-content{
     background-color: #f0f2f5;
+    min-height: 100vh;
   }
   .msg-title{
     text-align: center;
