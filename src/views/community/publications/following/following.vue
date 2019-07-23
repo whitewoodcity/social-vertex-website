@@ -1,64 +1,33 @@
 <template>
     <div class="article-list">
-        <a-list :loading="loading" itemLayout="vertical" :dataSource="listData">
-            <div v-if="showLoadingMore" slot="loadMore" :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
-                <a-spin v-if="loadingMore" />
-                <a-button v-else @click="onLoadMore">loading more</a-button>
-            </div>
-            <a-list-item slot="renderItem" slot-scope="item">
-                <template slot="actions">
-                  <span>
-                    <a-icon type="star-o" style="margin-right: 8px" />
-                    {{item.stars ? item.stars: 0}}
-                  </span>
-                    <span>
-                    <a-icon type="like-o" style="margin-right: 8px" />
-                    {{item.likes ? item.likes: 0}}
-                  </span>
-                    <span>
-                    <a-icon type="message" style="margin-right: 8px" />
-                    {{item.comments ? item.comments: 0}}
-                  </span>
-                </template>
-                <img slot="extra" width="272" alt="logo" src="{item.titleImgLink}" />
-                <a-list-item-meta :description="item.authorNickname ? item.authorNickname:item.id">
-                    <a slot="title">{{item.title}}</a>
-                    <a-avatar slot="avatar" :src="item.avatar" />
-                </a-list-item-meta>
-                {{item.content}}
-            </a-list-item>
-        </a-list>
+        <article-list v-bind:listData="listData"/>
+        <div v-if="showLoadingMore" slot="loadMore" :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
+            <a-spin v-if="loadingMore" />
+            <a-button v-else @click="onLoadMore">loading more</a-button>
+        </div>
     </div>
 </template>
 <script>
-
+    import ArticleList from "../common/article-list"
     const listData = [];
-
     export default {
         components: {
-
+            ArticleList
         },
-        data () {
+        data(){
             return {
                 listData:listData,
                 loading: false,
                 loadingMore: false,
                 showLoadingMore: true,
+                timePoint:null,
             }
         },
-        methods:{
-            handleInfiniteOnLoad(){
-                // console.log("reached the bottom")
-            },
-            infinite(){
-
-            },
-            refresh(){
-
-            }
-        },
-        mounted(){
+        beforeMount(){
             //------------------------------------------
+            //listData置空以防止添加重复的articles
+            this.loading = false;
+            this.listData = [];
             this.$axios.put('/',{
                 "type":"publication",
                 "subtype":"history"
@@ -66,16 +35,18 @@
                 if (response.status == 200){
                     if(response.data.publication){
                         // on query success
+                        let l = this.listData;
                         let ariticleList = response.data.history;
-
+                        this.timePoint = response.data.time;
                         for (let i = 0; i < ariticleList.length; i++) {
                             let oneArticle = ariticleList[i];
-                            this.listData.push({
+                            l.push({
                                 title: oneArticle.title,
                                 avatar: oneArticle.avatar,// todo
                                 titleImgLink: oneArticle.titleImgLink,
                                 content: oneArticle.content,
                                 authorNickname:oneArticle.authorNickname,
+                                dir:oneArticle.dir,
                                 id:oneArticle.id
                             })
                         }
@@ -89,6 +60,47 @@
                 this.$message.error(error.message);
             });
             //---------------------------------------
+        },
+        methods:{
+            onLoadMore () {
+                this.loadingMore = true
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"history",
+                    "time":this.timePoint
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            // on query success
+                            let listData = this.listData;
+                            let ariticleList = response.data.history;
+                            this.timePoint = response.data.time;
+                            if (ariticleList.length == 0){
+                                this.$message.info("没有更多了哟");
+                            }
+                            for (let i = 0; i < ariticleList.length; i++) {
+                                let oneArticle = ariticleList[i];
+                                listData.push({
+                                    title: oneArticle.title,
+                                    avatar: oneArticle.avatar,// todo
+                                    titleImgLink: oneArticle.titleImgLink,
+                                    content: oneArticle.content,
+                                    authorNickname:oneArticle.authorNickname,
+                                    id:oneArticle.id
+                                })
+                            }
+                            this.loadingMore = false
+                        }else{
+                            this.$message.error(response.data.info);
+                        }
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+                //---------------------------------------
+            }
         }
     }
 </script>

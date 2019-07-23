@@ -13,12 +13,13 @@
             <a-col :span="6">
                 <div><h2>{{currUserInfo.nickname}}</h2></div>
                 <br>
-                <div><h4>请输入你的个性签名</h4></div>
+                <!-- todo 展示个性签名 -->
+                <div><h4>这个人很懒，没有留下状态</h4></div>
                 <br>
                 <div v-if="selfFlag"><a v-on:click="jumpToPersonalEdit">编辑个人资料</a></div>
             </a-col>
             <a-col :span="12">
-                <div class="personal-brief">详细资料</div>
+                <div class="personal-brief">详细资料:</div>
             </a-col>
         </a-row>
         <br>
