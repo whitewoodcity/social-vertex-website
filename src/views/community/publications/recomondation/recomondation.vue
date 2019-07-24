@@ -39,17 +39,7 @@
                         let ariticleList = response.data.history;
                         this.timePoint = response.data.time;
                         for (let i = 0; i < ariticleList.length; i++) {
-                            let oneArticle = ariticleList[i];
-                            listData.push({
-                                title: oneArticle.title,
-                                avatar: oneArticle.avatar,// todo
-                                subtype:oneArticle.subtype,
-                                titleImgLink: oneArticle.titleImgLink,
-                                content: oneArticle.content,
-                                authorNickname:oneArticle.authorNickname,
-                                dir:oneArticle.dir,
-                                id:oneArticle.id
-                            })
+                            listData.push(ariticleList[i]);
                         }
                     }else{
                         this.$message.error(response.data.info);
@@ -80,16 +70,7 @@
                                 this.$message.info("没有更多了哟");
                             }
                             for (let i = 0; i < ariticleList.length; i++) {
-                                let oneArticle = ariticleList[i];
-                                listData.push({
-                                    title: oneArticle.title,
-                                    avatar: oneArticle.avatar,// todo
-                                    subtype:oneArticle.subtype,
-                                    titleImgLink: oneArticle.titleImgLink,
-                                    content: oneArticle.content,
-                                    authorNickname:oneArticle.authorNickname,
-                                    id:oneArticle.id
-                                })
+                                listData.push(ariticleList[i]);
                             }
                             this.loadingMore = false
                         }else{
