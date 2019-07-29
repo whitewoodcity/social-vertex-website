@@ -271,8 +271,7 @@ http {
 ```js
 {
   "type":"publication",
-  "subtype":"article",
-  "publicationType":"${publicationType}",//publication类型，枚举("article","thought","question"...)
+  "subtype":"article",//publication类型，枚举("article","thought","question"...)
   "title":"title",//题目(thought中只有title字段)
   "content":"content",//内容 帖子内容(thoutht中没有content)
   "answers":[
