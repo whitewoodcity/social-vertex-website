@@ -10,6 +10,9 @@
                 <div class="title-text">
                     <p>{{article.title}}</p>
                 </div>
+                <div class="article-edit-link" v-if="owingToSelf">
+                    <a v-on:click="()=>jumpToEditArticle(article)">编辑</a>
+                </div>
                 <div class="author-avatar">
                     <a-avatar :src="article.avatar"/>
                 </div>
@@ -81,6 +84,16 @@
                 this.$store.commit("setSelfIndex",false);//flag to false
                 sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
                 this.$router.push("/community/personal-page")
+            },
+            jumpToEditArticle(article){
+                alert(article.title)
+            }
+        },
+        computed:{
+            owingToSelf(){
+                let authorId = this.selectedarticle.id;
+                let currLoginUserId = this.$store.state.loggedInUserInfo.id;
+                return authorId == currLoginUserId;
             }
         }
     }
@@ -126,5 +139,11 @@
     }
     .btn-grp button{
         margin-right: 3px;
+    }
+    .article-edit-link{
+        font-size: 20px;
+        float: left;
+        margin-top: 5px;
+        margin-left: 20px;
     }
 </style>
