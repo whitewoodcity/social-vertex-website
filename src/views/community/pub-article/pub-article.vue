@@ -37,6 +37,7 @@
                 title: "",
                 //标题图片存储地址
                 titleImgLink:"",
+                dir : null,
             }
         },
         beforeMount(){
@@ -53,6 +54,7 @@
                         if(response.data.publication){
                             this.content = response.data.content;
                             this.title = response.data.title;
+                            this.dir = response.data.dir;
                         }else{
                             this.$message.error(response.data.info);
                         }
@@ -98,7 +100,34 @@
                 }
                 if (this.$store.state.editArticleFlag) {
                     //todo如果是编辑帖子
-                    alert("article edit has not been implemented yet hahaha");
+                    // alert("article edit has not been implemented yet hahaha");
+                    this.$axios.put('/',{
+                        "type":"publication",
+                        "subtype":"update",
+                        "title":title,
+                        "content":content,
+                        "titleImgLink":'',//todo
+                        "authorId":this.$store.state.loggedInUserInfo.id,
+                        "authorNickname":this.$store.state.loggedInUserInfo.nickname,
+                        "dir":this.$store.state.editArticle.dir
+                    }).then(response=>{
+                        if (response.status == 200){
+                            if(response.data.publication){
+                                this.$message.success('更新成功');
+                                this.$router.push('/community/publications');
+                            }else{
+                                this.$notification['error']({
+                                    message: '更新失败',
+                                    description: response.data.info
+                                });
+                            }
+
+                        }else{
+                            this.$message.error(response.data);
+                        }
+                    }).catch(error=>{
+                        this.$message.error(error.message);
+                    });
                 }else{
                     //如果是新建帖子
                     this.$axios.put('/',{
