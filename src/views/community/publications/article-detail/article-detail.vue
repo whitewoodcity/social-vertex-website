@@ -86,7 +86,9 @@
                 this.$router.push("/community/personal-page")
             },
             jumpToEditArticle(article){
-                alert(article.title)
+                this.$store.commit("setEditArticleFlag",true);
+                this.$store.commit("setEditArticle",article);
+                this.$router.push("/community/pub-article");
             }
         },
         computed:{

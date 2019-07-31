@@ -6,6 +6,7 @@ Vue.use(Vuex);
 const USER_INFO_LOCAL_STORAGE_KEY ='loggedInUserInfo';
 const PERSON_INDEX_USER_SESSION_STORAGE_KEY = "personalIndexFlag";
 const EDIT_ARTICLE_FLAG = "editArticleFlag";
+const EDIT_ARTICLE = "editArticle";
 export default new Vuex.Store({
   state: {
     //从localStorage中获取用户信息 如果有 则处于登录状态
@@ -13,7 +14,8 @@ export default new Vuex.Store({
     //用于标记personalPage显示的用户
     selfIndex:sessionStorage.getItem(PERSON_INDEX_USER_SESSION_STORAGE_KEY) == null ? false : sessionStorage.getItem(PERSON_INDEX_USER_SESSION_STORAGE_KEY) === "true",
     //用于标记是否为编辑状态的帖子
-    editArticleFlag: sessionStorage.getItem(EDIT_ARTICLE_FLAG) == null ? false : sessionStorage.getItem(EDIT_ARTICLE_FLAG) === "true"
+    editArticleFlag: sessionStorage.getItem(EDIT_ARTICLE_FLAG) == null ? false : sessionStorage.getItem(EDIT_ARTICLE_FLAG) === "true",
+    editArticle: sessionStorage.getItem(EDIT_ARTICLE) ? JSON.parse(sessionStorage.getItem(EDIT_ARTICLE)) : null
   },
 
   getters:{
@@ -41,6 +43,15 @@ export default new Vuex.Store({
     setEditArticleFlag(state,flag){
       sessionStorage.setItem(EDIT_ARTICLE_FLAG,""+flag);
       state.editArticleFlag = flag;
+    },
+    setEditArticle(state,article){
+      if (article){
+        sessionStorage.setItem(EDIT_ARTICLE,JSON.stringify(article));
+        state.editArticle = article;
+      } else{
+        sessionStorage.removeItem(EDIT_ARTICLE);
+        state.editArticle = null;
+      }
     }
   },
 

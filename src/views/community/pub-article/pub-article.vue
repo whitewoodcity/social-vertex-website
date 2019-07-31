@@ -23,7 +23,6 @@
     </div>
 </template>
 <script>
-
     export default {
         components:{
 
@@ -35,10 +34,43 @@
                 // some quill options
                     placeholder: '请输入内容'
                 },
-                title:"",
+                title: "",
                 //标题图片存储地址
                 titleImgLink:"",
             }
+        },
+        beforeMount(){
+            let editFlag = this.$store.state.editArticleFlag;
+            if (editFlag){
+                //如果处于编辑状态则渲染出帖子内容和题目
+                let editedArticle = this.$store.state.editArticle;
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"retrieve",
+                    "dir": editedArticle.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            this.content = response.data.content;
+                            this.title = response.data.title;
+                        }else{
+                            this.$message.error(response.data.info);
+                        }
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            }else {
+                this.title = "";
+                this.content = "";
+            }
+        },
+        beforeDestroy(){
+            //设置编辑状态
+            this.$store.commit("setEditArticleFlag",false);
+            this.$store.commit("setEditArticle",null);
         },
         methods: {
 
@@ -96,12 +128,7 @@
                 let content = this.content;
                 return !title || !content || title == '' || content == '';
             }
-        },
-        computed: {
-            editor() {
-                return this.$refs.myQuillEditor.quill
-            }
-        },
+        }
 
     }
 </script>

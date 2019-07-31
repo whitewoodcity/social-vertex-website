@@ -22,7 +22,7 @@
             <div class="icon-group">
               <div class="icon-item">
                 <div class="icon">
-                  <a-button icon="profile" @click="routeToPage('/pub-article')"/>
+                  <a-button icon="profile" @click="()=>{setNoneEdit();routeToPage('/pub-article');}"/>
                 </div>
               <span>发帖子</span>
               </div>
@@ -82,6 +82,10 @@ export default {
   },
   components: {ACol, ARow},
   methods:{
+    setNoneEdit:function(){
+      this.$store.commit("setEditArticleFlag",false);
+      this.$store.commit("setEditArticle",null);
+    },
     routeToMyPage: function (subUrl) {
       this.$store.commit("setSelfIndex",true);
       this.$router.push('/community'+subUrl);
