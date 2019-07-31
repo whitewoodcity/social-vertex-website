@@ -98,7 +98,7 @@
                 }
                 if (this.$store.state.editArticleFlag) {
                     //todo如果是编辑帖子
-
+                    alert("article edit has not been implemented yet hahaha");
                 }else{
                     //如果是新建帖子
                     this.$axios.put('/',{
