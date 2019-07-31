@@ -96,32 +96,38 @@
                     });
                     return;
                 }
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"article",
-                    "title":title,
-                    "content":content,
-                    "titleImgLink":'',//todo
-                    "authorId":this.$store.state.loggedInUserInfo.id,
-                    "authorNickname":this.$store.state.loggedInUserInfo.nickname
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            this.$message.success('发表成功');
-                            this.$router.push('/community/publications');
-                        }else{
-                            this.$notification['error']({
-                                message: '发表失败',
-                                description: response.data.info
-                            });
-                        }
+                if (this.$store.state.editArticleFlag) {
+                    //todo如果是编辑帖子
 
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
+                }else{
+                    //如果是新建帖子
+                    this.$axios.put('/',{
+                        "type":"publication",
+                        "subtype":"article",
+                        "title":title,
+                        "content":content,
+                        "titleImgLink":'',//todo
+                        "authorId":this.$store.state.loggedInUserInfo.id,
+                        "authorNickname":this.$store.state.loggedInUserInfo.nickname
+                    }).then(response=>{
+                        if (response.status == 200){
+                            if(response.data.publication){
+                                this.$message.success('发表成功');
+                                this.$router.push('/community/publications');
+                            }else{
+                                this.$notification['error']({
+                                    message: '发表失败',
+                                    description: response.data.info
+                                });
+                            }
+
+                        }else{
+                            this.$message.error(response.data);
+                        }
+                    }).catch(error=>{
+                        this.$message.error(error.message);
+                    });
+                }
             },
             checkPubContent(){
                 let title = this.title;
