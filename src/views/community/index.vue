@@ -22,7 +22,7 @@
             <div class="icon-group">
               <div class="icon-item">
                 <div class="icon">
-                  <a-button icon="profile" @click="routeToPage('/pub-article')"/>
+                  <a-button icon="profile" @click="()=>{toPubArticle();}"/>
                 </div>
               <span>发帖子</span>
               </div>
@@ -82,6 +82,15 @@ export default {
   },
   components: {ACol, ARow},
   methods:{
+    toPubArticle: function(){
+      this.setNoneEdit();
+      this.routeToPage('/pub-article');
+      this.$router.go(0);//刷新一下
+    },
+    setNoneEdit:function(){
+      this.$store.commit("setEditArticleFlag",false);
+      this.$store.commit("setEditArticle",null);
+    },
     routeToMyPage: function (subUrl) {
       this.$store.commit("setSelfIndex",true);
       this.$router.push('/community'+subUrl);
