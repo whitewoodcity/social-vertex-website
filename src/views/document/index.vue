@@ -7,9 +7,31 @@
 <script>
 export default {
   data() {
+    let src = "https://vertxchina.github.io/vertx-translation-chinese/";
+    let queryString = this.getQueryString();
+    if (queryString) {
+      src += "?q="+queryString;
+    }
     return {
-      src: "https://vertxchina.github.io/vertx-translation-chinese/"
+      src: src
     };
+  },
+
+  methods: {
+    getQueryString() {
+      let uri = window.location.href;
+      let strings = uri.split("?");
+      if (strings.length > 1){
+        for (let i = 0; i < strings.length ; ++i){
+
+          let pair = strings[i].split("=");
+          if (pair[0] == "query"){
+            return pair[1];
+          }
+        }
+      }
+      return null;
+    }
   }
 };
 </script>
