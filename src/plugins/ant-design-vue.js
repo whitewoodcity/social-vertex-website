@@ -6,7 +6,7 @@ import { Button,Layout,Row,Col,Menu,Icon,Tabs,Input,Select,Dropdown,List,Avatar,
 Vue.use(Button);
 Vue.use(Layout);
 Vue.use(Row);
-Vue.use(Col),
+Vue.use(Col);
 Vue.use(Menu);
 Vue.use(Icon);
 Vue.use(Tabs);
