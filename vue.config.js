@@ -5,7 +5,7 @@ function resolve(dir) {
 module.exports = {
     // publicPath: "/",
     //mod 为github，为gh-pages分支编译
-    publicPath: process.env.VUE_BRANCHES === 'gh-pages' ? '/social-vertex-website/': '/assets/',
+    publicPath: process.env.VUE_BRANCHES === 'gh-pages' ? '/social-vertex-website/': '/',
 
     // 输出目录
     outputDir: 'dist',
