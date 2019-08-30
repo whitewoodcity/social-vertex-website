@@ -38,6 +38,11 @@
                   <a-icon type="rocket"/>Starter
                 </a>
               </a-menu-item>
+              <a-menu-item>
+                <a href="https://reactiverse.io/es4x/zh/">
+                  <a-icon type="deployment-unit"/>EX4S
+                </a>
+              </a-menu-item>
             </a-menu>
           </a-col>
           <a-col :span="4">
