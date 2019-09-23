@@ -36,7 +36,13 @@
     import Popular from './popular/popular'
     import Questions from './questions/questions'
     export default {
-        components:{Recomondation,Following,Popular,Questions}
+        components:{Recomondation,Following,Popular,Questions},
+        beforeMount() {
+            let loggedIn = this.$store.getters.loggedIn;
+            if (!loggedIn) {
+                this.$router.push("/login");
+            }
+        }
     }
 </script>
 <style scoped>
