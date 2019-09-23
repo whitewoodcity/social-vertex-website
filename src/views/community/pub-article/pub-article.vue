@@ -18,7 +18,7 @@
             <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
         </div>
         <div class="article-content">
-            <mavon-editor v-model="content"/>
+<!--            <mavon-editor v-model="computedContent" v-on:change="changeContent"/>-->
         </div>
     </div>
 </template>
@@ -69,13 +69,32 @@
                 this.content = "";
             }
         },
+        computed:{
+            computedContent(){
+                return this.content;
+            }
+        },
         beforeDestroy(){
             //设置编辑状态
             this.$store.commit("setEditArticleFlag",false);
             this.$store.commit("setEditArticle",null);
         },
         methods: {
+            changeContent(value,render){
+                // console.log("value",value," --- render",render);
+                // value = "";
+                if (this.checkValue(value)){
+                   this.doReplaceIllegalText(value);
+                }
+                this.content = value;
+            },
+            checkValue(v){
 
+            },
+            doReplaceIllegalText(value){
+
+
+            },
             handleChange(info) {
                 const status = info.file.status;
                 if (status !== 'uploading') {
