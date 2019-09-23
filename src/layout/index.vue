@@ -2,7 +2,7 @@
   <div class="layout">
     <a-layout>
       <a-layout-header class="layout-header">
-        <a-row align="bottom" justify="space-around" type="flex">
+<!--        <a-row align="bottom" justify="space-around" type="flex">-->
           <a-col :span="6">
             <router-link to="/">
               <div class="layout-header-logo">
@@ -51,7 +51,7 @@
             </div>
 
           </a-col>
-        </a-row>
+<!--        </a-row>-->
       </a-layout-header>
       <a-layout-content class="layout-content">
         <router-view/>
