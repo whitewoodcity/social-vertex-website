@@ -32,7 +32,7 @@
               <a-icon type="alert"/>&nbsp;事件驱动
             </h2>
             <p>
-              Eclipse Vert.x是事件驱动的。
+              Eclipse Vert.x是<strong>事件驱动</strong>的。
               <br>这意味着您的应用程序可以使用少量内核线程处理大量并发。Vert.x可让您的应用程序以最少的硬件进行扩展。
             </p>
           </div>
@@ -59,13 +59,14 @@
             v-on:animCreated="handleAnimation"
           />
         </a-col>
+        <a-col :span="1"></a-col>
         <a-col :span="8">
           <div class="index-non-blocking-content">
             <h2>
               <a-icon type="thunderbolt"/>&nbsp;非阻塞
             </h2>
             <p>
-              Eclipse Vert.x是非阻塞的。
+              Eclipse Vert.x是<strong>非阻塞</strong>的。
               <br>这意味着您的应用程序可以使用少量内核线程处理大量并发。Vert.x可让您的应用程序以最少的硬件进行扩展。
             </p>
           </div>
@@ -74,7 +75,7 @@
     </div>
     <div class="index-polyglot">
       <a-row justify="center" type="flex">
-        <a-col :span="8">
+        <a-col :span="9">
           <div class="index-polyglot-code">
             <a-tabs defaultActiveKey="Java" size="small">
               <a-tab-pane tab="Java" key="Java">
@@ -89,9 +90,6 @@
               <a-tab-pane tab="Ruby" key="Ruby">
                 <vue-simple-markdown :source="rubyCode"></vue-simple-markdown>
               </a-tab-pane>
-              <a-tab-pane tab="Ceylon" key="Ceylon">
-                <vue-simple-markdown :source="ceylonCode"></vue-simple-markdown>
-              </a-tab-pane>
               <a-tab-pane tab="Scala" key="Scala">
                 <vue-simple-markdown :source="scalaCode"></vue-simple-markdown>
               </a-tab-pane>
@@ -101,18 +99,22 @@
             </a-tabs>
           </div>
         </a-col>
-        <a-col :span="2"></a-col>
+        <a-col :span="1"></a-col>
         <a-col :span="8">
           <div class="index-polyglot-content">
             <h2>
-              <a-icon type="deployment-unit"/>&nbsp;多语言
+              <a-icon type="deployment-unit"/>&nbsp;多语言支持
             </h2>
             <p>
-              您可以将Vert.x与多种语言一起使用，包括Java，JavaScript，Groovy，Ruby，Ceylon，Scala和Kotlin。
-              Vert.x不鼓吹什么语言是最好的 -你选择的语言，你根据手头的任务和您的团队的技能设置想要的。
-              我们为Vert.x支持的每种语言提供惯用 API。
+               Java / JavaScript / Groovy / Ruby / Scala / Kotlin.
             </p>
-          </div>
+            <p>
+              Vert.x眼里<strong>没有最好的语言，只有最合适的语言.</strong>
+            </p>
+            <p>
+              Vert.x社区会为所有语言提供完全等价的API.
+            </p>
+         </div>
         </a-col>
       </a-row>
     </div>
@@ -120,9 +122,9 @@
 </template>
 
 <script>
-import * as indexBannerData from "../assets/index-banner-animation.json";
-import * as indexEventData from "../assets/index-event-animation.json";
-import * as indexNonBlockingData from "../assets/index-non-blocking-animation.json";
+import * as indexBannerData from "../assets/animation/index-banner-animation.json";
+import * as indexEventData from "../assets/animation/index-event-animation.json";
+import * as indexNonBlockingData from "../assets/animation/index-non-blocking-animation.json";
 
 export default {
   data() {
@@ -174,21 +176,6 @@ export default {
           .put_header("content-type", "text/plain")
           .end("Hello from Vert.x!")
       }.listen(8080)
-      \`\`\`
-      `,
-      ceylonCode: `
-      \`\`\`
-      import io.vertx.ceylon.core { ... }
-      import io.vertx.ceylon.core.http { ... }
-
-      shared class Server() extends Verticle() {
-        start() => vertx.createHttpServer()
-          .requestHandler((req) =>
-            req.response()
-              .putHeader("content-type", "text/plain")
-              .end("Hello from Vert.x!")
-          ).listen(8080);
-      }
       \`\`\`
       `,
       scalaCode: `
@@ -245,7 +232,7 @@ export default {
 .index-banner {
   width: 100%;
   height: 93vh;
-  background: url("../assets/index-banner.png");
+  background: url("../assets/image/index-banner.png");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
@@ -306,6 +293,8 @@ export default {
 }
 .index-polyglot-code {
   margin-top: 20%;
+  margin-top: 10%;
+  text-align: left;
 }
 .index-polyglot-content {
   height: 60vh;
@@ -316,5 +305,9 @@ export default {
 .index-polyglot-content h2 {
   color: @primary-color;
   font-size: 1.5em;
+}
+.vue-simple-markdown {
+  margin-top: -6%;
+  margin-left: -30px;
 }
 </style>

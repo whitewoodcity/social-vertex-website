@@ -2,11 +2,12 @@
   <div class="layout">
     <a-layout>
       <a-layout-header class="layout-header">
-<!--        <a-row align="bottom" justify="space-around" type="flex">-->
+        <a-row align="bottom" justify="space-around" type="flex">
+          <a-col :span="2"></a-col>
           <a-col :span="6">
             <router-link to="/">
               <div class="layout-header-logo">
-                <img src="https://vertx.io/assets/logo-sm.png" alt height="50">
+                <img src="../assets/image/logo.png" alt height="50">
               </div>
             </router-link>
           </a-col>
@@ -37,11 +38,19 @@
                   <a-icon type="rocket"/>Starter
                 </a>
               </a-menu-item>
+              <a-menu-item>
+                <a href="https://reactiverse.io/es4x/zh/">
+                  <a-icon type="deployment-unit"/>ES4X
+                </a>
+              </a-menu-item>
             </a-menu>
           </a-col>
           <a-col :span="4">
             <div class="logged-in-bar" v-if="loggedIn">
-              <span>您好 &nbsp;{{nickname}} <a v-on:click="doLogoff">注销</a></span>
+              <span>
+                您好 &nbsp;{{nickname}}
+                <a v-on:click="doLogoff">注销</a>
+              </span>
             </div>
             <div class="non-logged-in-bar" v-else>
               <a-button-group>
@@ -49,9 +58,9 @@
                 <a-button icon="thunderbolt" size="large" v-on:click="toRegister" type="primary">注册</a-button>
               </a-button-group>
             </div>
-
           </a-col>
-<!--        </a-row>-->
+          <a-col :span="2"></a-col>
+        </a-row>
       </a-layout-header>
       <a-layout-content class="layout-content">
         <router-view/>
@@ -63,35 +72,33 @@
 
 <script>
 export default {
-
-  computed:{
-      loggedIn: function () {
-        return this.$store.getters.loggedIn;
-      },
-      nickname: function () {
-        let nickname = this.$store.state.loggedInUserInfo.nickname;
-        let displayName;
-        if (nickname && nickname.length > 10){
-          displayName = nickname.substr(0,7)+'...';
-        } else {
-          displayName = nickname;
-        }
-        return displayName;
+  computed: {
+    loggedIn: function() {
+      return this.$store.getters.loggedIn;
+    },
+    nickname: function() {
+      let nickname = this.$store.state.loggedInUserInfo.nickname;
+      let displayName;
+      if (nickname && nickname.length > 10) {
+        displayName = nickname.substr(0, 7) + "...";
+      } else {
+        displayName = nickname;
       }
-
+      return displayName;
+    }
   },
 
-  methods:{
-    toLogin: function () {
-      this.$router.push('/login')
+  methods: {
+    toLogin: function() {
+      this.$router.push("/login");
     },
-    toRegister: function () {
+    toRegister: function() {
       // console.log(evt);
-      this.$router.push('/register')
+      this.$router.push("/register");
     },
-    doLogoff(){
-      this.$store.commit('doLogoff');
-      this.$router.push('/login');
+    doLogoff() {
+      this.$store.commit("doLogoff");
+      this.$router.push("/login");
     }
   }
 };

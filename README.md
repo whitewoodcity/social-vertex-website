@@ -1,6 +1,6 @@
 # vertx-china-community
 
-[![Build Status](https://travis-ci.org/whitewoodcity/social-vertex-website.svg?branch=master)](https://travis-ci.org/whitewoodcity/social-vertex-website)
+[![Build Status](https://travis-ci.org/whitewoodcity/social-vertex-website.svg?branch=develop)](https://travis-ci.org/whitewoodcity/social-vertex-website)
 
 ## Project setup
 ```
@@ -60,7 +60,7 @@ social-vertx-website项目各个板块列表大致如下（注：**加粗字体*
     + 帖子详情页(in process)
     + **问答**
   + 发帖子
-  + **个人主页** (此页面从功能上来讲也可以复用以展示他人的)
+  + **个人主页** (此页面从功能上来讲也可以复用以展示他人的信息，并在其个人主页上显示他的动态 文章等内容)
     + 个人信息展示
     + **编辑个人资料**
     + 个人动态
