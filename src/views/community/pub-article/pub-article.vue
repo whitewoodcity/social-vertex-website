@@ -18,21 +18,33 @@
             <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
         </div>
         <div class="article-content">
-<!--            <mavon-editor v-model="computedContent" v-on:change="changeContent"/>-->
+<!--            <vue-showdown markdown="<h1 onclick='alert(fd)'>aaaaaaaaaa</h1>"></vue-showdown>-->
+            <markdown-it-vue :content="content" :options="options"/>
         </div>
     </div>
 </template>
 <script>
-    export default {
-        components:{
 
+    export default {
+        components: {
         },
         data () {
             return {
-                content: "",
+                content: "Helloo",
                 editorOption: {
                 // some quill options
                     placeholder: '请输入内容'
+                },
+                options: {
+                    markdownIt: {
+                        linkify: true
+                    },
+                    linkAttributes: {
+                        attrs: {
+                            target: '_blank',
+                            rel: 'noopener'
+                        }
+                    }
                 },
                 title: "",
                 //标题图片存储地址
@@ -80,21 +92,6 @@
             this.$store.commit("setEditArticle",null);
         },
         methods: {
-            changeContent(value,render){
-                // console.log("value",value," --- render",render);
-                // value = "";
-                if (this.checkValue(value)){
-                   this.doReplaceIllegalText(value);
-                }
-                this.content = value;
-            },
-            checkValue(v){
-
-            },
-            doReplaceIllegalText(value){
-
-
-            },
             handleChange(info) {
                 const status = info.file.status;
                 if (status !== 'uploading') {

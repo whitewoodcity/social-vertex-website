@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <a-locale-provider :locale="locale">
+<!--    <a-locale-provider :locale="locale">-->
       <nprogress-container></nprogress-container>
       <router-view/>
       <a-back-top/>
-    </a-locale-provider>
+<!--    </a-locale-provider>-->
   </div>
 </template>
 
