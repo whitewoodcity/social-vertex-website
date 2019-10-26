@@ -136,7 +136,7 @@ export default {
       anim: {},
       downloadUrl: "https://vertx.io/download/",
       javaCode: `
-      \`\`\`
+      \`\`\` java
       import io.vertx.core.AbstractVerticle;
 
       public class Server extends AbstractVerticle {
@@ -151,7 +151,7 @@ export default {
       \`\`\`
       `,
       jsCode: `
-      \`\`\`
+      \`\`\` js
       vertx.createHttpServer()
         .requestHandler(function (req) {
           req.response()
@@ -161,7 +161,7 @@ export default {
       \`\`\`
       `,
       groovyCode: `
-      \`\`\`
+      \`\`\` groovy
       vertx.createHttpServer().requestHandler({ req ->
         req.response()
           .putHeader("content-type", "text/plain")
@@ -170,7 +170,7 @@ export default {
       \`\`\`
       `,
       rubyCode: `
-      \`\`\`
+      \`\`\` ruby
       $vertx.create_http_server().request_handler() { |req|
         req.response()
           .put_header("content-type", "text/plain")
@@ -179,7 +179,7 @@ export default {
       \`\`\`
       `,
       scalaCode: `
-      \`\`\`
+      \`\`\` scala
       import io.vertx.lang.scala.ScalaVerticle
 
       class Server extends ScalaVerticle {
@@ -195,7 +195,7 @@ export default {
       \`\`\`
       `,
       kotlinCode: `
-      \`\`\`
+      \`\`\` kotlin
       import io.vertx.core.AbstractVerticle
 
       class Server : AbstractVerticle() {
