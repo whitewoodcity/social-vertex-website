@@ -27,12 +27,7 @@
     export default {
         data () {
             return {
-                source:"饿啊饿",
                 content: "",
-                editorOption: {
-                // some quill options
-                    placeholder: '请输入内容'
-                },
                 title: "",
                 //标题图片存储地址
                 titleImgLink:"",
