@@ -6,12 +6,8 @@ import VueSimpleMarkdown from 'vue-simple-markdown'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 // index.vue code-block highlight
 import 'highlight.js/styles/github-gist.css'
-// import VueShowdown from 'vue-showdown'
-// import 'markdown-it-vue/dist/markdown-it-vue.css'
-// import 'markdown-it-highlight/dist/index.css'
-// import MarkdownItVue from 'markdown-it-vue'
 
+let markdownIt = mavonEditor.markdownIt;
+markdownIt.set({html:false});
 Vue.use(mavonEditor);
 Vue.use(VueSimpleMarkdown);
-// Vue.use(VueShowdown);
-// Vue.use(MarkdownItVue);
