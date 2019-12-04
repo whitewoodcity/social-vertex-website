@@ -14,15 +14,16 @@
     "babel-plugin-import": "^1.12.0",
     "core-js": "^2.6.5",
     "js-md5": "^0.7.3",
-    "mavon-editor": "^2.7.5",
+    "mavon-editor": "^2.7.7",
     "vue": "^2.6.10",
     "vue-i18n": "^8.0.0",
     "vue-infinite-scroll": "^2.0.2",
     "vue-lottie": "^0.2.1",
     "vue-nprogress": "^0.1.5",
     "vue-router": "^3.0.3",
-    "vue-simple-markdown": "^1.0.9",
-    "vuex": "^3.0.1"
+    "vue-simple-markdown": "^1.1.1",
+    "vuex": "^3.0.1",
+    "webpack": "^4.41.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
@@ -33,7 +34,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "less": "^2.7.3",
-    "less-loader": "^4.1.0",
+    "less-loader": "^5.0.0",
     "svg-sprite-loader": "^4.1.6",
     "vue-cli-plugin-ant-design": "^1.0.0",
     "vue-cli-plugin-axios": "^0.0.4",

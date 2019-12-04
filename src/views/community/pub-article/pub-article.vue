@@ -18,17 +18,19 @@
             <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
         </div>
         <div class="article-content">
-<!--            <mavon-editor v-model="computedContent" v-on:change="changeContent"/>-->
+            <mavon-editor v-model="content"></mavon-editor>
+<!--            <markdown-it-vue :content="content" :options="options"/>-->
+            <br>
+            <vue-simple-markdown :source="source"></vue-simple-markdown>
         </div>
     </div>
 </template>
 <script>
-    export default {
-        components:{
 
-        },
+    export default {
         data () {
             return {
+                source:"饿啊饿",
                 content: "",
                 editorOption: {
                 // some quill options
@@ -80,21 +82,6 @@
             this.$store.commit("setEditArticle",null);
         },
         methods: {
-            changeContent(value,render){
-                // console.log("value",value," --- render",render);
-                // value = "";
-                if (this.checkValue(value)){
-                   this.doReplaceIllegalText(value);
-                }
-                this.content = value;
-            },
-            checkValue(v){
-
-            },
-            doReplaceIllegalText(value){
-
-
-            },
             handleChange(info) {
                 const status = info.file.status;
                 if (status !== 'uploading') {
