@@ -18,8 +18,9 @@
             <a-button type="primary" v-on:click="doPubArticle" block>提交</a-button>
         </div>
         <div class="article-content">
-<!--            <vue-showdown markdown="<h1 onclick='alert(fd)'>aaaaaaaaaa</h1>"></vue-showdown>-->
-            <markdown-it-vue :content="content" :options="options"/>
+<!--            <mavon-editor v-model="content"></mavon-editor>-->
+<!--            <markdown-it-vue :content="content" :options="options"/>-->
+            <vue-simple-markdown></vue-simple-markdown>
         </div>
     </div>
 </template>
@@ -30,21 +31,10 @@
         },
         data () {
             return {
-                content: "Helloo",
+                content: "",
                 editorOption: {
                 // some quill options
                     placeholder: '请输入内容'
-                },
-                options: {
-                    markdownIt: {
-                        linkify: true
-                    },
-                    linkAttributes: {
-                        attrs: {
-                            target: '_blank',
-                            rel: 'noopener'
-                        }
-                    }
                 },
                 title: "",
                 //标题图片存储地址
