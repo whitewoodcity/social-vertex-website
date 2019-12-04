@@ -20,7 +20,8 @@
         <div class="article-content">
 <!--            <mavon-editor v-model="content"></mavon-editor>-->
 <!--            <markdown-it-vue :content="content" :options="options"/>-->
-            <vue-simple-markdown/>
+            <br>
+            <vue-simple-markdown :source="source"></vue-simple-markdown>
         </div>
     </div>
 </template>
@@ -29,6 +30,7 @@
     export default {
         data () {
             return {
+                source:"饿啊饿",
                 content: "",
                 editorOption: {
                 // some quill options
