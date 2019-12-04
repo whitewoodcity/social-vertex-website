@@ -20,15 +20,13 @@
         <div class="article-content">
 <!--            <mavon-editor v-model="content"></mavon-editor>-->
 <!--            <markdown-it-vue :content="content" :options="options"/>-->
-            <vue-simple-markdown></vue-simple-markdown>
+            <vue-simple-markdown/>
         </div>
     </div>
 </template>
 <script>
 
     export default {
-        components: {
-        },
         data () {
             return {
                 content: "",
