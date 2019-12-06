@@ -1,16 +1,69 @@
 <template>
     <div class="articles-comment-container">
-        <a-list itemLayout="horizontal" :dataSource="comments">
-            <a-list-item slot="renderItem" slot-scope="item">
-                <a-list-item-meta description="this is the comment">
-                    <a slot="title" href="https://vue.ant.design/">{{item.title}}</a>
-                    <a-avatar slot="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                </a-list-item-meta>
-                <span><a-button icon="like" shape="circle"></a-button>6</span>
-                <span><a-button icon="dislike" shape="circle"></a-button>6</span>
-                <span><a-button icon="message" shape="circle"></a-button>6</span>
-            </a-list-item>
-        </a-list>
+        <a-comment>
+            <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="like"/>: 3245</span>
+            <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="dislike"/>: 6</span>
+            <span slot="actions" v-on:click="showCommentTextArea">回复</span>
+            <a slot="author">Han Solo</a>
+            <a-avatar
+                    slot="avatar"
+                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                    alt="Han Solo"
+            />
+            <p slot="content">
+                this is a content of a comment
+            </p>
+            <a-comment>
+                <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="like"/>: 3245</span>
+                <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="dislike"/>: 6</span>
+                <span slot="actions">回复</span>
+                <a slot="author">Han Solo</a>
+                <a-avatar
+                        slot="avatar"
+                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                        alt="Han Solo"
+                />
+                <p slot="content">
+                    We supply a series of design principles, practical patterns and high quality design
+                    resources (Sketch and Axure).
+                </p>
+            </a-comment>
+        </a-comment>
+        <a-comment>
+            <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="like"/>: 3245</span>
+            <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="dislike"/>: 6</span>
+            <span slot="actions">回复</span>
+            <a slot="author">Han Solo</a>
+            <a-avatar
+                    slot="avatar"
+                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                    alt="Han Solo"
+            />
+            <p slot="content">
+                We supply a series of design principles, practical patterns and high quality design
+                resources (Sketch and Axure).
+            </p>
+        </a-comment>
+        <a-comment>
+            <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="like"/>: 3245</span>
+            <span slot="actions" v-on:click="showCommentTextArea"><a-icon type="dislike"/>: 6</span>
+            <span slot="actions">回复</span>
+            <a slot="author">Han Solo</a>
+            <a-avatar
+                    slot="avatar"
+                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                    alt="Han Solo"
+            />
+            <p slot="content">
+                We supply a series of design principles, practical patterns and high quality design
+                resources (Sketch and Axure).
+            </p>
+        </a-comment>
+
+        <!-- ------------------------- -->
+        <a-modal title="请写入评论:" v-model="msgSendingViewVisible" okText="确认" cancelText="取消">
+            <a-textarea v-model="commentTxt"></a-textarea>
+        </a-modal>
     </div>
 </template>
 <script>
@@ -31,10 +84,17 @@
     ];
     //---------------------
     export default {
+        methods:{
+            showCommentTextArea(){
+                this.msgSendingViewVisible = true;
+            }
+        },
         data(){
 
             return {
-                comments:comments
+                comments:comments,
+                msgSendingViewVisible: false,
+                commentTxt:"abcdefghijklmnopqrstuvwxyz"
             }
         },
     }

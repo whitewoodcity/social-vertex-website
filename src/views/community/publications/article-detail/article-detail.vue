@@ -27,7 +27,7 @@
             <mavon-editor :value="detail.content" defaultOpen="preview" :editable="false" :toolbarsFlag="false" :subfield="false"/>
         </div>
         <div class="btn-grp">
-            <span><a-button icon="star" shape="circle"></a-button>6</span>
+            <span><a-button icon="star" shape="circle" :type="computedType" v-on:click="changeType"></a-button>6</span>
             <span><a-button icon="like" shape="circle"></a-button>6</span>
             <span><a-button icon="dislike" shape="circle"></a-button>6</span>
             <span><a-button icon="message" shape="circle"></a-button>6</span>
@@ -49,7 +49,8 @@
         data(){
             return {
                 article: this.selectedarticle,
-                detail:{}
+                detail:{},
+                starType:'primary',
             }
         },
         mounted() {
@@ -74,6 +75,13 @@
             //---------------------------------------
         },
         methods:{
+            changeType(){
+                if (this.starType == 'primary') {
+                    this.starType = 'default'
+                } else {
+                    this.starType = 'primary'
+                }
+            },
             toPersonalPage(){
                 //todo : (personalIndexUser) get other userInfo by article item userid
                 let userInfo = {
@@ -96,6 +104,9 @@
                 let authorId = this.selectedarticle.id;
                 let currLoginUserId = this.$store.state.loggedInUserInfo.id;
                 return authorId == currLoginUserId;
+            },
+            computedType(){
+                return this.starType;
             }
         }
     }

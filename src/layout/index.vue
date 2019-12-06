@@ -123,7 +123,7 @@ export default {
   }
   .user-status-bar{
     float: left;
-    margin-left: 70px;
+    margin-left: 10vw;
     padding-top: 7px;
   }
 </style>
