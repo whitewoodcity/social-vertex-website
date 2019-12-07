@@ -6,7 +6,7 @@
                 <single-thought v-bind:item="item"/>
             </div>
 
-            <!-- question -->
+            <!-- todo question -->
             <div v-else-if="item.subtype=='question'">
                 <single-question v-bind:item="item"/>
             </div>
@@ -30,24 +30,6 @@
         data () {
             return {
                 listData0:this.listData
-            }
-        },
-
-        methods:{
-            toPersonalPage(item){
-                //todo : (personalIndexUser) get other userInfo by article item userid
-                let userInfo = {
-                    id: item.id,
-                    nickname: item.authorNickname
-                };
-                //set the user Info
-                this.$store.commit("setSelfIndex",false);//flag to false
-                sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
-                this.$router.push("/community/personal-page")
-            },
-            showArticleDetail(article){
-                this.selectedArticle = article;
-                this.detailVisible = true;
             }
         }
     }
