@@ -40,7 +40,7 @@
     </div>
 </template>
 <script>
-    import ArticleComment from './article-comment/article-comment'
+    import ArticleComment from './article-comment-list/article-comment-list'
     export default {
         props:['selectedarticle'],
         components:{

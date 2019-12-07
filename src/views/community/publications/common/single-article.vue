@@ -23,15 +23,15 @@
         <div class="icon-group">
           <span>
             <a-icon type="star-o" style="margin-right: 5px" />
-            {{item.stars ? item.stars: 0}}
+            {{item.collect ? item.collect: 0}}
           </span>
             <span>
             <a-icon type="like-o" style="margin-right: 5px" />
-            {{item.likes ? item.likes: 0}}
+            {{item.like ? item.like: 0}}
           </span>
             <span>
             <a-icon type="dislike-o" style="margin-right: 5px" />
-            {{item.dislikes ? item.dislikes: 0}}
+            {{item.dislike ? item.dislike: 0}}
           </span>
             <span>
             <a-icon type="message" style="margin-right: 5px" />
@@ -58,7 +58,8 @@
         data(){
             return{
                 detailVisible:false,
-                selectedArticle:{}
+                selectedArticle:{},
+                commentsOfArticle: this.item.comments
             }
         },
         methods:{
