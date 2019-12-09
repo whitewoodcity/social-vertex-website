@@ -22,15 +22,15 @@
         <br/>
         <div class="icon-group">
           <span>
-            <a-icon type="star-o" style="margin-right: 5px" />
+            <a-icon type="star" style="margin-right: 5px" :theme="computedIconType(item.collected)" @click="starThisArticle(item)"/>
             {{item.collect ? item.collect: 0}}
           </span>
             <span>
-            <a-icon type="like-o" style="margin-right: 5px" />
+            <a-icon type="like" style="margin-right: 5px" :theme="computedIconType(item.liked)" @click="likeThisArticle(item)"/>
             {{item.like ? item.like: 0}}
           </span>
             <span>
-            <a-icon type="dislike-o" style="margin-right: 5px" />
+            <a-icon type="dislike" style="margin-right: 5px" :theme="computedIconType(item.disliked)" @click="dislikeThisArticle(item)"/>
             {{item.dislike ? item.dislike: 0}}
           </span>
             <span>
@@ -78,6 +78,98 @@
                 sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
                 this.$router.push("/community/personal-page")
             },
+            starThisArticle(detail){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"collect",
+                    "dir": detail.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.item.collected === true){
+                                //if already collected ,this means cancel collect
+                                this.item.collect = this.item.collect - 1;
+                            } else {
+                                this.item.collect = this.item.collect + 1;
+                            }
+                            this.item.collected = !this.item.collected;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+
+            likeThisArticle(detail){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"like",
+                    "dir": detail.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.item.liked === true){
+                                //if already collected ,this means cancel collect
+                                this.item.like = this.item.like - 1;
+                            } else {
+                                this.item.like = this.item.like + 1;
+                            }
+                            this.item.liked = !this.item.liked;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+
+            dislikeThisArticle(detail){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"dislike",
+                    "dir": detail.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.item.disliked === true){
+                                //if already collected ,this means cancel collect
+                                this.item.dislike = this.item.dislike - 1;
+                            } else {
+                                this.item.dislike = this.item.dislike + 1;
+                            }
+                            this.item.disliked = !this.item.disliked;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+            computedIconType(flag){
+                return flag ? 'filled' : 'outlined';
+            }
         }
     }
 

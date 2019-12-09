@@ -183,8 +183,7 @@
             },
             //type to render buttons
             computedType(flag){
-                if (flag) return 'default';
-                else return 'primary';
+                return flag ? 'primary' : 'default';
             }
         },
         computed:{
