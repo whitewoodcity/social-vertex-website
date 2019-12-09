@@ -27,10 +27,10 @@
             <mavon-editor :value="detail.content" defaultOpen="preview" :editable="false" :toolbarsFlag="false" :subfield="false"/>
         </div>
         <div class="btn-grp">
-            <span><a-button icon="star" shape="circle" :type="computedType" v-on:click="changeType"></a-button>6</span>
-            <span><a-button icon="like" shape="circle"></a-button>6</span>
-            <span><a-button icon="dislike" shape="circle"></a-button>6</span>
-            <span><a-button icon="message" shape="circle"></a-button>6</span>
+            <span><a-button icon="star" shape="circle" :type="computedType(detail.collected)" @click="starThisArticle(detail)"></a-button>{{detail.collect}}</span>
+            <span><a-button icon="like" shape="circle" :type="computedType(detail.like)" @click="likeThisArticle(detail)"></a-button>{{detail.like}}</span>
+            <span><a-button icon="dislike" shape="circle" :type="computedType(detail.dislike)" @click="dislikeThisArticle(detail)"></a-button>{{detail.dislike}}</span>
+            <span><a-button icon="message" shape="circle"></a-button>12</span>
         </div>
         <!--评论区-->
 <!--        <a-divider/>-->
@@ -49,8 +49,7 @@
         data(){
             return {
                 article: this.selectedarticle,
-                detail:{},
-                starType:'primary',
+                detail:{}
             }
         },
         mounted() {
@@ -75,13 +74,7 @@
             //---------------------------------------
         },
         methods:{
-            changeType(){
-                if (this.starType == 'primary') {
-                    this.starType = 'default'
-                } else {
-                    this.starType = 'primary'
-                }
-            },
+
             toPersonalPage(){
                 //todo : (personalIndexUser) get other userInfo by article item userid
                 let userInfo = {
@@ -97,6 +90,100 @@
                 this.$store.commit("setEditArticleFlag",true);
                 this.$store.commit("setEditArticle",article);
                 this.$router.push("/community/pub-article");
+            },
+
+            starThisArticle(detail){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"collect",
+                    "dir": detail.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.detail.collected === true){
+                                //if already collected ,this means cancel collect
+                                this.detail.collect = this.detail.collect - 1;
+                            } else {
+                                this.detail.collect = this.detail.collect + 1;
+                            }
+                            this.detail.collected = !this.detail.collected;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+
+            likeThisArticle(detail){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"like",
+                    "dir": detail.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.detail.liked === true){
+                                //if already collected ,this means cancel collect
+                                this.detail.like = this.detail.like - 1;
+                            } else {
+                                this.detail.like = this.detail.like + 1;
+                            }
+                            this.detail.liked = !this.detail.liked;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+
+            dislikeThisArticle(detail){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"dislike",
+                    "dir": detail.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.detail.disliked === true){
+                                //if already collected ,this means cancel collect
+                                this.detail.dislike = this.detail.dislike - 1;
+                            } else {
+                                this.detail.dislike = this.detail.dislike + 1;
+                            }
+                            this.detail.disliked = !this.detail.disliked;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+            //type to render buttons
+            computedType(flag){
+                return flag ? 'primary' : 'default';
             }
         },
         computed:{
@@ -105,9 +192,6 @@
                 let currLoginUserId = this.$store.state.loggedInUserInfo.id;
                 return authorId == currLoginUserId;
             },
-            computedType(){
-                return this.starType;
-            }
         }
     }
 </script>
