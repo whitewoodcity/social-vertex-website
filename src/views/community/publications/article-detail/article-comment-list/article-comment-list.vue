@@ -1,7 +1,15 @@
 <template>
     <div class="articles-comment-container">
-        <single-comment/>
-        <single-comment/>
+        <div v-if="comments && comments.length > 0">
+            <a-divider/>
+            <div v-for="item of comments" v-bind:key="item.dir">
+                <single-comment :comment="item"/>
+            </div>
+        </div>
+        <div class="empty-comment-list" v-else>
+            <a-divider/>
+            暂无评论,快来占一楼
+        </div>
     </div>
 </template>
 <script>
@@ -10,39 +18,25 @@
      */
     import SingleComment from './single-comment/single-comment'
     //-----------------
-    const comments = [
-        {
-            title: 'user1',
-        },
-        {
-            title: 'user2',
-        },
-        {
-            title: 'okou',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-    ];
+
     //---------------------
     export default {
         components:{SingleComment},
-        methods:{
-            showCommentTextArea(){
-                this.msgSendingViewVisible = true;
-            }
-        },
+        props:['comments'],
         data(){
-
-            return {
-                comments:comments,
-                msgSendingViewVisible: false,
-                commentTxt:"abcdefghijklmnopqrstuvwxyz"
-            }
+            return {}
         },
+        methods:{
+        },
+
     }
 </script>
 <style scoped>
+    .empty-comment-list{
+        margin-top: 5px;
+        text-align: center;
+        font-size: 25px;
+    }
     .articles-comment-container{
         padding-right: 20px;
     }

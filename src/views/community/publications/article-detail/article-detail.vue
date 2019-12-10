@@ -35,25 +35,35 @@
         <!--评论区-->
 <!--        <a-divider/>-->
         <div class="comment-area">
-            <article-comment></article-comment>
+            <div class="comment-textarea">
+                <a-textarea placeholder="请输入你的评论" v-model="commentContent" :autosize="{ minRows: 3, maxRows: 3 }"/>
+            </div>
+            <div class="comment-commit-btn-area">
+                <a-button type="primary" @click="submitComment">添加评论</a-button>
+            </div>
+            <article-comment-list :comments="computedComments"/>
         </div>
     </div>
 </template>
 <script>
-    import ArticleComment from './article-comment-list/article-comment-list'
+    import ArticleCommentList from './article-comment-list/article-comment-list'
+    // let comments = [];
     export default {
         props:['selectedarticle'],
         components:{
-            ArticleComment
+            ArticleCommentList
         },
         data(){
             return {
+                commentContent:'',
                 article: this.selectedarticle,
-                detail:{}
+                detail:{},
+                comments : []
             }
         },
+
         mounted() {
-            // console.log(this.selectedarticle);
+            // ---- retrieve the detail of the article----
             this.$axios.put('/',{
                 "type":"publication",
                 "subtype":"retrieve",
@@ -71,10 +81,66 @@
             }).catch(error=>{
                 this.$message.error(error.message);
             });
-            //---------------------------------------
+            //---------- retrieve the comment list of the article -----------------------------
+            this.refreshCommentList();
+
         },
         methods:{
+            submitComment(){
+              let content = this.commentContent;
+              let dir = this.selectedarticle.dir;
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"comment",
+                    "dir": dir,
+                    "content":content,
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            //refresh the list data
+                            this.refreshCommentList();
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
 
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+
+            //刷新评论列表
+            refreshCommentList(){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"comment_list",
+                    "dir": this.selectedarticle.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            //refresh the list data
+                            this.comments = response.data.info;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
+            },
+
+            //跳转到个人主页
             toPersonalPage(){
                 //todo : (personalIndexUser) get other userInfo by article item userid
                 let userInfo = {
@@ -86,12 +152,15 @@
                 sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
                 this.$router.push("/community/personal-page")
             },
+
+            //跳转到编辑文章页面
             jumpToEditArticle(article){
                 this.$store.commit("setEditArticleFlag",true);
                 this.$store.commit("setEditArticle",article);
                 this.$router.push("/community/pub-article");
             },
 
+            //收藏此文章
             starThisArticle(detail){
                 this.$axios.put('/',{
                     "type":"publication",
@@ -122,6 +191,7 @@
                 });
             },
 
+            //点赞
             likeThisArticle(detail){
                 this.$axios.put('/',{
                     "type":"publication",
@@ -152,6 +222,7 @@
                 });
             },
 
+            //踩
             dislikeThisArticle(detail){
                 this.$axios.put('/',{
                     "type":"publication",
@@ -192,10 +263,19 @@
                 let currLoginUserId = this.$store.state.loggedInUserInfo.id;
                 return authorId == currLoginUserId;
             },
+            computedComments(){
+                return this.comments;
+            }
         }
     }
 </script>
 <style scoped>
+    .comment-commit-btn-area{
+        margin-top: 3px;
+    }
+    .comment-textarea{
+        margin-top: 10px;
+    }
     .articles-detail-container{
     }
     .title-area{
