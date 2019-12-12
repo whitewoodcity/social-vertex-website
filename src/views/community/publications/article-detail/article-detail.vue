@@ -30,7 +30,6 @@
             <span><a-button icon="star" shape="circle" :type="computedType(detail.collected)" @click="starThisArticle(detail)"></a-button>{{detail.collect}}</span>
             <span><a-button icon="like" shape="circle" :type="computedType(detail.liked)" @click="likeThisArticle(detail)"></a-button>{{detail.like}}</span>
             <span><a-button icon="dislike" shape="circle" :type="computedType(detail.disliked)" @click="dislikeThisArticle(detail)"></a-button>{{detail.dislike}}</span>
-            <span><a-button icon="message" shape="circle"></a-button>12</span>
         </div>
         <!--评论区-->
 <!--        <a-divider/>-->
@@ -98,6 +97,8 @@
                     if (response.status == 200){
                         if(response.data.publication){
                             //refresh the list data
+                            this.$message.success("评论成功");
+                            this.commentContent = "";
                             this.refreshCommentList();
                         }else{
                             this.$notification['error']({

@@ -1,45 +1,38 @@
 <template>
     <div class="sub-comment-list">
-        <div class="sub-comment">
-            <div class="name-span">
-                <span>一个dsb 回复 另一个dsb:</span>
-            </div>
-            <div class="comment-txt">
-                <span>阿哈哈哈我们都是木头人 不许说话不许动阿哈哈哈哈我们都是木头人 不许说话不话不许动阿哈哈哈哈我们都是木头人 不许说话不话不许动阿哈哈哈哈我们都是木头人 不许说话不话不许动阿哈哈哈哈我们都是木头人 不许说话不许动</span>
-            </div>
-            <div class="action-btn-group">
-                <span slot="actions" class="action-btn" ><a-icon type="like" />:2141</span>
-                <span slot="actions" class="action-btn"  ><a-icon type="dislike"/>: 3</span>
+        <div v-if="subCommentList.length > 0">
+            <div  v-for="item of subCommentList" v-bind:key="item.dir">
+                <single-sub-comment :topComment="topComment" :subComment="item"/>
             </div>
         </div>
-
+        <div v-else>
+            暂无评论,快来参加讨论吧！
+        </div>
     </div>
 </template>
 <script>
     /*
     this is a top level comment of an article
      */
+    import SingleSubComment from './single-sub-comment/single-sub-comment'
     export default {
+        components:{SingleSubComment},
+        props:["subCommentList","topComment"],
+        data(){
+            return {
+
+            }
+        },
+        methods:{
+            refreshSubCommentsList(){
+                this.$parent.refreshSubCommentsList();
+            }
+        }
 
     }
 </script>
 <style scoped>
     .sub-comment-list{
-        padding-left: 6%;
-        padding-right: 15%;
-
-    }
-    .name-span{
-        float: left;
-    }
-    .comment-txt{
-        float: left;
-        max-width: 50%;
-    }
-    .action-btn-group{
-        float: left;
-    }
-    .sub-comment{
-        float: top;
+        margin-left: 2%;
     }
 </style>
