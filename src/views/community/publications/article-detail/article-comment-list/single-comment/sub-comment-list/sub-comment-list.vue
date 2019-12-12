@@ -1,32 +1,12 @@
 <template>
     <div class="sub-comment-list">
-        <div class="sub-comment">
-            <div class="name-span">
-                <span>
-                    <a>一个dsb</a> 回复 <a>另一个dsb:</a>
-                </span>
-            </div>
-            <div class="comment-txt">
-                <span>阿哈哈哈我们都是木头人 不许说话不许动阿哈哈哈哈我们都是木头人 不许说话不话不许动阿哈哈哈哈我们都是木头人 不许说话不话不许动阿哈哈哈哈我们都是木头人 不许说话不话不许动阿哈哈哈哈我们都是木头人 不许说话不许动</span>
-            </div>
-            <div class="action-btn-group">
-                <span slot="actions" class="action-btn" ><a-icon type="like" />:2141</span>
-                <span slot="actions" class="action-btn"  ><a-icon type="dislike"/>: 3</span>
+        <div v-if="subCommentList.length > 0">
+            <div  v-for="item of subCommentList" v-bind:key="item.dir">
+                <single-sub-comment :topComment="topComment" :subComment="item"/>
             </div>
         </div>
-        <div class="sub-comment">
-            <div class="name-span">
-                <span>
-                    <a>一个dsb</a> 回复 <a>另一个dsb:</a>
-                </span>
-            </div>
-            <div class="comment-txt">
-                <span>一个短的评论</span>
-            </div>
-            <div class="action-btn-group">
-                <span slot="actions" class="action-btn" ><a-icon type="like" />:2141</span>
-                <span slot="actions" class="action-btn"  ><a-icon type="dislike"/>: 3</span>
-            </div>
+        <div v-else>
+            暂无评论,快来参加讨论吧！
         </div>
     </div>
 </template>
@@ -34,25 +14,25 @@
     /*
     this is a top level comment of an article
      */
+    import SingleSubComment from './single-sub-comment/single-sub-comment'
     export default {
+        components:{SingleSubComment},
+        props:["subCommentList","topComment"],
+        data(){
+            return {
+
+            }
+        },
+        methods:{
+            refreshSubCommentsList(){
+                this.$parent.refreshSubCommentsList();
+            }
+        }
 
     }
 </script>
 <style scoped>
     .sub-comment-list{
-        padding-left: 4%;
-        padding-right: 15%;
-
-    }
-    .name-span{
-    }
-    .comment-txt{
-
-    }
-    .action-btn-group{
-
-    }
-    .sub-comment{
-        float: top;
+        margin-left: 2%;
     }
 </style>
