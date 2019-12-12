@@ -98,6 +98,8 @@
                     if (response.status == 200){
                         if(response.data.publication){
                             //refresh the list data
+                            this.$message.success("评论成功");
+                            this.commentContent = "";
                             this.refreshCommentList();
                         }else{
                             this.$notification['error']({

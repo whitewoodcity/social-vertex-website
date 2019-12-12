@@ -20,8 +20,8 @@
                 <a-button slot="enterButton" type="primary">发送</a-button>
             </a-input-search>
         </div>
-        <div>
-            <span><a-icon type="message" />展开回复</span>
+        <div class="expand-sub-comment-link">
+            <a-button icon="message" size="small">展开回复</a-button>
         </div>
         <sub-comment-list/>
         <a-divider/>
@@ -91,5 +91,9 @@
         padding-left: 3%;
         padding-bottom: 5px;
         max-width: 90%;
+    }
+    .expand-sub-comment-link{
+        margin-left: 2%;
+        margin-bottom: 10px;
     }
 </style>
