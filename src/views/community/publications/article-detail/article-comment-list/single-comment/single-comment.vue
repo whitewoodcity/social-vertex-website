@@ -9,8 +9,8 @@
         </div>
         <div>
             <span class="action-btn-group">
-                <span slot="actions" class="action-btn"  ><a-icon type="dislike" :theme="computedType(comment.disliked)" @click="likeTheComment"/>: {{comment.dislike ? comment.dislike : 0}}</span>
                 <span slot="actions" class="action-btn" ><a-icon type="like" :theme="computedType(comment.liked)" @click="dislikeTheComment"/>: {{comment.like ? comment.like : 0}}</span>
+                <span slot="actions" class="action-btn"  ><a-icon type="dislike" :theme="computedType(comment.disliked)" @click="likeTheComment"/>: {{comment.dislike ? comment.dislike : 0}}</span>
             </span>
             <span class="add-reply-link"><a @click="doShowInput">添加回复</a></span>
         </div>
