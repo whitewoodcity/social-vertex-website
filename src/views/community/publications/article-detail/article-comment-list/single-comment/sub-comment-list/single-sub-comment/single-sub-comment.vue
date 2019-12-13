@@ -127,8 +127,7 @@
                     "type":"publication",
                     "subtype":"comment",
                     "content":txt,
-                    "authorId":this.$store.state.loggedInUserInfo.id,
-                    "authorNickname":this.$store.state.loggedInUserInfo.nickname,
+                    "commented_user_id":this.subComment.id,
                     "dir": this.topComment.dir
                 }).then(response=>{
                     if (response.status == 200){
