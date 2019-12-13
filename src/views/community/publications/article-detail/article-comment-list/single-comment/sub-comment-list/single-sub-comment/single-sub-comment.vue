@@ -87,7 +87,7 @@
                 this.$axios.put('/',{
                     "type":"publication",
                     "subtype":"dislike",
-                    "dir": this.comment.dir
+                    "dir": this.subComment.dir
                 }).then(response=>{
                     if (response.status == 200){
                         if(response.data.publication){

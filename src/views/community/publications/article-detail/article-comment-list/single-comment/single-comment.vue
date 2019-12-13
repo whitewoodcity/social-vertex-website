@@ -9,8 +9,8 @@
         </div>
         <div>
             <span class="action-btn-group">
-                <span slot="actions" ><a-icon type="like" :theme="computedType(comment.liked)" @click="dislikeTheComment"/>: {{comment.like ? comment.like : 0}}</span>
-                <span slot="actions" class="action-btn"  ><a-icon type="dislike" :theme="computedType(comment.disliked)" @click="likeTheComment"/>: {{comment.dislike ? comment.dislike : 0}}</span>
+                <span slot="actions" ><a-icon type="like" :theme="computedType(comment.liked)" @click="likeTheComment"/>: {{comment.like ? comment.like : 0}}</span>
+                <span slot="actions" class="action-btn"  ><a-icon type="dislike" :theme="computedType(comment.disliked)" @click="dislikeTheComment"/>: {{comment.dislike ? comment.dislike : 0}}</span>
             </span>
             <span class="add-reply-link"><a @click="switchShowInput">添加回复</a></span>
         </div>
@@ -22,12 +22,14 @@
                 </a-input-search>
             </div>
         </div>
-        <div class="expand-sub-comment-link">
-            <a-button icon="message" size="small" v-on:click="switchExpandStatus">{{expandComments ? '收起':'展开所有回复'}}</a-button>
-        </div>
-        <div v-if="expandComments">
+
+        <div v-if="comment.commented_num > 0">
             <sub-comment-list :topComment="comment" :subCommentList="subCommentList"/>
         </div>
+<!--        <div class="no-comment-span" v-else>-->
+<!--            暂无评论,快来参加讨论吧！-->
+<!--        </div>-->
+
         <a-divider/>
     </div>
 </template>
@@ -44,7 +46,7 @@
         data(){
           return {
               showInput:false,
-              expandComments:false,
+
               subCommentList:[],
               topCommentTxt:''
           }
@@ -177,12 +179,6 @@
                 }).catch(error=>{
                     this.$message.error(error.message);
                 });
-            },
-            switchExpandStatus(){
-                this.expandComments = !this.expandComments;
-                if (this.expandComments) {
-                    this.refreshSubCommentsList();
-                }
             }
         }
     }
@@ -218,10 +214,10 @@
         padding-bottom: 5px;
         max-width: 90%;
     }
-    .expand-sub-comment-link{
-        margin-left: 2%;
-        margin-bottom: 10px;
-    }
+
     .comment-txt-input{
+    }
+    .no-comment-span{
+        margin-left: 3%;
     }
 </style>
