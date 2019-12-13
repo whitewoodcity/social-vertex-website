@@ -1,7 +1,7 @@
 <template>
     <div class="sub-comment-list">
         <div class="expand-sub-comment-link">
-            <a-button icon="message" size="small" v-on:click="switchExpandStatus">{{computedExpandComments ? '收起':'展开所有回复'}}</a-button>
+            <a-button icon="message" size="small" v-on:click="switchExpandStatus">{{expandComments ? '收起':'展开所有回复'}}</a-button>
         </div>
         <div v-if="expandComments">
             <div v-for="item of subCommentList" v-bind:key="item.dir">
@@ -35,9 +35,6 @@
             }
         },
         computed:{
-            computedExpandComments(){
-                return this.expandComments;
-            }
         }
 
     }
