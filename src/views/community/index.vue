@@ -19,35 +19,37 @@
 
           <!-- right bar -->
           <a-col :span="6" class="right-bar">
-            <div class="icon-group">
-              <div class="icon-item">
-                <div class="icon">
-                  <a-button icon="profile" @click="()=>{toPubArticle();}"/>
+            <a-affix>
+              <div class="icon-group">
+                <div class="icon-item">
+                  <div class="icon">
+                    <a-button icon="profile" @click="()=>{toPubArticle();}"/>
+                  </div>
+                <span>发帖子</span>
                 </div>
-              <span>发帖子</span>
-              </div>
-              <div class="icon-item">
-                <div class="icon">
-                  <a-button icon="user" @click="routeToMyPage('/personal-page')"/>
+                <div class="icon-item">
+                  <div class="icon">
+                    <a-button icon="user" @click="routeToMyPage('/personal-page')"/>
+                  </div>
+                  <span>个人主页</span>
                 </div>
-                <span>个人主页</span>
-              </div>
-              <div class="icon-item">
-                <div class="icon">
-                  <a-button icon="message" @click="showMsgSendingView"/>
+                <div class="icon-item">
+                  <div class="icon">
+                    <a-button icon="message" @click="showMsgSendingView"/>
+                  </div>
+                  <span>发状态</span>
                 </div>
-                <span>发状态</span>
               </div>
-            </div>
-            <br><br><br>
-            <div class="links-block">
-              <a-button type="primary" name="articles" @click="routeToPage('/publications')" block>去搜帖</a-button>
-              <a-button type="default" @click="routeToPage('/my-collect')" block>我的收藏</a-button>
-              <a-button @click="routeToPage('/my-following')" block>关注的人</a-button>
-              <a-button type="danger" @click="routeToPage('/my-msg')" block>我的消息</a-button>
-              <a-button @click="routeToPage('/service-center')" type="dashed" block>服务中心</a-button>
-            </div>
-            <div><a-divider /></div>
+              <br><br><br>
+              <div class="links-block">
+                <a-button type="primary" name="articles" @click="routeToPage('/publications')" block>去搜帖</a-button>
+                <a-button type="default" @click="routeToPage('/my-collect')" block>我的收藏</a-button>
+                <a-button @click="routeToPage('/my-following')" block>关注的人</a-button>
+                <a-button type="danger" @click="routeToPage('/my-msg')" block>我的消息</a-button>
+                <a-button @click="routeToPage('/service-center')" type="dashed" block>服务中心</a-button>
+              </div>
+              <div><a-divider /></div>
+            </a-affix>
           </a-col>
         </a-row>
       </a-col>
@@ -60,10 +62,11 @@
         </div>
         <a-textarea v-model="thought"></a-textarea>
       </a-modal>
-      <br />
-      <br />
 <!--      <a-button @click="confirm">Confirm</a-button>-->
     </div>
+    <a-row>
+      <manual-footer></manual-footer>
+    </a-row>
   </div>
 
 
@@ -72,6 +75,7 @@
 <script>
 import ARow from "ant-design-vue/es/grid/Row";
 import ACol from "ant-design-vue/es/grid/Col";
+import ManualFooter from "../common/mannual-footer/mannual-footer"
 
 export default {
   data(){
@@ -80,7 +84,7 @@ export default {
       thought:""
     }
   },
-  components: {ACol, ARow},
+  components: {ACol, ARow,ManualFooter},
   methods:{
     toPubArticle: function(){
       this.setNoneEdit();
@@ -191,5 +195,6 @@ export default {
     height: auto;
     background-color: #f0f2f5;
   }
+
 
 </style>
