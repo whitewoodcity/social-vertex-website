@@ -60,7 +60,6 @@
       <a-layout-content class="layout-content">
         <router-view/>
       </a-layout-content>
-      <!-- <a-layout-footer>Footer</a-layout-footer> -->
     </a-layout>
   </div>
 </template>
@@ -126,5 +125,6 @@ export default {
     margin-left: 10vw;
     padding-top: 7px;
   }
+
 </style>
 
