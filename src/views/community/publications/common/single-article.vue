@@ -35,7 +35,7 @@
           </span>
             <span>
             <a-icon type="message" style="margin-right: 5px" />
-            {{item.comments ? item.comments: 0}}
+            {{item.commented_num ? item.commented_num: 0}}
           </span>
         </div>
         <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">

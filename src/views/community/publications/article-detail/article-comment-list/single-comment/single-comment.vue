@@ -54,9 +54,62 @@
                 return flag ? 'filled':'outlined'
             },
             likeTheComment(){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"like",
+                    "dir": this.comment.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.comment.liked === true){
+                                //if already collected ,this means cancel collect
+                                this.comment.like = this.comment.like - 1;
+                            } else {
+                                this.comment.like = this.comment.like + 1;
+                            }
+                            this.comment.liked = !this.comment.liked;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
 
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
             },
             dislikeTheComment(){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"dislike",
+                    "dir": this.comment.dir
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            if (this.comment.disliked === true){
+                                //if already collected ,this means cancel collect
+                                this.comment.dislike = this.comment.dislike - 1;
+                            } else {
+                                this.comment.dislike = this.comment.dislike + 1;
+                            }
+                            this.comment.disliked = !this.comment.disliked;
+                        }else{
+                            this.$notification['error']({
+                                message: '操作失败',
+                                description: response.data.info
+                            });
+                        }
+
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
 
             },
             onSubmitComment(value){
