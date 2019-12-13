@@ -92,7 +92,7 @@
                     "type":"publication",
                     "subtype":"comment",
                     "dir": dir,
-                    "content":content,
+                    "content":content
                 }).then(response=>{
                     if (response.status == 200){
                         if(response.data.publication){
