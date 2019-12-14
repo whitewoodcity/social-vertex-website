@@ -62,7 +62,9 @@
     background-color: #6f338b;
   }
   .purple-side{
-    background-color: #6f338b;
+    /*background-color: #6f338b;*/
+    background-image: linear-gradient(#6f338b, #9198e5);
+    /*9198e5*/
     height: 100vh;
   }
   .recent-posts{
