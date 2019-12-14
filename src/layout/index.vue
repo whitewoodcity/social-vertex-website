@@ -36,7 +36,7 @@
               </a>
             </a-menu-item>
             <a-menu-item>
-              <a href="https://reactiverse.io/es4x/zh/">
+              <a href="https://reactiverse.io/es4x/zh/" target="_blank">
                 <a-icon type="deployment-unit"/>ES4X
               </a>
             </a-menu-item>
