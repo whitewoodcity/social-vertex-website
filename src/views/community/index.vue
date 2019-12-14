@@ -3,7 +3,7 @@
     <a-row><div class="guiding-line"></div></a-row>
     <a-row class="community-content">
       <a-col :span="3" class="purple-side-wrapper">
-        <div class="purple-side"></div>
+<!--        <div class="purple-side"></div>-->
       </a-col>
       <a-col :span="18">
         <!-- community body -->
@@ -151,7 +151,8 @@ export default {
   .community-content{
     /*f0f2f5*/
     /*background-color: #f0f2f5;*/
-    background-color: #6f338b;
+    /*background-color: #6f338b;*/
+    background-image: linear-gradient(#6f338b,#9198e5, #9198e5);
     height: auto;
   }
   .guiding-line{

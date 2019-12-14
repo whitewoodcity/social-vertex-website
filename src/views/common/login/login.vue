@@ -108,6 +108,7 @@
     .bkg-img{
         height: 100%;
         background-image: url("../../../assets/common/background.png");
+        /*background-image: linear-gradient(135deg,#6f338b, #ffffff);*/
         background-size: 92.5vw;
         background-repeat: no-repeat;
     }
