@@ -13,7 +13,7 @@
     .manual-footer{
         width: 100%;
         height: 300px;
-        background-image: linear-gradient(#9198e5, #f0f2f5);
+        /*background-image: linear-gradient(#9198e5, #f0f2f5);*/
     }
     .manual-footer-upper{
         width: 100%;
