@@ -54,6 +54,7 @@
                 let item = JSON.parse(sessionStorage.getItem("personalIndexUser"));
                 userInfoToShow = item;
             }
+            this.addUserBriefToCache(userInfoToShow.id);
             return {
                 selfFlag:flag,
                 currUserInfo:userInfoToShow
@@ -62,6 +63,34 @@
         methods:{
             jumpToPersonalEdit(){
                 this.$router.push("/community/personal-edit");
+            },
+            addUserBriefToCache(uid){
+                this.$axios.put('/',{
+                    "type":"publication",
+                    "subtype":"user_brief",
+                    "uid": uid
+                }).then(response=>{
+                    if (response.status == 200){
+                        if(response.data.publication){
+                            //set values in this page
+                            let ub = response.data.info;
+                            this.uid = ub.id;
+                            this.nickname = ub.nickname;
+                            this.avatar = ub.avatar;
+
+                            //set cache to localStorage and vuex
+                            ub.cachedTime = new Date().getTime();
+                            this.$store.commit("addUserBriefToCache",ub)
+
+                        }else{
+                            this.$message.error(response.data.info);
+                        }
+                    }else{
+                        this.$message.error(response.data);
+                    }
+                }).catch(error=>{
+                    this.$message.error(error.message);
+                });
             }
         }
 

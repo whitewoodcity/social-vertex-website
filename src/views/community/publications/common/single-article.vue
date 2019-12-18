@@ -6,7 +6,7 @@
                     <a-avatar>{{item.id[0]}}</a-avatar>
                 </div>
                 <div class="article-nickname">
-                    <a v-on:click="()=>{toPersonalPage(item)}">{{item.authorNickname}}</a> 发表了文章：
+                    <a v-on:click="()=>{toPersonalPage(item)}"><nickname-span :userId="item.id"/></a> 发表了文章：
                 </div>
             </a-col>
             <a-col>
@@ -48,12 +48,14 @@
     import ArticleDetail from '../article-detail/article-detail'
     import ARow from "ant-design-vue/es/grid/Row";
     import ACol from "ant-design-vue/es/grid/Col";
+    import NicknameSpan from "../../../common/nickname-span/nickname-span";
     export default {
         props:['item'],
         components:{
             ACol,
             ARow,
-            ArticleDetail
+            ArticleDetail,
+            NicknameSpan
         },
         data(){
             return{
