@@ -2,7 +2,7 @@
     <div class="sigle-top-comment">
         <div>
             <a-avatar :alt="comment.id" class="avatar-area">{{comment.id[0]}}</a-avatar>
-            <span class="name-span"><a>{{comment.id}} : </a></span>
+            <span class="name-span"><a> <nickname-span :userId="comment.id"/> : </a></span>
         </div>
         <div class="comment-content">
             <span>{{comment.content}}</span>
@@ -26,23 +26,20 @@
         <div v-if="comment.commented_num > 0">
             <sub-comment-list :topComment="comment" :subCommentList="subCommentList"/>
         </div>
-<!--        <div class="no-comment-span" v-else>-->
-<!--            暂无评论,快来参加讨论吧！-->
-<!--        </div>-->
-
         <a-divider/>
     </div>
 </template>
 <script>
-    import SubCommentList from './sub-comment-list/sub-comment-list'
+    import SubCommentList from './sub-comment-list/sub-comment-list';
     import AInputSearch from "ant-design-vue/es/input/Search";
+    import NicknameSpan from '../../../../../common/nickname-span/nickname-span';
     /*
     this is a top level comment of an article
      */
     export default {
 
         props:['comment'],
-        components:{AInputSearch, SubCommentList},
+        components:{AInputSearch, SubCommentList,NicknameSpan},
         data(){
           return {
               showInput:false,

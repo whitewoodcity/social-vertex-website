@@ -3,7 +3,7 @@
         <div class="sub-comment">
             <div class="name-span">
                 <span>
-                    <a>{{subComment.id}}</a> 回复 <a>{{subComment.commented_user_id}}:</a>
+                    <a> <nickname-span :userId="subComment.id"/></a> 回复 <a><nickname-span :userId="subComment.commented_user_id"/> :</a>
                 </span>
             </div>
             <div class="comment-txt">
@@ -32,7 +32,11 @@
     /*
     this is a top level comment of an article
      */
+    import NicknameSpan from '../../../../../../../common/nickname-span/nickname-span'
     export default {
+        components:{
+            NicknameSpan
+        },
         props:["subComment","topComment"],
         methods:{
             refreshParent(){

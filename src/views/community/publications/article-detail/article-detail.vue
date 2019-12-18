@@ -17,7 +17,11 @@
                     <a-avatar :src="article.avatar"/>
                 </div>
                 <div class="author-name">
-                    <p>authored by <a v-on:click="toPersonalPage(article.id)">{{article.authorNickname == null ? article.id: article.authorNickname}}</a></p>
+                    <p>authored by
+                        <a v-on:click="toPersonalPage(article.id)">
+                            <nickname-span :userId="article.id"/>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -46,11 +50,13 @@
 </template>
 <script>
     import ArticleCommentList from './article-comment-list/article-comment-list'
+    import NicknameSpan from '../../../common/nickname-span/nickname-span'
     // let comments = [];
     export default {
         props:['selectedarticle'],
         components:{
-            ArticleCommentList
+            ArticleCommentList,
+            NicknameSpan
         },
         data(){
             return {

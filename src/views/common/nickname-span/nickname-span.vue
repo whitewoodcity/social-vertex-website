@@ -31,21 +31,21 @@
         methods:{
             cacheOutOfTime(userBrief){
                 let MILLS_OF_7_DAYS = 7 * 24 * 60 * 60 * 1000;
+                // let MILLS_OF_7_DAYS = 1000;
                 let cachedTime = userBrief.cachedTime;
                 let currentTimeStamp = new Date().getTime();
                 return !cachedTime || (currentTimeStamp - cachedTime) >= MILLS_OF_7_DAYS
             },
             addUserBriefToCache(uid){
-                //todo ---
                 this.$axios.put('/',{
                     "type":"publication",
-                    "subtype":"user_biref",
-                    "ub_id": uid
+                    "subtype":"user_brief",
+                    "uid": uid
                 }).then(response=>{
                     if (response.status == 200){
                         if(response.data.publication){
                             //set values in this page
-                            let ub = response.data;
+                            let ub = response.data.info;
                             this.uid = ub.id;
                             this.nickname = ub.nickname;
                             this.avatar = ub.avatar;
