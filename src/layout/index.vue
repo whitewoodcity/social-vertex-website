@@ -31,7 +31,7 @@
               </router-link>
             </a-menu-item>
             <a-menu-item>
-              <a href="https://start.vertx.io/">
+              <a href="https://start.vertx.io/" target="_blank">
                 <a-icon type="rocket"/>Starter
               </a>
             </a-menu-item>
