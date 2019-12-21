@@ -38,6 +38,16 @@
                     this.item.dislike = this.item.dislike + 1;
                 }
                 this.item.disliked = !this.item.disliked;
+
+                if (this.item.liked){
+                    await this.request.put("/",{
+                        "type": "publication",
+                        "subtype": "like",
+                        "dir": this.item.dir,
+                    })
+                    this.item.like = this.item.like - 1;
+                    this.item.liked = !this.item.liked;
+                }
             }
         }
     }

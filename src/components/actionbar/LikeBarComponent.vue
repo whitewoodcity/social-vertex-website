@@ -39,6 +39,15 @@
                     this.item.like = this.item.like + 1;
                 }
                 this.item.liked = !this.item.liked;
+                if (this.item.disliked){
+                    await this.request.put("/",{
+                        "type": "publication",
+                        "subtype": "dislike",
+                        "dir": this.item.dir,
+                    })
+                    this.item.dislike = this.item.dislike - 1;
+                    this.item.disliked = !this.item.disliked;
+                }
             }
         }
 
