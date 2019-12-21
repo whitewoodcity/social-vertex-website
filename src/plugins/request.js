@@ -40,8 +40,8 @@ _axios.interceptors.request.use(
 // Add a response interceptor
 _axios.interceptors.response.use(
     function(response) {
-        // Do something with response data
-        if (!response.data.publication){
+        const responseData = response.data;
+        if (responseData.hasOwnProperty("publication")&&!responseData.publication){
             notification.error({
                 message: '操作失败',
                 description: response.data.info

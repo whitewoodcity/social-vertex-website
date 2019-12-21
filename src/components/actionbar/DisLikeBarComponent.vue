@@ -1,21 +1,32 @@
 <template>
      <span>
-            <a-icon type="dislike" style="margin-right: 5px" :theme="computedThmeType(item.disliked)"
-                    @click="disLikeTheContent"/>
-                {{item.dislike ? item.dislike: 0}}
-     </span>
+         <a-button v-if="button" icon="dislike" shape="circle" :type="computedButtonType(item.disliked)"
+                   @click="disLikeTheContent"></a-button>
+        <a-icon v-else type="dislike" style="margin-right: 5px" :theme="computedThmeType(item.disliked)"
+                @click="disLikeTheContent"/>
+    {{item.dislike ? item.dislike: 0}}
+    </span>
 </template>
 
 <script>
     export default {
         name: "DisLikeBarComponent",
-        props: ['item'],
+        props: {
+            item:{},
+            button:{
+                type:Boolean,
+                default:false
+            }
+        },
         methods: {
             computedThmeType(flag) {
                 return flag ? 'filled' : 'outlined'
             },
+            computedButtonType(flag) {
+                return flag ? 'primary' : 'default';
+            },
             async disLikeTheContent() {
-                this.request.put('/', {
+                await this.request.put('/', {
                     "type": "publication",
                     "subtype": "dislike",
                     "dir": this.item.dir,
@@ -27,6 +38,16 @@
                     this.item.dislike = this.item.dislike + 1;
                 }
                 this.item.disliked = !this.item.disliked;
+
+                if (this.item.liked){
+                    await this.request.put("/",{
+                        "type": "publication",
+                        "subtype": "like",
+                        "dir": this.item.dir,
+                    })
+                    this.item.like = this.item.like - 1;
+                    this.item.liked = !this.item.liked;
+                }
             }
         }
     }
