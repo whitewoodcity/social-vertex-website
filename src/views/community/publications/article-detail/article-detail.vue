@@ -27,7 +27,8 @@
         </div>
         <!--正文-->
         <a-divider/>
-        <div class="content-area">
+
+        <div class="content-area" v-if = "articleContentFlag">
             <mavon-editor :value="detail.content" defaultOpen="preview" :editable="false" :toolbarsFlag="false" :subfield="false"/>
         </div>
         <div class="btn-grp">
@@ -53,7 +54,13 @@
     import NicknameSpan from '../../../common/nickname-span/nickname-span'
     // let comments = [];
     export default {
-        props:['selectedarticle'],
+        props:{
+            selectedarticle:{},
+            articleContentFlag:{
+                type:Boolean,
+                default:true
+            }
+        },
         components:{
             ArticleCommentList,
             NicknameSpan
