@@ -9,38 +9,37 @@
             </div>
         </a-row>
         <div class="thought-content">
-            <h3>{{item.title}}</h3>
+                <h3><a v-on:click="()=>{showThoughtDetail(item)}">{{item.title}}</a></h3>
         </div>
-        <div class="icon-group">
-            <span>
-                <a-icon type="star-o" style="margin-right: 5px" />
-                {{item.stars ? item.stars: 0}}
-          </span>
-
-            <span>
-            <a-icon type="like" style="margin-right: 5px" :theme="computedType(item.liked)" @click="likeTheThought"/>
-                {{item.like ? item.like: 0}}
-          </span>
-            <span>
-            <a-icon type="dislike" style="margin-right: 5px" :theme="computedType(item.disliked)" @click="disLikeTheThought"/>
-                {{item.dislike ? item.dislike: 0}}
-          </span>
-          <span>
-            <a-icon type="message" style="margin-right: 5px" />
-            {{item.comments ? item.comments: 0}}
-          </span>
-        </div>
+        <ActionBarComponent v-bind:item="item"></ActionBarComponent>
+        <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
+            <article-detail v-bind:selectedarticle="selectedThought"/>
+        </a-modal>
         <a-divider/>
     </div>
 </template>
 <script>
     import ARow from "ant-design-vue/es/grid/Row";
+    import ActionBarComponent from "../../../../components/actionbar/ActionBarComponent";
+    import ArticleDetail from "../article-detail/article-detail";
+
     export default {
-        components: {ARow},
+        components: {ArticleDetail, ActionBarComponent, ARow},
         props:['item'],
+        data(){
+            return{
+                detailVisible:false,
+                selectedThought:{},
+                commentsOfThought: this.item.comments
+            }
+        },
         methods:{
             computedType(flag){
                 return flag ? 'filled':'outlined'
+            },
+            showThoughtDetail(thought){
+                this.selectedThought = thought;
+                this.detailVisible = true;
             },
                 toPersonalPage(item){
                 //todo : (personalIndexUser) get other userInfo by article item userid
@@ -52,62 +51,6 @@
                 this.$store.commit("setSelfIndex",false);//flag to false
                 sessionStorage.setItem("personalIndexUser",JSON.stringify(userInfo));
                 this.$router.push("/community/personal-page")
-            },
-            likeTheThought(){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"like",
-                    "dir": this.item.dir,
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.item.liked === true){
-                                //if already collected ,this means cancel collect
-                                this.item.like = this.item.like - 1;
-                            } else {
-                                this.item.like = this.item.like + 1;
-                            }
-                            this.item.liked = !this.item.liked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-            },
-            disLikeTheThought(){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"dislike",
-                    "dir": this.item.dir,
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.item.disliked === true){
-                                //if already collected ,this means cancel collect
-                                this.item.dislike = this.item.dislike - 1;
-                            } else {
-                                this.item.dislike = this.item.dislike + 1;
-                            }
-                            this.item.disliked = !this.item.disliked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
             }
         }
     }
