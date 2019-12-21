@@ -11,10 +11,10 @@
             </div>
             <div class="action-btn-group">
                 <span slot="actions">
-                    <a-icon type="like" :theme="computedType(subComment.liked)" @click="likeTheComment"/>:{{subComment.like ? subComment.like : 0}}
+                    <LikeBarComponent v-bind:item="subComment" />
                 </span>
                 <span slot="actions" class="action-btn">
-                    <a-icon  type="dislike" :theme="computedType(subComment.disliked)" @click="dislikeTheComment"/>: {{subComment.dislike ? subComment.dislike : 0}}
+                    <DisLikeBarComponent v-bind:item="subComment" />
                 </span>
                 <span class="reply-link">
                     <a v-on:click="switchShowInput">回复评论</a>
@@ -33,8 +33,12 @@
     this is a top level comment of an article
      */
     import NicknameSpan from '../../../../../../../common/nickname-span/nickname-span'
+    import LikeBarComponent from "../../../../../../../../components/actionbar/LikeBarComponent";
+    import DisLikeBarComponent from "../../../../../../../../components/actionbar/DisLikeBarComponent";
     export default {
         components:{
+            DisLikeBarComponent,
+            LikeBarComponent,
             NicknameSpan
         },
         props:["subComment","topComment"],
@@ -58,97 +62,27 @@
             computedType(flag){
                 return flag ? 'filled':'outlined'
             },
-            likeTheComment(){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"like",
-                    "dir": this.subComment.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.subComment.liked === true){
-                                //if already collected ,this means cancel collect
-                                this.subComment.like = this.subComment.like - 1;
-                            } else {
-                                this.subComment.like = this.subComment.like + 1;
-                            }
-                            this.subComment.liked = !this.subComment.liked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-            },
-            dislikeTheComment(){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"dislike",
-                    "dir": this.subComment.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.subComment.disliked === true){
-                                //if already collected ,this means cancel collect
-                                this.subComment.dislike = this.subComment.dislike - 1;
-                            } else {
-                                this.subComment.dislike = this.subComment.dislike + 1;
-                            }
-                            this.subComment.disliked = !this.subComment.disliked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-
-            },
-            onSubmitComment(value){
+            async onSubmitComment(value){
                 let txt = value;
                 if (txt == null || txt.length === 0){
-                    this.$message.warn("请输入评论内容");
+                    await this.$message.warn("请输入评论内容");
                     return;
                 }
                 if (txt.length > 300){
-                    this.$message.warn("输入内容过长，请不要超过300字哦～");
+                    await this.$message.warn("输入内容过长，请不要超过300字哦～");
                     return;
                 }
-                this.$axios.put('/',{
+                await this.request.put('/',{
                     "type":"publication",
                     "subtype":"comment",
                     "content":txt,
                     "commented_user_id":this.subComment.id,
                     "dir": this.topComment.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            this.$message.info("评论成功");
-                            this.topCommentTxt = '';
-                            this.doHideInput();
-                            this.refreshParent();
-                        }else{
-                            this.$message.error(response.data.info);
-                        }
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
+                })
+                await this.$message.info("评论成功");
+                this.topCommentTxt = '';
+                this.doHideInput();
+                this.refreshParent();
             }
         },
         data(){

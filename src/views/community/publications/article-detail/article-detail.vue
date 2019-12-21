@@ -32,9 +32,9 @@
             <mavon-editor :value="detail.content" defaultOpen="preview" :editable="false" :toolbarsFlag="false" :subfield="false"/>
         </div>
         <div class="btn-grp">
-            <span><a-button icon="star" shape="circle" :type="computedType(detail.collected)" @click="starThisArticle(detail)"></a-button>{{detail.collect}}</span>
-            <span><a-button icon="like" shape="circle" :type="computedType(detail.liked)" @click="likeThisArticle(detail)"></a-button>{{detail.like}}</span>
-            <span><a-button icon="dislike" shape="circle" :type="computedType(detail.disliked)" @click="dislikeThisArticle(detail)"></a-button>{{detail.dislike}}</span>
+            <StarBarComponent v-bind:item="detail" v-bind:button="true"/>
+            <LikeBarComponent v-bind:item="detail" v-bind:button="true" />
+            <DisLikeBarComponent v-bind:item="detail" v-bind:button="true" />
         </div>
         <!--评论区-->
 <!--        <a-divider/>-->
@@ -52,6 +52,9 @@
 <script>
     import ArticleCommentList from './article-comment-list/article-comment-list'
     import NicknameSpan from '../../../common/nickname-span/nickname-span'
+    import StarBarComponent from "../../../../components/actionbar/StarBarComponent";
+    import LikeBarComponent from "../../../../components/actionbar/LikeBarComponent";
+    import DisLikeBarComponent from "../../../../components/actionbar/DisLikeBarComponent";
     // let comments = [];
     export default {
         props:{
@@ -62,6 +65,9 @@
             }
         },
         components:{
+            DisLikeBarComponent,
+            LikeBarComponent,
+            StarBarComponent,
             ArticleCommentList,
             NicknameSpan
         },
@@ -74,84 +80,41 @@
             }
         },
 
-        mounted() {
+        async mounted() {
             // ---- retrieve the detail of the article----
-            this.$axios.put('/',{
+            let responseData = await this.request.put('/',{
                 "type":"publication",
                 "subtype":"retrieve",
                 "dir": this.selectedarticle.dir
-            }).then(response=>{
-                if (response.status == 200){
-                    if(response.data.publication){
-                        this.detail = response.data;
-                    }else{
-                        this.$message.error(response.data.info);
-                    }
-                }else{
-                    this.$message.error(response.data);
-                }
-            }).catch(error=>{
-                this.$message.error(error.message);
-            });
+            })
+            this.detail = responseData;
             //---------- retrieve the comment list of the article -----------------------------
-            this.refreshCommentList();
+           await this.refreshCommentList();
 
         },
         methods:{
-            submitComment(){
+            async submitComment(){
               let content = this.commentContent;
               let dir = this.selectedarticle.dir;
-                this.$axios.put('/',{
+              await this.request.put('/',{
                     "type":"publication",
                     "subtype":"comment",
                     "dir": dir,
                     "content":content
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            //refresh the list data
-                            this.$message.success("评论成功");
-                            this.commentContent = "";
-                            this.refreshCommentList();
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
+                })
+                await this.$message.success("评论成功");
+                this.commentContent = "";
+                await this.refreshCommentList();
             },
 
             //刷新评论列表
-            refreshCommentList(){
-                this.$axios.put('/',{
+            async refreshCommentList(){
+                let responseData = await this.request.put('/',{
                     "type":"publication",
                     "subtype":"comment_list",
                     "dir": this.selectedarticle.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            //refresh the list data
-                            this.comments = response.data.info;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
+                })
+                this.comments = responseData.info;
             },
 
             //跳转到个人主页
@@ -172,104 +135,8 @@
                 this.$store.commit("setEditArticleFlag",true);
                 this.$store.commit("setEditArticle",article);
                 this.$router.push("/community/pub-article");
-            },
-
-            //收藏此文章
-            starThisArticle(detail){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"collect",
-                    "dir": detail.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.detail.collected === true){
-                                //if already collected ,this means cancel collect
-                                this.detail.collect = this.detail.collect - 1;
-                            } else {
-                                this.detail.collect = this.detail.collect + 1;
-                            }
-                            this.detail.collected = !this.detail.collected;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-            },
-
-            //点赞
-            likeThisArticle(detail){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"like",
-                    "dir": detail.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.detail.liked === true){
-                                //if already collected ,this means cancel collect
-                                this.detail.like = this.detail.like - 1;
-                            } else {
-                                this.detail.like = this.detail.like + 1;
-                            }
-                            this.detail.liked = !this.detail.liked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-            },
-
-            //踩
-            dislikeThisArticle(detail){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"dislike",
-                    "dir": detail.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.detail.disliked === true){
-                                //if already collected ,this means cancel collect
-                                this.detail.dislike = this.detail.dislike - 1;
-                            } else {
-                                this.detail.dislike = this.detail.dislike + 1;
-                            }
-                            this.detail.disliked = !this.detail.disliked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-            },
-            //type to render buttons
-            computedType(flag){
-                return flag ? 'primary' : 'default';
             }
+
         },
         computed:{
             owingToSelf(){

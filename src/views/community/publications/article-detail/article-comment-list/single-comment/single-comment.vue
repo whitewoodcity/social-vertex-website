@@ -9,8 +9,8 @@
         </div>
         <div>
             <span class="action-btn-group">
-                <span slot="actions" ><a-icon type="like" :theme="computedType(comment.liked)" @click="likeTheComment"/>: {{comment.like ? comment.like : 0}}</span>
-                <span slot="actions" class="action-btn"  ><a-icon type="dislike" :theme="computedType(comment.disliked)" @click="dislikeTheComment"/>: {{comment.dislike ? comment.dislike : 0}}</span>
+                <span slot="actions"><LikeBarComponent  v-bind:item = "comment"/></span>
+                <span slot="actions" class="action-btn"> <DisLikeBarComponent v-bind:item = "comment"/></span>
             </span>
             <span class="add-reply-link"><a @click="switchShowInput">添加回复</a></span>
         </div>
@@ -33,188 +33,114 @@
     import SubCommentList from './sub-comment-list/sub-comment-list';
     import AInputSearch from "ant-design-vue/es/input/Search";
     import NicknameSpan from '../../../../../common/nickname-span/nickname-span';
+    import LikeBarComponent from "../../../../../../components/actionbar/LikeBarComponent";
+    import DisLikeBarComponent from "../../../../../../components/actionbar/DisLikeBarComponent";
     /*
     this is a top level comment of an article
      */
     export default {
 
-        props:['comment'],
-        components:{AInputSearch, SubCommentList,NicknameSpan},
-        data(){
-          return {
-              showInput:false,
+        props: ['comment'],
+        components: {DisLikeBarComponent, LikeBarComponent, AInputSearch, SubCommentList, NicknameSpan},
+        data() {
+            return {
+                showInput: false,
 
-              subCommentList:[],
-              topCommentTxt:''
-          }
+                subCommentList: [],
+                topCommentTxt: ''
+            }
         },
-        methods:{
-            computedType(flag){
-                return flag ? 'filled':'outlined'
-            },
-            likeTheComment(){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"like",
-                    "dir": this.comment.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.comment.liked === true){
-                                //if already collected ,this means cancel collect
-                                this.comment.like = this.comment.like - 1;
-                            } else {
-                                this.comment.like = this.comment.like + 1;
-                            }
-                            this.comment.liked = !this.comment.liked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-            },
-            dislikeTheComment(){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"dislike",
-                    "dir": this.comment.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            if (this.comment.disliked === true){
-                                //if already collected ,this means cancel collect
-                                this.comment.dislike = this.comment.dislike - 1;
-                            } else {
-                                this.comment.dislike = this.comment.dislike + 1;
-                            }
-                            this.comment.disliked = !this.comment.disliked;
-                        }else{
-                            this.$notification['error']({
-                                message: '操作失败',
-                                description: response.data.info
-                            });
-                        }
-
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
-
-            },
-            onSubmitComment(value){
+        methods: {
+            async onSubmitComment(value) {
                 let txt = value;
-                if (txt == null || txt.length === 0){
-                    this.$message.warn("请输入评论内容");
+                if (txt == null || txt.length === 0) {
+                   await this.$message.warn("请输入评论内容");
                     return;
                 }
-                if (txt.length > 300){
-                    this.$message.warn("输入内容过长，请不要超过300字哦～");
+                if (txt.length > 300) {
+                    await this.$message.warn("输入内容过长，请不要超过300字哦～");
                     return;
                 }
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"comment",
-                    "content":txt,
+                await this.request.put('/', {
+                    "type": "publication",
+                    "subtype": "comment",
+                    "content": txt,
                     "dir": this.comment.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            this.$message.info("评论成功");
-                            this.topCommentTxt = '';
-                            this.doHideInput();
-                            this.expandComments = true;
-                            this.refreshSubCommentsList();
-                        }else{
-                            this.$message.error(response.data.info);
-                        }
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
+                })
+                await this.$message.info("评论成功");
+                this.topCommentTxt = '';
+                this.doHideInput();
+                this.expandComments = true;
+                this.refreshSubCommentsList();
             },
-            switchShowInput(){
+            switchShowInput() {
                 if (this.showInput) {
                     this.doHideInput();
-                }else{
+                } else {
                     this.doShowInput();
                 }
             },
-            doShowInput(){
+            doShowInput() {
                 this.showInput = true;
             },
-            doHideInput(){
+            doHideInput() {
                 this.showInput = false;
             },
 
-            refreshSubCommentsList(){
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"comment_list",
+            async refreshSubCommentsList() {
+                let responseData = await this.request.put('/', {
+                    "type": "publication",
+                    "subtype": "comment_list",
                     "dir": this.comment.dir
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
-                            this.subCommentList = response.data.info;
-                        }else{
-                            this.$message.error(response.data.info);
-                        }
-                    }else{
-                        this.$message.error(response.data);
-                    }
-                }).catch(error=>{
-                    this.$message.error(error.message);
-                });
+                })
+                this.subCommentList = responseData.info;
             }
         }
     }
 </script>
 <style scoped>
-    .sigle-top-comment{
+    .sigle-top-comment {
         horiz-align: center;
     }
-    .sub-comment-text{
+
+    .sub-comment-text {
         margin-left: 2%;
         margin-bottom: 5px;
     }
-    .name-span{
+
+    .name-span {
         margin-top: 3px;
         margin-right: 10px;
     }
-    .avatar-area{
+
+    .avatar-area {
         margin-right: 10px;
     }
-    .add-reply-link{
+
+    .add-reply-link {
         margin-top: 5px;
         margin-left: 20px;
     }
-    .action-btn{
+
+    .action-btn {
         margin-left: 25px;
     }
-    .action-btn-group{
+
+    .action-btn-group {
         margin-left: 3%;
     }
-    .comment-content{
+
+    .comment-content {
         padding-top: 5px;
         padding-left: 3%;
         padding-bottom: 5px;
         max-width: 90%;
     }
 
-    .comment-txt-input{
+    .comment-txt-input {
     }
-    .no-comment-span{
+
+    .no-comment-span {
         margin-left: 3%;
     }
 </style>
