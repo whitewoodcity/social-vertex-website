@@ -13,7 +13,7 @@
         </div>
         <ActionBarComponent v-bind:item="item"></ActionBarComponent>
         <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
-            <article-detail v-bind:selectedarticle="selectedThought"/>
+            <article-detail v-bind:selectedarticle="selectedThought" v-bind:article-content-flag="false"/>
         </a-modal>
         <a-divider/>
     </div>
