@@ -21,22 +21,7 @@
         </div>
         <br/>
         <div class="icon-group">
-          <span>
-            <a-icon type="star" style="margin-right: 5px" :theme="computedIconType(item.collected)" @click="starThisArticle(item)"/>
-            {{item.collect ? item.collect: 0}}
-          </span>
-            <span>
-            <a-icon type="like" style="margin-right: 5px" :theme="computedIconType(item.liked)" @click="likeThisArticle(item)"/>
-            {{item.like ? item.like: 0}}
-          </span>
-            <span>
-            <a-icon type="dislike" style="margin-right: 5px" :theme="computedIconType(item.disliked)" @click="dislikeThisArticle(item)"/>
-            {{item.dislike ? item.dislike: 0}}
-          </span>
-            <span>
-            <a-icon type="message" style="margin-right: 5px" />
-            {{item.commented_num ? item.commented_num: 0}}
-          </span>
+            <ActionBarComponent v-bind:item="item"></ActionBarComponent>
         </div>
         <a-modal v-model="detailVisible" :footer="null" width="75vw" :destroyOnClose="true">
             <article-detail v-bind:selectedarticle="selectedArticle"/>
@@ -49,9 +34,11 @@
     import ARow from "ant-design-vue/es/grid/Row";
     import ACol from "ant-design-vue/es/grid/Col";
     import NicknameSpan from "../../../common/nickname-span/nickname-span";
+    import ActionBarComponent from "../../../../components/actionbar/ActionBarComponent";
     export default {
         props:['item'],
         components:{
+            ActionBarComponent,
             ACol,
             ARow,
             ArticleDetail,
