@@ -102,7 +102,7 @@
                     "dir": dir,
                     "content":content
                 })
-                await this.$message.success("评论成功");
+                this.$message.success("评论成功");
                 this.commentContent = "";
                 await this.refreshCommentList();
             },
