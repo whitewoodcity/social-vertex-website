@@ -65,11 +65,11 @@
             async onSubmitComment(value){
                 let txt = value;
                 if (txt == null || txt.length === 0){
-                    await this.$message.warn("请输入评论内容");
+                    this.$message.warn("请输入评论内容");
                     return;
                 }
                 if (txt.length > 300){
-                    await this.$message.warn("输入内容过长，请不要超过300字哦～");
+                    this.$message.warn("输入内容过长，请不要超过300字哦～");
                     return;
                 }
                 await this.request.put('/',{
@@ -79,7 +79,7 @@
                     "commented_user_id":this.subComment.id,
                     "dir": this.topComment.dir
                 })
-                await this.$message.info("评论成功");
+                this.$message.info("评论成功");
                 this.topCommentTxt = '';
                 this.doHideInput();
                 this.refreshParent();
