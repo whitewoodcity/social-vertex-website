@@ -6,7 +6,7 @@
           <div class="index-banner-content">
             <h2>Eclipse Vert.x</h2>
             <h5>是一个用于在JVM上构建响应式应用程序的工具包</h5>
-            <a-button icon="download" size="large" type="primary" @click="onDownload">下载v3.8.2</a-button>
+            <a-button icon="download" size="large" type="primary" @click="onDownload">下载v3.9.1</a-button>
           </div>
         </a-col>
         <a-col :span="12">
