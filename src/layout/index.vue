@@ -10,11 +10,11 @@
         </div>
         <div class="layout-header-menubar">
           <a-menu mode="horizontal">
-            <a-menu-item>
-              <router-link to="/publish">
-                <a-icon type="sound"/>发布
-              </router-link>
-            </a-menu-item>
+<!--            <a-menu-item>-->
+<!--              <router-link to="/publish">-->
+<!--                <a-icon type="sound"/>发布-->
+<!--              </router-link>-->
+<!--            </a-menu-item>-->
             <a-menu-item>
               <router-link to="/document">
                 <a-icon type="book"/>文档
@@ -25,11 +25,11 @@
                 <a-icon type="message"/>社区
               </router-link>
             </a-menu-item>
-            <a-menu-item>
-              <router-link to="/awesome">
-                <a-icon type="like"/>Awesome-Vert.x
-              </router-link>
-            </a-menu-item>
+<!--            <a-menu-item>-->
+<!--              <router-link to="/awesome">-->
+<!--                <a-icon type="like"/>Awesome-Vert.x-->
+<!--              </router-link>-->
+<!--            </a-menu-item>-->
             <a-menu-item>
               <a href="https://start.vertx.io/" target="_blank">
                 <a-icon type="rocket"/>Starter
@@ -122,7 +122,7 @@ export default {
   }
   .user-status-bar{
     float: left;
-    margin-left: 10vw;
+    margin-left: 25vw;
     padding-top: 7px;
   }
 
