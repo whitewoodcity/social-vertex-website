@@ -1,6 +1,6 @@
 # vertx-china-community
 
-[![Build Status](https://travis-ci.org/whitewoodcity/social-vertex-website.svg?branch=develop)](https://travis-ci.org/whitewoodcity/social-vertex-website)
+[![Build Status](https://github.com/whitewoodcity/social-vertex-website/workflows/github%20pages/badge.svg)](https://github.com/whitewoodcity/social-vertex-website/actions?query=workflow%3A%22github+pages%22)
 
 ## Project setup
 ```
