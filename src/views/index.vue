@@ -1,123 +1,123 @@
 <template>
   <div class="index">
-    <div class="index-banner">
-      <a-row align="middle" justify="space-around" type="flex">
-        <a-col :span="8">
-          <div class="index-banner-content">
-            <h2>Eclipse Vert.x</h2>
-            <h5>是一个用于在JVM上构建响应式应用程序的工具包</h5>
-            <a-button icon="download" size="large" type="primary" @click="onDownload">下载v3.9.1</a-button>
-          </div>
-        </a-col>
-        <a-col :span="12">
-          <lottie
-            z-index="100"
-            :options="indexBannerOptions"
-            :height="200"
-            :width="400"
-            v-on:animCreated="handleAnimation"
-          />
-          <div class="index-banner-inset">
-            <a-icon type="sync" spin/>
-            <h2>Reactive</h2>
-          </div>
-        </a-col>
-      </a-row>
-    </div>
-    <div class="index-event">
-      <a-row align="middle" justify="center" type="flex">
-        <a-col :span="8">
-          <div class="index-event-content">
-            <h2>
-              <a-icon type="alert"/>&nbsp;事件驱动
-            </h2>
-            <p>
-              Eclipse Vert.x是<strong>事件驱动</strong>的。
-              <br>这意味着您的应用程序可以使用少量内核线程处理大量并发。Vert.x可让您的应用程序以最少的硬件进行扩展。
-            </p>
-          </div>
-        </a-col>
-        <a-col :span="6">
-          <lottie
-            z-index="100"
-            :options="indexEventOptions"
-            :height="360"
-            :width="400"
-            v-on:animCreated="handleAnimation"
-          />
-        </a-col>
-      </a-row>
-    </div>
-    <div class="index-non-blocking">
-      <a-row align="middle" justify="center" type="flex">
-        <a-col :span="6">
-          <lottie
-            z-index="100"
-            :options="indexNonBlockingOptions"
-            :height="360"
-            :width="400"
-            v-on:animCreated="handleAnimation"
-          />
-        </a-col>
-        <a-col :span="1"></a-col>
-        <a-col :span="8">
-          <div class="index-non-blocking-content">
-            <h2>
-              <a-icon type="thunderbolt"/>&nbsp;非阻塞
-            </h2>
-            <p>
-              Eclipse Vert.x是<strong>非阻塞</strong>的。
-              <br>这意味着您的应用程序可以使用少量内核线程处理大量并发。Vert.x可让您的应用程序以最少的硬件进行扩展。
-            </p>
-          </div>
-        </a-col>
-      </a-row>
-    </div>
-    <div class="index-polyglot">
-      <a-row justify="center" type="flex">
-        <a-col :span="9">
-          <div class="index-polyglot-code">
-            <a-tabs defaultActiveKey="Java" size="small">
-              <a-tab-pane tab="Java" key="Java">
-                <vue-simple-markdown :source="javaCode"></vue-simple-markdown>
-              </a-tab-pane>
-              <a-tab-pane tab="JavaScript" key="JavaScript">
-                <vue-simple-markdown :source="jsCode"></vue-simple-markdown>
-              </a-tab-pane>
-              <a-tab-pane tab="Groovy" key="Groovy">
-                <vue-simple-markdown :source="groovyCode"></vue-simple-markdown>
-              </a-tab-pane>
-              <a-tab-pane tab="Ruby" key="Ruby">
-                <vue-simple-markdown :source="rubyCode"></vue-simple-markdown>
-              </a-tab-pane>
-              <a-tab-pane tab="Scala" key="Scala">
-                <vue-simple-markdown :source="scalaCode"></vue-simple-markdown>
-              </a-tab-pane>
-              <a-tab-pane tab="Kotlin" key="Kotlin">
-                <vue-simple-markdown :source="kotlinCode"></vue-simple-markdown>
-              </a-tab-pane>
-            </a-tabs>
-          </div>
-        </a-col>
-        <a-col :span="1"></a-col>
-        <a-col :span="8">
-          <div class="index-polyglot-content">
-            <h2>
-              <a-icon type="deployment-unit"/>&nbsp;多语言支持
-            </h2>
-            <p>
-               Java / JavaScript / Groovy / Ruby / Scala / Kotlin.
-            </p>
-            <p>
-              Vert.x眼里<strong>没有最好的语言，只有最合适的语言.</strong>
-            </p>
-            <p>
-              Vert.x社区会为所有语言提供完全等价的API.
-            </p>
-         </div>
-        </a-col>
-      </a-row>
-    </div>
+<!--    <div class="index-banner">-->
+<!--      <a-row align="middle" justify="space-around" type="flex">-->
+<!--        <a-col :span="8">-->
+<!--          <div class="index-banner-content">-->
+<!--            <h2>Eclipse Vert.x</h2>-->
+<!--            <h5>是一个用于在JVM上构建响应式应用程序的工具包</h5>-->
+<!--            <a-button icon="download" size="large" type="primary" @click="onDownload">下载v3.9.1</a-button>-->
+<!--          </div>-->
+<!--        </a-col>-->
+<!--        <a-col :span="12">-->
+<!--          <lottie-->
+<!--            z-index="100"-->
+<!--            :options="indexBannerOptions"-->
+<!--            :height="200"-->
+<!--            :width="400"-->
+<!--            v-on:animCreated="handleAnimation"-->
+<!--          />-->
+<!--          <div class="index-banner-inset">-->
+<!--            <a-icon type="sync" spin/>-->
+<!--            <h2>Reactive</h2>-->
+<!--          </div>-->
+<!--        </a-col>-->
+<!--      </a-row>-->
+<!--    </div>-->
+<!--    <div class="index-event">-->
+<!--      <a-row align="middle" justify="center" type="flex">-->
+<!--        <a-col :span="8">-->
+<!--          <div class="index-event-content">-->
+<!--            <h2>-->
+<!--              <a-icon type="alert"/>&nbsp;事件驱动-->
+<!--            </h2>-->
+<!--            <p>-->
+<!--              Eclipse Vert.x是<strong>事件驱动</strong>的。-->
+<!--              <br>这意味着您的应用程序可以使用少量内核线程处理大量并发。Vert.x可让您的应用程序以最少的硬件进行扩展。-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </a-col>-->
+<!--        <a-col :span="6">-->
+<!--          <lottie-->
+<!--            z-index="100"-->
+<!--            :options="indexEventOptions"-->
+<!--            :height="360"-->
+<!--            :width="400"-->
+<!--            v-on:animCreated="handleAnimation"-->
+<!--          />-->
+<!--        </a-col>-->
+<!--      </a-row>-->
+<!--    </div>-->
+<!--    <div class="index-non-blocking">-->
+<!--      <a-row align="middle" justify="center" type="flex">-->
+<!--        <a-col :span="6">-->
+<!--          <lottie-->
+<!--            z-index="100"-->
+<!--            :options="indexNonBlockingOptions"-->
+<!--            :height="360"-->
+<!--            :width="400"-->
+<!--            v-on:animCreated="handleAnimation"-->
+<!--          />-->
+<!--        </a-col>-->
+<!--        <a-col :span="1"></a-col>-->
+<!--        <a-col :span="8">-->
+<!--          <div class="index-non-blocking-content">-->
+<!--            <h2>-->
+<!--              <a-icon type="thunderbolt"/>&nbsp;非阻塞-->
+<!--            </h2>-->
+<!--            <p>-->
+<!--              Eclipse Vert.x是<strong>非阻塞</strong>的。-->
+<!--              <br>这意味着您的应用程序可以使用少量内核线程处理大量并发。Vert.x可让您的应用程序以最少的硬件进行扩展。-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </a-col>-->
+<!--      </a-row>-->
+<!--    </div>-->
+<!--    <div class="index-polyglot">-->
+<!--      <a-row justify="center" type="flex">-->
+<!--        <a-col :span="9">-->
+<!--          <div class="index-polyglot-code">-->
+<!--            <a-tabs defaultActiveKey="Java" size="small">-->
+<!--              <a-tab-pane tab="Java" key="Java">-->
+<!--                <vue-simple-markdown :source="javaCode"></vue-simple-markdown>-->
+<!--              </a-tab-pane>-->
+<!--              <a-tab-pane tab="JavaScript" key="JavaScript">-->
+<!--                <vue-simple-markdown :source="jsCode"></vue-simple-markdown>-->
+<!--              </a-tab-pane>-->
+<!--              <a-tab-pane tab="Groovy" key="Groovy">-->
+<!--                <vue-simple-markdown :source="groovyCode"></vue-simple-markdown>-->
+<!--              </a-tab-pane>-->
+<!--              <a-tab-pane tab="Ruby" key="Ruby">-->
+<!--                <vue-simple-markdown :source="rubyCode"></vue-simple-markdown>-->
+<!--              </a-tab-pane>-->
+<!--              <a-tab-pane tab="Scala" key="Scala">-->
+<!--                <vue-simple-markdown :source="scalaCode"></vue-simple-markdown>-->
+<!--              </a-tab-pane>-->
+<!--              <a-tab-pane tab="Kotlin" key="Kotlin">-->
+<!--                <vue-simple-markdown :source="kotlinCode"></vue-simple-markdown>-->
+<!--              </a-tab-pane>-->
+<!--            </a-tabs>-->
+<!--          </div>-->
+<!--        </a-col>-->
+<!--        <a-col :span="1"></a-col>-->
+<!--        <a-col :span="8">-->
+<!--          <div class="index-polyglot-content">-->
+<!--            <h2>-->
+<!--              <a-icon type="deployment-unit"/>&nbsp;多语言支持-->
+<!--            </h2>-->
+<!--            <p>-->
+<!--               Java / JavaScript / Groovy / Ruby / Scala / Kotlin.-->
+<!--            </p>-->
+<!--            <p>-->
+<!--              Vert.x眼里<strong>没有最好的语言，只有最合适的语言.</strong>-->
+<!--            </p>-->
+<!--            <p>-->
+<!--              Vert.x社区会为所有语言提供完全等价的API.-->
+<!--            </p>-->
+<!--         </div>-->
+<!--        </a-col>-->
+<!--      </a-row>-->
+<!--    </div>-->
   </div>
 </template>
 

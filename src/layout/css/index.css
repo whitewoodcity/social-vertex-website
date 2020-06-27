@@ -149,12 +149,11 @@
     margin-bottom: 22px;
   }
 
-  .router-view-area{
-    height: 80vh;
-  }
-
   .user-status-bar{
     margin-left: 13px;
+  }
+  .no-display{
+    display: none;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -193,22 +192,32 @@
     background-color: #F8F9FA;
     box-shadow: 0px 0px 10px 1px #D6D6D6;
   }
-  .head .head-box .change-box .change-list .a1 {
+  .head .head-box .change-box .change-list-mobile {
+    /*display: none;*/
+    position: absolute;
+    top: 84px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #F8F9FA;
+    box-shadow: 0px 0px 10px 1px #D6D6D6;
+  }
+  .head .head-box .change-box .change-list-mobile .a1 {
     display: block;
     color: #3c3c3c;
     font-size: .24rem;
     padding-left: .6rem;
     line-height: .7rem;
   }
-  .head .head-box .change-box .change-list .a1:hover {
+  .head .head-box .change-box .change-list-mobile .a1:hover {
     color: #782b90;
   }
-  .head .head-box .change-box .change-list .a-box {
+  .head .head-box .change-box .change-list-mobile .a-box {
     padding-top: .15rem;
     padding-bottom: .2rem;
     padding-left: 3.4rem;
   }
-  .head .head-box .change-box .change-list .a-box .a2 {
+  .head .head-box .change-box .change-list-mobile .a-box .a2 {
     width: 62px;
     height: 24px;
     display: block;
@@ -220,12 +229,12 @@
     text-align: center;
     margin-right: 10px;
   }
-  .head .head-box .change-box .change-list .a-box .a2:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a2:hover {
     color: #782b90;
   }
-  .head .head-box .change-box .change-list .a-box .a2.act {
+  .head .head-box .change-box .change-list-mobile .a-box .a2.act {
   }
-  .head .head-box .change-box .change-list .a-box .a3 {
+  .head .head-box .change-box .change-list-mobile .a-box .a3 {
     display: block;
     width: 17px;
     height: 22px;
@@ -235,10 +244,10 @@
     margin-left: 20px;
     float: left;
   }
-  .head .head-box .change-box .change-list .a-box .a3:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a3:hover {
     background-image: url(../img/head-right1-2.svg);
   }
-  .head .head-box .change-box .change-list .a-box .a4 {
+  .head .head-box .change-box .change-list-mobile .a-box .a4 {
     display: block;
     width: 19px;
     height: 22px;
@@ -248,10 +257,10 @@
     margin-left: 20px;
     float: left;
   }
-  .head .head-box .change-box .change-list .a-box .a4:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a4:hover {
     background-image: url(../img/head-right2-2.svg);
   }
-  .head .head-box .change-box .change-list .a-box .a5 {
+  .head .head-box .change-box .change-list-mobile .a-box .a5 {
     display: block;
     width: 17px;
     height: 22px;
@@ -261,7 +270,7 @@
     margin-left: 20px;
     float: left;
   }
-  .head .head-box .change-box .change-list .a-box .a5:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a5:hover {
     background-image: url(../img/head-right3-2.svg);
   }
   .head .head-box .change-box .change-btn {
@@ -311,8 +320,11 @@
     line-height: 30px;
     margin-bottom: .2rem;
   }
-  .box1 {
-    height: 800px;
+  /*.box1 {*/
+  /*  height: 800px;*/
+  /*}*/
+  .no-display{
+    display: none;
   }
 }
 @media screen and (max-width: 700px) {
@@ -342,7 +354,7 @@
     float: right;
   }
   .head .head-box .change-box .change-list {
-    display: none;
+    /*display: none;*/
     position: absolute;
     top: .9rem;
     left: 0;
@@ -351,7 +363,7 @@
     background-color: #F8F9FA;
     box-shadow: 0px 0px 10px 1px #D6D6D6;
   }
-  .head .head-box .change-box .change-list .a1 {
+  .head .head-box .change-box .change-list-mobile .a1 {
     display: block;
     color: #3c3c3c;
     font-size: .24rem;
@@ -360,10 +372,10 @@
     float: left;
     width: 100%;
   }
-  .head .head-box .change-box .change-list .a1:hover {
+  .head .head-box .change-box .change-list-mobile .a1:hover {
     color: #782b90;
   }
-  .head .head-box .change-box .change-list .a-box {
+  .head .head-box .change-box .change-list-mobile .a-box {
     padding-top: .15rem;
     padding-bottom: .2rem;
     padding-left: 0;
@@ -372,7 +384,7 @@
     margin-right: 0;
     margin-right: .2rem;
   }
-  .head .head-box .change-box .change-list .a-box .a2 {
+  .head .head-box .change-box .change-list-mobile .a-box .a2 {
     width: 58px;
     height: 22px;
     display: block;
@@ -384,12 +396,12 @@
     text-align: center;
     margin-right: 4px;
   }
-  .head .head-box .change-box .change-list .a-box .a2:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a2:hover {
     color: #782b90;
   }
-  .head .head-box .change-box .change-list .a-box .a2.act {
+  .head .head-box .change-box .change-list-mobile .a-box .a2.act {
   }
-  .head .head-box .change-box .change-list .a-box .a3 {
+  .head .head-box .change-box .change-list-mobile .a-box .a3 {
     display: block;
     width: 17px;
     height: 22px;
@@ -399,10 +411,10 @@
     margin-left: 10px;
     float: left;
   }
-  .head .head-box .change-box .change-list .a-box .a3:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a3:hover {
     background-image: url(../img/head-right1-2.svg);
   }
-  .head .head-box .change-box .change-list .a-box .a4 {
+  .head .head-box .change-box .change-list-mobile .a-box .a4 {
     display: block;
     width: 19px;
     height: 22px;
@@ -412,10 +424,10 @@
     margin-left: 10px;
     float: left;
   }
-  .head .head-box .change-box .change-list .a-box .a4:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a4:hover {
     background-image: url(../img/head-right2-2.svg);
   }
-  .head .head-box .change-box .change-list .a-box .a5 {
+  .head .head-box .change-box .change-list-mobile .a-box .a5 {
     display: block;
     width: 17px;
     height: 22px;
@@ -425,7 +437,7 @@
     margin-left: 10px;
     float: left;
   }
-  .head .head-box .change-box .change-list .a-box .a5:hover {
+  .head .head-box .change-box .change-list-mobile .a-box .a5:hover {
     background-image: url(../img/head-right3-2.svg);
   }
   .head .head-box .change-box .change-btn {
@@ -474,7 +486,10 @@
     line-height: .5rem;
     margin-bottom: .2rem;
   }
-  .box1 {
-    height: 800px;
+  /*.box1 {*/
+  /*  height: 800px;*/
+  /*}*/
+  .no-display{
+    display: none;
   }
 }

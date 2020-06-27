@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from './layout/index.vue'
-import Index from './views/index.vue'
+// import Index from './views/index.vue'
 import Publish from './views/publish/index.vue'
 import Document from './views/document/index.vue'
 import Community from './views/community/index.vue'
@@ -27,11 +27,14 @@ export default new Router({
     path: '/',
     name: 'Layout',
     component: Layout,
-    children: [{
+    children: [
+    //    abandon original index
+    {
       path: '/',
       name: 'Index',
-      component: Index,
-    }, {
+      component: Document,
+    },
+    {
       path: '/publish',
       name: 'Publish',
       component: Publish,
