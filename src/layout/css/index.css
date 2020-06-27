@@ -25,6 +25,9 @@
   .head .head-box .change-box {
     float: right;
   }
+  .head .head-box .change-box .change-list-mobile {
+    display: none;
+  }
   .head .head-box .change-box .change-list .a1 {
     display: block;
     color: #3c3c3c;
