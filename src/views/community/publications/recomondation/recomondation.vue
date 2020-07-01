@@ -1,39 +1,41 @@
 <template>
-    <div class="article-list">
-        <article-list v-bind:listData="listData"/>
-        <div v-if="showLoadingMore" slot="loadMore" :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
-            <a-spin v-if="loadingMore" />
-            <a-button v-else @click="onLoadMore">loading more</a-button>
-        </div>
+  <div class="article-list">
+    <article-list v-bind:listData="listData"/>
+    <div v-if="showLoadingMore" slot="loadMore"
+         :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
+      <a-spin v-if="loadingMore"/>
+      <a-button v-else @click="onLoadMore">loading more</a-button>
     </div>
+  </div>
 </template>
 <script>
     import ArticleList from "../common/article-list"
+
     const listData = [];
     export default {
-        components:{
+        components: {
             ArticleList
         },
-        data () {
+        data() {
             return {
-                listData:listData,
+                listData: listData,
                 loading: false,
                 loadingMore: false,
                 showLoadingMore: true,
-                timePoint:null,
+                timePoint: null,
             }
         },
-        beforeMount(){
+        beforeMount() {
             //------------------------------------------
             //listData置空以防止添加重复的articles
             this.loading = false;
             this.listData = [];
-            this.$axios.put('/',{
-                "type":"publication",
-                "subtype":"history"
-            }).then(response=>{
-                if (response.status == 200){
-                    if(response.data.publication){
+            this.$axios.put('/', {
+                "type": "publication",
+                "subtype": "history"
+            }).then(response => {
+                if (response.status == 200) {
+                    if (response.data.publication) {
                         // on query success
                         let listData = this.listData;
                         let ariticleList = response.data.history;
@@ -41,45 +43,45 @@
                         for (let i = 0; i < ariticleList.length; i++) {
                             listData.push(ariticleList[i]);
                         }
-                    }else{
+                    } else {
                         this.$message.error(response.data.info);
                     }
-                }else{
+                } else {
                     this.$message.error(response.data);
                 }
-            }).catch(error=>{
+            }).catch(error => {
                 this.$message.error(error.message);
             });
             //---------------------------------------
         },
-        methods:{
-            onLoadMore () {
+        methods: {
+            onLoadMore() {
                 this.loadingMore = true
-                this.$axios.put('/',{
-                    "type":"publication",
-                    "subtype":"history",
-                    "time":this.timePoint
-                }).then(response=>{
-                    if (response.status == 200){
-                        if(response.data.publication){
+                this.$axios.put('/', {
+                    "type": "publication",
+                    "subtype": "history",
+                    "time": this.timePoint
+                }).then(response => {
+                    if (response.status == 200) {
+                        if (response.data.publication) {
                             // on query success
                             let listData = this.listData;
                             let ariticleList = response.data.history;
                             this.timePoint = response.data.time;
-                            if (ariticleList.length == 0){
+                            if (ariticleList.length == 0) {
                                 this.$message.info("没有更多了哟");
                             }
                             for (let i = 0; i < ariticleList.length; i++) {
                                 listData.push(ariticleList[i]);
                             }
                             this.loadingMore = false
-                        }else{
+                        } else {
                             this.$message.error(response.data.info);
                         }
-                    }else{
+                    } else {
                         this.$message.error(response.data);
                     }
-                }).catch(error=>{
+                }).catch(error => {
                     this.$message.error(error.message);
                 });
                 //---------------------------------------
@@ -89,8 +91,8 @@
 
 </script>
 <style scoped>
-    .article-list{
-        margin-left: 30px;
-    }
+  .article-list {
+    margin-left: 30px;
+  }
 
 </style>
