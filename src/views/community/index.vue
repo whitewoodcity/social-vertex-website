@@ -1,6 +1,5 @@
 <template>
   <div class="community">
-    <a-row><div class="guiding-line"></div></a-row>
     <a-row class="community-content">
       <a-col :span="3" class="purple-side-wrapper">
 <!--        <div class="purple-side"></div>-->
@@ -64,9 +63,6 @@
       </a-modal>
 <!--      <a-button @click="confirm">Confirm</a-button>-->
     </div>
-    <a-row>
-      <manual-footer></manual-footer>
-    </a-row>
   </div>
 
 
@@ -75,7 +71,6 @@
 <script>
 import ARow from "ant-design-vue/es/grid/Row";
 import ACol from "ant-design-vue/es/grid/Col";
-import ManualFooter from "../common/mannual-footer/mannual-footer"
 
 export default {
   data(){
@@ -84,7 +79,7 @@ export default {
       thought:""
     }
   },
-  components: {ACol, ARow,ManualFooter},
+  components: {ACol, ARow},
   methods:{
     toPubArticle: function(){
       this.setNoneEdit();
@@ -148,17 +143,19 @@ export default {
 </script>
 
 <style scoped>
+  .community{
+    border-top: #cccccc 1px solid;
+    border-bottom: #cccccc 1px solid;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+
+  }
   .community-content{
     /*f0f2f5*/
     /*background-color: #f0f2f5;*/
     /*background-color: #6f338b;*/
-    background-image: linear-gradient(#6f338b,#9198e5, #9198e5);
+    /*background-image: linear-gradient(#6f338b,#9198e5, #9198e5);*/
     height: auto;
-  }
-  .guiding-line{
-    height: 10px;
-    width: 100%;
-    background-color: #6f338b;
   }
   .purple-side-wrapper{
     height: auto;
