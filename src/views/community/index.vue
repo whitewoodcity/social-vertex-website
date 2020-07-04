@@ -4,7 +4,7 @@
       <a-col :span="3" class="purple-side-wrapper">
 <!--        <div class="purple-side"></div>-->
       </a-col>
-      <a-col :span="20">
+      <a-col :span="18">
         <!-- community body -->
 
         <!-- real content -->
