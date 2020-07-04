@@ -4,13 +4,13 @@
       <a-col :span="3" class="purple-side-wrapper">
 <!--        <div class="purple-side"></div>-->
       </a-col>
-      <a-col :span="18">
+      <a-col :span="24">
         <!-- community body -->
 
         <!-- real content -->
         <a-row :gutter="20" class="real-content">
           <!-- left bar 显示子模块信息 -->
-          <a-col :span="18">
+          <a-col :span="24">
             <div class="router-content">
               <router-view></router-view>
             </div>
