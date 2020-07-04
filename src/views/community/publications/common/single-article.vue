@@ -107,7 +107,7 @@
 
   .article-title {
     margin-top: 10px;
-    font-size: 1.25rem;
+    font-size: 200%;
   }
 
   .article-content {
