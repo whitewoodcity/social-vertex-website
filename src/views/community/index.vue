@@ -144,8 +144,8 @@ export default {
 
 <style scoped>
   .community{
-    border-top: #cccccc 1px solid;
-    border-bottom: #cccccc 1px solid;
+    /*border-top: #cccccc 1px solid;*/
+    /*border-bottom: #cccccc 1px solid;*/
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 
@@ -170,7 +170,8 @@ export default {
 
   }
   .right-bar{
-    background-color: #f0f2f5;
+    /*background-color: #f0f2f5;*/
+    background-color: #ffffff;
   }
   .icon-item{
     float: left;
@@ -183,7 +184,8 @@ export default {
     padding-right: 10px;
   }
   .real-content{
-    background-color: #f0f2f5;
+    /*background-color: #f0f2f5;*/
+    background-color: #ffffff;
     min-height: 100vh;
   }
   .msg-title{
@@ -191,7 +193,8 @@ export default {
   }
   .router-content{
     height: auto;
-    background-color: #f0f2f5;
+    /*background-color: #f0f2f5;*/
+    background-color: #ffffff;
   }
 
 
