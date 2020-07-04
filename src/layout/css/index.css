@@ -6,10 +6,6 @@
     z-index: 2;
     width: 100%;
   }
-  .head.sha {
-    position: fixed;
-    width: 100%;
-  }
   .head .head-box {
     width: 1180px;
     margin: 0 auto;
@@ -171,10 +167,6 @@
     background-color: white;
     position: fixed;
     z-index: 2;
-    width: 100%;
-  }
-  .head.sha {
-    position: fixed;
     width: 100%;
   }
   .head .head-box {
@@ -345,10 +337,6 @@
     background-color: white;
     position: fixed;
     z-index: 2;
-    width: 100%;
-  }
-  .head.sha {
-    position: fixed;
     width: 100%;
   }
   .head .head-box {
