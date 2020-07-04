@@ -2,16 +2,16 @@
   .head {
     background-color: white;
     height: 84px;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
   }
   .head.sha {
     position: fixed;
     width: 100%;
   }
   .head .head-box {
-    position: fixed;
-    z-index: 2;
     width: 1180px;
-    /*width: 100%;*/
     margin: 0 auto;
     padding-top: 44px;
     padding-left: 0.8rem;
@@ -169,6 +169,9 @@
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-color: white;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
   }
   .head.sha {
     position: fixed;
@@ -340,6 +343,9 @@
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-color: white;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
   }
   .head.sha {
     position: fixed;
