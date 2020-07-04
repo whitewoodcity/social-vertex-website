@@ -145,17 +145,10 @@ export default {
 
 <style scoped>
   .community{
-    /*border-top: #cccccc 1px solid;*/
-    /*border-bottom: #cccccc 1px solid;*/
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-
+    /*padding-top: 1.5rem;*/
+    /*padding-bottom: 1.5rem;*/
   }
   .community-content{
-    /*f0f2f5*/
-    /*background-color: #f0f2f5;*/
-    /*background-color: #6f338b;*/
-    /*background-image: linear-gradient(#6f338b,#9198e5, #9198e5);*/
     height: auto;
   }
   .purple-side-wrapper{
