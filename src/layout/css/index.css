@@ -8,12 +8,17 @@
     width: 100%;
   }
   .head .head-box {
+    position: fixed;
+    z-index: 2;
     width: 1180px;
+    /*width: 100%;*/
     margin: 0 auto;
     padding-top: 44px;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
+    /*padding-right: 30%;*/
     margin-bottom: 72px;
+    background-color: #ffffff;
   }
   .head .head-box .logo {
     width: 200px;

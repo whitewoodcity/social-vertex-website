@@ -10,7 +10,6 @@ body,ul,li,h1,h2,h3,h4,h5,h6,p,ol,li,dt,dd,dl{
     border:none;
     list-style: none;
     font-weight: normal;
-    
 }
 body{
     margin: 0;
@@ -20,7 +19,7 @@ body{
     transition: opacity .5s ease;
 }
 img{
-	vertical-align:bottom; 
+	vertical-align:bottom;
 	display:block;
 }
 svg{
