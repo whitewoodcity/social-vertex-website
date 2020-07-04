@@ -138,6 +138,5 @@ export default {
 
 <style lang="less" scoped>
     @import "./css/index.css";
-    @import "./css/public.css";
 </style>
 
