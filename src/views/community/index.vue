@@ -17,7 +17,7 @@
           </a-col>
 
           <!-- right bar -->
-          <a-col :span="6" class="right-bar">
+<!--          <a-col :span="6" class="right-bar">
             <a-affix>
               <div class="icon-group">
                 <div class="icon-item">
@@ -50,6 +50,7 @@
               <div><a-divider /></div>
             </a-affix>
           </a-col>
+          -->
         </a-row>
       </a-col>
       <a-col :span="3" class="purple-side-wrapper"></a-col>
