@@ -1,10 +1,10 @@
 <template>
   <div class="community">
     <a-row class="community-content">
-      <a-col :span="3" :lg="0" class="purple-side-wrapper">
+      <a-col :lg="0" :xl="3" class="purple-side-wrapper">
 <!--        <div class="purple-side"></div>-->
       </a-col>
-      <a-col :span="18" :lg="24">
+      <a-col :xl="18" :lg="24">
         <!-- community body -->
 
         <!-- real content -->
@@ -53,7 +53,7 @@
           -->
         </a-row>
       </a-col>
-      <a-col :span="3" :lg="24" class="purple-side-wrapper"></a-col>
+      <a-col :xl="3" :lg="0" class="purple-side-wrapper"></a-col>
     </a-row>
     <div>
       <a-modal title="发状态" v-model="msgSendingViewVisible" @ok="confirmThought" okText="确认" cancelText="取消">
