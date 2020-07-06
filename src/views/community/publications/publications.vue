@@ -49,7 +49,7 @@
 </script>
 <style scoped>
   .articles-view {
-    padding: 20px;
+    /*margin: 20px;*/
   }
 
   .search-input {

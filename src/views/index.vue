@@ -293,7 +293,6 @@ export default {
 }
 .index-polyglot-code {
   margin-top: 20%;
-  margin-top: 10%;
   text-align: left;
 }
 .index-polyglot-content {

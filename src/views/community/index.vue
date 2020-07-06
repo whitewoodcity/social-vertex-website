@@ -8,7 +8,7 @@
         <!-- community body -->
 
         <!-- real content -->
-        <a-row :gutter="20" class="real-content">
+        <a-row class="real-content">
           <!-- left bar 显示子模块信息 -->
           <a-col :span="24">
             <div class="router-content">
@@ -188,6 +188,13 @@ export default {
   .community-content{
     height: auto;
   }
+
+  @media only screen and (max-width: 1200px) {
+        .community-content{
+            margin: 0 30px 0 10px;
+        }
+  }
+
   .purple-side-wrapper{
     height: auto;
   }
@@ -198,7 +205,7 @@ export default {
   .icon-group{
     display: flex;
     float:right;
-    margin-top: 30px;
+      margin-top: 5px;
 
     /*width: 100%;*/
     /*padding-top: 60px;*/
@@ -210,6 +217,8 @@ export default {
           padding-left: 25px;
           width: 100%;
           float: left;
+          margin-right: 0;
+
       }
   }
 
