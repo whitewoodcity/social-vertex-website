@@ -2,18 +2,15 @@
   <div class="articles-view">
     <a-row>
       <div class="search-bar">
-        <a-input-search class="search-input" placeholder="搜索的内容" enterButton/>
-        <a-dropdown >
-          <a-button>选择搜索专题</a-button>
-          <a-menu slot="overlay">
-            <a-menu-item>
-              <a>文章</a>
-            </a-menu-item>
-            <a-menu-item>
-              <a>问答</a>
-            </a-menu-item>
-          </a-menu>
-        </a-dropdown>
+        <a-input-group compact>
+          <!--//TODO idk why the border disappears -->
+          <a-input-search class="search-input" placeholder="搜索的内容" enterButton>
+            <a-select default-value="article" slot="addonBefore">
+              <a-select-option value="article">文章</a-select-option>
+              <a-select-option value="aq">问答</a-select-option>
+            </a-select>
+          </a-input-search>
+        </a-input-group>
       </div>
     </a-row>
     <div class="nav-bar">
@@ -58,6 +55,14 @@
   .search-input {
     padding-left: 5px;
     padding-right: 5px;
-    width: 300px;
+    max-width: 300px;
   }
+  .search-bar{
+    float: left;
+    max-width: 100%;
+    margin:10px
+  }
+
+
+
 </style>

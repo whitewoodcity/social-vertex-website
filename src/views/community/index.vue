@@ -12,45 +12,82 @@
           <!-- left bar 显示子模块信息 -->
           <a-col :span="24">
             <div class="router-content">
+                <div class="icon-group" >
+                  <div class="icon-item">
+                    <div class="icon">
+                      <a-button icon="profile" @click="()=>{toPubArticle();}"/>
+                    </div>
+                    <span>发帖子</span>
+                  </div>
+                  <div class="icon-item">
+                    <div class="icon">
+                      <a-button icon="user" @click="routeToMyPage('/personal-page')"/>
+                    </div>
+                    <span>个人主页</span>
+                  </div>
+                  <div class="icon-item">
+                    <div class="icon">
+                      <a-button icon="message" @click="showMsgSendingView"/>
+                    </div>
+                    <span>发状态</span>
+                  </div>
+                  <div class="icon-item">
+                    <div class="icon">
+                      <a-button icon="search" @click="routeToPage('/publications')"/>
+                    </div>
+                    <span>去搜帖</span>
+                  </div>
+                  <!--                <div class="icon-item">-->
+                  <!--                  <div class="icon">-->
+                  <!--                    <a-button icon="star" @click="routeToPage('/my-collect')"/>-->
+                  <!--                  </div>-->
+                  <!--                  <span>我的收藏</span>-->
+                  <!--                </div>-->
+
+                  <!--                <div class="icon-item">-->
+                  <!--                  <div class="icon">-->
+                  <!--                    <a-button icon="team" @click="routeToPage('/my-following')"/>-->
+                  <!--                  </div>-->
+                  <!--                  <span>关注的人</span>-->
+                  <!--                </div>-->
+                  <!--                <div class="icon-item">-->
+                  <!--                  <div class="icon">-->
+                  <!--                    <a-button icon="message" @click="routeToPage('/my-msg')"/>-->
+                  <!--                  </div>-->
+                  <!--                  <span>我的消息</span>-->
+                  <!--                </div>-->
+
+                  <!--                <div class="icon-item">-->
+                  <!--                  <div class="icon">-->
+                  <!--                    <a-button icon="coffee" @click="routeToPage('/service-center')"/>-->
+                  <!--                  </div>-->
+                  <!--                  <span>服务中心</span>-->
+                  <!--                </div>-->
+                </div>
+
+
               <router-view></router-view>
             </div>
           </a-col>
 
-          <!-- right bar -->
-<!--          <a-col :span="6" class="right-bar">
+           right bar
+          <a-col :span="6" class="right-bar">
             <a-affix>
-              <div class="icon-group">
-                <div class="icon-item">
-                  <div class="icon">
-                    <a-button icon="profile" @click="()=>{toPubArticle();}"/>
-                  </div>
-                <span>发帖子</span>
-                </div>
-                <div class="icon-item">
-                  <div class="icon">
-                    <a-button icon="user" @click="routeToMyPage('/personal-page')"/>
-                  </div>
-                  <span>个人主页</span>
-                </div>
-                <div class="icon-item">
-                  <div class="icon">
-                    <a-button icon="message" @click="showMsgSendingView"/>
-                  </div>
-                  <span>发状态</span>
-                </div>
-              </div>
-              <br><br><br>
-              <div class="links-block">
-                <a-button type="primary" name="articles" @click="routeToPage('/publications')" block>去搜帖</a-button>
-                <a-button type="default" @click="routeToPage('/my-collect')" block>我的收藏</a-button>
-                <a-button @click="routeToPage('/my-following')" block>关注的人</a-button>
-                <a-button type="danger" @click="routeToPage('/my-msg')" block>我的消息</a-button>
-                <a-button @click="routeToPage('/service-center')" type="dashed" block>服务中心</a-button>
-              </div>
-              <div><a-divider /></div>
+
+<!--              <br><br><br>-->
+<!--              <div class="links-block">-->
+<!--                <a-button type="primary" name="articles" @click="routeToPage('/publications')" block>去搜帖</a-button>-->
+<!--                <a-button type="default" @click="routeToPage('/my-collect')" block>我的收藏</a-button>-->
+<!--                <a-button @click="routeToPage('/my-following')" block>关注的人</a-button>-->
+<!--                <a-button type="danger" @click="routeToPage('/my-msg')" block>我的消息</a-button>-->
+<!--                <a-button @click="routeToPage('/service-center')" type="dashed" block>服务中心</a-button>-->
+<!--              </div>-->
+<!--              <div>-->
+<!--                <a-divider />-->
+<!--              </div>-->
             </a-affix>
           </a-col>
-          -->
+
         </a-row>
       </a-col>
       <a-col :xl="3" :lg="0" class="purple-side-wrapper"></a-col>
@@ -159,17 +196,31 @@ export default {
     height: 100vh;
   }
   .icon-group{
-    width: 100%;
-    padding-top: 60px;
+    display: flex;
+    float:right;
+    margin-top: 30px;
+
+    /*width: 100%;*/
+    /*padding-top: 60px;*/
 
   }
+  @media screen and (max-width: 576px){
+
+      .icon-group{
+          padding-left: 25px;
+          width: 100%;
+          float: left;
+      }
+  }
+
   .right-bar{
     /*background-color: #f0f2f5;*/
     background-color: #ffffff;
   }
   .icon-item{
-    float: left;
-    padding-left: 12%;
+    /*float: left;*/
+    padding-left: 10px;
+
   }
   .icon{
     text-align: center;
