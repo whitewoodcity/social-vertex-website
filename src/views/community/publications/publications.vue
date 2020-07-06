@@ -52,8 +52,7 @@
 </script>
 <style scoped>
   .articles-view {
-    padding-left: 20px;
-    padding-top: 20px;
+    padding: 20px;
   }
 
   .search-input {

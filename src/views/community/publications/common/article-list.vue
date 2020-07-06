@@ -2,12 +2,12 @@
     <div class="article-list-container">
         <div v-for="item of listData0" v-bind:key="item.dir">
             <!-- thought -->
-            <div v-if="item.subtype=='thought'">
+            <div v-if="item.subtype==='thought'">
                 <single-thought v-bind:item="item"/>
             </div>
 
             <!-- todo question -->
-            <div v-else-if="item.subtype=='question'">
+            <div v-else-if="item.subtype==='question'">
                 <single-question v-bind:item="item"/>
             </div>
 
