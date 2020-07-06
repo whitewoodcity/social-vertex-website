@@ -1,6 +1,6 @@
 <template>
   <div class="community">
-    <a-row class="community-content">
+    <a-row type="flex" justify="center" class="community-content">
       <a-col :lg="0" :xl="3" class="purple-side-wrapper">
 <!--        <div class="purple-side"></div>-->
       </a-col>
