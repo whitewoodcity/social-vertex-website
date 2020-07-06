@@ -124,6 +124,13 @@
         margin-top: 100px;
         text-align: center;
     }
+
+    @media only screen and (max-width: 700px){
+        .login-form{
+            width: 100%;
+            margin:0px;
+        }
+    }
     .origin-form{
         width: 500px;
         float: left;
