@@ -70,7 +70,6 @@
             </div>
           </a-col>
 
-           right bar
           <a-col :span="6" class="right-bar">
             <a-affix>
 
