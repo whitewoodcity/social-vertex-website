@@ -120,8 +120,8 @@
         width: 500px;
         height: 600px;
         float: right;
-        margin-right: 5%;
-        margin-top: 100px;
+        margin-right: 1%;
+        margin-top: 10px;
         text-align: center;
     }
 
