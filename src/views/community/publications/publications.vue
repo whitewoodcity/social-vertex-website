@@ -57,6 +57,12 @@
     margin:10px
   }
 
+    @media only screen and (max-width: 576px) {
+        .search-bar{
+            text-align: center;
+        }
+    }
+
 
 
 </style>

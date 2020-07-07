@@ -109,7 +109,7 @@
                         "authorNickname":this.$store.state.loggedInUserInfo.nickname,
                         "dir":this.$store.state.editArticle.dir
                     }).then(response=>{
-                        if (response.status == 200){
+                        if (response.status === 200){
                             if(response.data.publication){
                                 this.$message.success('更新成功');
                                 this.$router.push('/community/publications');

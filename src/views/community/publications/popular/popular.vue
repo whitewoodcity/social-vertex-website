@@ -78,6 +78,6 @@
 </script>
 <style scoped>
     .article-list{
-        margin-left: 30px;
+        margin: 30px;
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="personal-center-container">
-        <div class="personal-center-title">
+        <div class="personal-title">
             <h1>{{currUserInfo.nickname}}的个人主页</h1>
         </div>
         <a-divider></a-divider>
@@ -113,8 +113,14 @@
     margin-left: 30px;
 
 }
-.personal-center-title{
+.personal-title{
     text-align: left;
+}
+
+@media only screen and (max-width: 576px) {
+    .personal-title{
+        text-align: center;
+    }
 }
 .personal-brief{
     padding-right: 20px;

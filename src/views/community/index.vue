@@ -188,7 +188,7 @@ export default {
 
   @media only screen and (max-width: 1200px) {
         .community-content{
-            margin: 0 30px 0 10px;
+            margin: 0 10px 0 10px;
         }
   }
 
@@ -209,13 +209,13 @@ export default {
 
   }
   @media screen and (max-width: 576px){
-
       .icon-group{
-          padding-left: 25px;
           width: 100%;
           float: left;
           margin-right: 0;
-
+          justify-content: center;
+          margin-bottom: 20px;
+          margin-top: -10px;
       }
   }
   @media screen and (min-width: 576px){
