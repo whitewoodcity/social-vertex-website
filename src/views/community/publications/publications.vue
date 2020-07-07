@@ -1,17 +1,13 @@
 <template>
   <div class="articles-view">
-    <a-row>
       <div class="search-bar">
-        <a-input-group compact>
           <a-input-search class="search-input" placeholder="搜索的内容" enterButton>
-<!--            <a-select default-value="article" slot="addonBefore">-->
-<!--              <a-select-option value="article">文章</a-select-option>-->
-<!--              <a-select-option value="aq">问答</a-select-option>-->
-<!--            </a-select>-->
+              <!--            <a-select default-value="article" slot="addonBefore">-->
+              <!--              <a-select-option value="article">文章</a-select-option>-->
+              <!--              <a-select-option value="aq">问答</a-select-option>-->
+              <!--            </a-select>-->
           </a-input-search>
-        </a-input-group>
       </div>
-    </a-row>
     <div class="nav-bar">
       <a-tabs size="large">
         <a-tab-pane tab="推荐" key="1">
@@ -57,7 +53,6 @@
     max-width: 300px;
   }
   .search-bar{
-    float: left;
     max-width: 100%;
     margin:10px
   }

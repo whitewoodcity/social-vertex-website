@@ -13,9 +13,9 @@
           <a-col :span="24">
             <div class="router-content">
                 <div class="icon-group" >
-                  <div class="icon-item">
+                  <div class="icon-item" @click="toPubArticle">
                     <div class="icon">
-                      <a-button icon="profile" @click="()=>{toPubArticle();}"/>
+                      <a-button icon="profile"/>
                     </div>
                     <span>发帖子</span>
                   </div>
@@ -64,8 +64,6 @@
                   <!--                  <span>服务中心</span>-->
                   <!--                </div>-->
                 </div>
-
-
               <router-view></router-view>
             </div>
           </a-col>
@@ -220,6 +218,15 @@ export default {
 
       }
   }
+  @media screen and (min-width: 576px){
+
+      .icon-group{
+          position: absolute;
+          right: 0;
+          top: 0;
+
+      }
+  }
 
   .right-bar{
     /*background-color: #f0f2f5;*/
@@ -228,7 +235,7 @@ export default {
   .icon-item{
     /*float: left;*/
     padding-left: 10px;
-
+    text-align: center;
   }
   .icon{
     text-align: center;
