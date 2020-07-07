@@ -3,12 +3,11 @@
     <a-row>
       <div class="search-bar">
         <a-input-group compact>
-          <!--//TODO idk why the border disappears -->
           <a-input-search class="search-input" placeholder="搜索的内容" enterButton>
-            <a-select default-value="article" slot="addonBefore">
-              <a-select-option value="article">文章</a-select-option>
-              <a-select-option value="aq">问答</a-select-option>
-            </a-select>
+<!--            <a-select default-value="article" slot="addonBefore">-->
+<!--              <a-select-option value="article">文章</a-select-option>-->
+<!--              <a-select-option value="aq">问答</a-select-option>-->
+<!--            </a-select>-->
           </a-input-search>
         </a-input-group>
       </div>

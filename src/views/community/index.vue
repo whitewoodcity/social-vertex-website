@@ -31,12 +31,12 @@
                     </div>
                     <span>发状态</span>
                   </div>
-                  <div class="icon-item">
-                    <div class="icon">
-                      <a-button icon="search" @click="routeToPage('/publications')"/>
-                    </div>
-                    <span>去搜帖</span>
-                  </div>
+<!--                  <div class="icon-item">-->
+<!--                    <div class="icon">-->
+<!--                      <a-button icon="search" @click="routeToPage('/publications')"/>-->
+<!--                    </div>-->
+<!--                    <span>去搜帖</span>-->
+<!--                  </div>-->
                   <!--                <div class="icon-item">-->
                   <!--                  <div class="icon">-->
                   <!--                    <a-button icon="star" @click="routeToPage('/my-collect')"/>-->
