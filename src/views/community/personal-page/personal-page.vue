@@ -109,8 +109,7 @@
 </script>
 <style>
 .personal-center-container{
-    margin-top: 20px;
-    margin-left: 30px;
+    margin: 20px;
 
 }
 .personal-title{
