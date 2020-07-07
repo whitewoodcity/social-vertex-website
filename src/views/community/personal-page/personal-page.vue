@@ -4,24 +4,34 @@
             <h1>{{currUserInfo.nickname}}的个人主页</h1>
         </div>
         <a-divider></a-divider>
-        <a-row>
-            <a-col :span="6">
+        <div class="personal-info">
+            <div class="line-unit">
                 <div class="avatar-bar">
                     <a-avatar shape="square" :size="150" icon="user" />
                 </div>
-            </a-col>
-            <a-col :span="6">
+            </div>
+            <div class="line-unit">
                 <div><h2>{{currUserInfo.nickname}}</h2></div>
                 <br>
                 <!-- todo 展示个性签名 -->
                 <div><h4>这个人很懒，没有留下状态</h4></div>
                 <br>
                 <div v-if="selfFlag"><a v-on:click="jumpToPersonalEdit">编辑个人资料</a></div>
-            </a-col>
-            <a-col :span="12">
-                <div class="personal-brief">详细资料:</div>
-            </a-col>
-        </a-row>
+            </div>
+            <div class="personal-brief line-unit">详细资料:</div>
+
+        </div>
+
+<!--        <a-row>-->
+<!--            <a-col :md="6" :sm="12">-->
+
+<!--            </a-col>-->
+<!--            <a-col :md="6" :sm="12">-->
+
+<!--            </a-col>-->
+<!--            <a-col :md="12" :sm="24">-->
+<!--            </a-col>-->
+<!--        </a-row>-->
         <br>
         <a-row>
             <a-col>
@@ -103,10 +113,17 @@
 
 }
 .personal-center-title{
-    text-align: center;
+    text-align: left;
 }
 .personal-brief{
-    width: 100%;
     padding-right: 20px;
+}
+
+.line-unit{
+    padding: 15px;
+}
+.personal-info{
+    display: flex;
+    flex-wrap: wrap;
 }
 </style>
