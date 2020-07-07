@@ -18,6 +18,7 @@
                 <br>
                 <div v-if="selfFlag"><a v-on:click="jumpToPersonalEdit">编辑个人资料</a></div>
             </div>
+
             <div class="personal-brief line-unit">详细资料:</div>
 
         </div>
@@ -80,7 +81,7 @@
                     "subtype":"user_brief",
                     "uid": uid
                 }).then(response=>{
-                    if (response.status == 200){
+                    if (response.status === 200){
                         if(response.data.publication){
                             //set values in this page
                             let ub = response.data.info;
