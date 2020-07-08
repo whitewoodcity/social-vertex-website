@@ -40,9 +40,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 **诚邀各位大佬积极提供pr！！！**
 
-#### Demo
+#### 快速预览
 
-项目[Demo](https://whitewoodcity.github.io/social-vertex-website)
+项目[预览](https://whitewoodcity.github.io/social-vertex-website)
 
 #### 功能需求：
 
