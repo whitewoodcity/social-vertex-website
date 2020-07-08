@@ -19,12 +19,22 @@
         </div>
         <div class="article-content">
             <mavon-editor v-model="content"></mavon-editor>
+            <div style="margin-top: 10px">
+                缩略图(SVG)(建议128x128)
+                <svg-container @changeSVG="changeSVG"></svg-container>
+
+            </div>
+
+        </div>
+        <div>
+
         </div>
     </div>
 </template>
 <script>
-
+    import SvgContainer from "../../common/svg/svg-container";
     export default {
+        components: {SvgContainer},
         data () {
             return {
                 content: "",
@@ -32,6 +42,7 @@
                 //标题图片存储地址
                 titleImgLink:"",
                 dir : null,
+                svgContent:null,
             }
         },
         beforeMount(){
@@ -160,7 +171,11 @@
                 let title = this.title;
                 let content = this.content;
                 return !title || !content || title == '' || content == '';
+            },
+            changeSVG(content){
+                this.svgContent=content
             }
+
         }
 
     }
@@ -186,4 +201,6 @@
 .commit-button-area{
 
 }
+
+
 </style>
