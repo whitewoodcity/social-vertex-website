@@ -182,12 +182,11 @@
 </script>
 <style>
 .publication-container{
-    margin-top:20px;
-    margin-left: 30px;
+
     height: auto;
 }
 .pub-page-title{
-    padding-left: 45%;
+    text-align: center;
 }
 .upload-dragger-area{
     margin-bottom: 20px;

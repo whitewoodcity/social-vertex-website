@@ -1,10 +1,10 @@
 <template>
   <div class="community">
     <a-row type="flex" justify="center" class="community-content">
-      <a-col :lg="0" :xl="3" class="purple-side-wrapper">
-<!--        <div class="purple-side"></div>-->
-      </a-col>
-      <a-col :xl="18" :lg="24">
+<!--      <a-col :lg="0" :xl="3" :md="0"  class="purple-side-wrapper">-->
+<!--&lt;!&ndash;        <div class="purple-side"></div>&ndash;&gt;-->
+<!--      </a-col>-->
+      <a-col :xl="18" :lg="20" :md="20" :sm="20" :xs="24">
         <!-- community body -->
 
         <!-- real content -->
@@ -87,7 +87,7 @@
 
         </a-row>
       </a-col>
-      <a-col :xl="3" :lg="0" class="purple-side-wrapper"></a-col>
+<!--      <a-col :xl="3" :lg="0" class="purple-side-wrapper"></a-col>-->
     </a-row>
     <div>
       <a-modal title="发状态" v-model="msgSendingViewVisible" @ok="confirmThought" okText="确认" cancelText="取消">
@@ -181,6 +181,7 @@ export default {
   .community{
     /*padding-top: 1.5rem;*/
     /*padding-bottom: 1.5rem;*/
+      max-width: 100%;
   }
   .community-content{
     height: auto;
@@ -218,7 +219,7 @@ export default {
           margin-top: -10px;
       }
   }
-  @media screen and (min-width: 576px){
+  @media screen and (min-width: 577px){
 
       .icon-group{
           position: absolute;

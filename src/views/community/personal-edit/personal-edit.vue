@@ -51,4 +51,7 @@
     max-width: 300px;
     width: 100%;
 }
+    .personal-edit-container{
+        max-width: 100%;
+    }
 </style>

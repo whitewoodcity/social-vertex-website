@@ -36,6 +36,7 @@
 <style scoped>
     .svg-container{
         display: flex;
+        max-width: 500px;
 
     }
     .svg-box svg{
