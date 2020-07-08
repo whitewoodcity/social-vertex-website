@@ -1,8 +1,8 @@
 <template>
-    <div class="svgContainer">
+    <div class="svg-container">
         <a-textarea :auto-size="{minRows: 5}" style="height: 150px" @change="svgOK($event)">
         </a-textarea>
-        <div v-if="svgContent!=null" class="svgBox">
+        <div v-if="svgContent!=null" class="svg-box">
             <span v-html="svgContent"></span>
         </div>
     </div>
@@ -34,11 +34,11 @@
 </script>
 
 <style scoped>
-    .svgContainer{
+    .svg-container{
         display: flex;
 
     }
-    .svgBox svg{
+    .svg-box svg{
         width: 128px!important;
         height: 128px!important;
     }

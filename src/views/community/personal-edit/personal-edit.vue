@@ -2,20 +2,7 @@
     <div class="personal-edit-container">
         <h1>编辑个人资料</h1>
         <a-form-item label="新头像" extra="">
-            <a-upload
-                    v-decorator="[
-          'upload',
-          {
-            valuePropName: 'fileList',
-            getValueFromEvent: normFile,
-          },
-        ]"
-                    name="avatar"
-                    action="/upload"
-                    list-type="picture"
-            >
-                <a-button> <a-icon type="upload" /> 选择新头像 </a-button>
-            </a-upload>
+            <svg-container v-on:changeSVG="updateSVG"></svg-container>
         </a-form-item>
         <a-form class="edit-form">
             <a-form-item label="昵称">
@@ -31,12 +18,14 @@
             </a-form-item>
         </a-form>
 
-        <a-button @click="">修改</a-button>
+        <a-button @click="null">修改</a-button>
 
     </div>
 </template>
 <script>
+    import SvgContainer from "../../common/svg/svg-container";
     export default {
+        components: {SvgContainer},
         data() {
             return {
                 info: {}, //fill user data here when the request finished.
@@ -47,6 +36,9 @@
             update(name,event){
                 this.updated[name]=event.target.value;
                 if (!event.target.value)delete this.update(name)
+            },
+            updateSVG(content){
+                this.updated["avatar"]=content
             },
             submit(){
                 //TODO
