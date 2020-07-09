@@ -9,7 +9,7 @@
 
 
         <div v-if="svgContent!=null" class="svg-box">
-            `${svgContent}`
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 500 500">`${svgContent}`</svg>
         </div>
         <div v-else class="no-content">
             没有预览
@@ -30,8 +30,8 @@
         },
         methods:{
             svgOK(e){
-                let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 500 500">'+e.target.value+'</svg>'
-                if (e&&e.target.value&&isSvg(fullSVG)){
+                let fullSVG = e.target.value
+                if (e&&e.target.value&&isSvg('<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 500 500">'+e.target.value+'</svg>')){
                     this.svgContent = fullSVG
                     this.$emit("changeSVG",fullSVG)
                 }else {
