@@ -1,7 +1,7 @@
 <template>
     <div class="svg-container">
         <a-input-group style="width: 50%">
-            <a-input style="display: block" disabled default-value="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 320 320&quot;&gt;"></a-input>
+            <a-input style="display: block" disabled default-value="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 500 500&quot;&gt;"></a-input>
             <a-textarea :auto-size="{minRows: 5}" class="svg-editor" @change="svgOK($event)" placeholder='...'>
             </a-textarea>
             <a-input style="display: block" disabled default-value="</svg>"></a-input>
@@ -30,7 +30,7 @@
         },
         methods:{
             svgOK(e){
-                let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 320 320">'+e.target.value+'</svg>'
+                let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 500 500">'+e.target.value+'</svg>'
                 if (e&&e.target.value&&isSvg(fullSVG)){
                     this.svgContent = fullSVG
                     this.$emit("changeSVG",fullSVG)
