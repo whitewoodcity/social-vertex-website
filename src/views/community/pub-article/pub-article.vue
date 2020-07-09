@@ -19,8 +19,7 @@
         </div>
         <div class="article-content">
             <mavon-editor v-model="content"></mavon-editor>
-            <div style="margin-top: 10px">
-                缩略图(SVG)(建议128x128)
+            <div>
                 <svg-container @changeSVG="changeSVG"></svg-container>
 
             </div>
@@ -118,7 +117,8 @@
                         "titleImgLink":'',//todo
                         "authorId":this.$store.state.loggedInUserInfo.id,
                         "authorNickname":this.$store.state.loggedInUserInfo.nickname,
-                        "dir":this.$store.state.editArticle.dir
+                        "dir":this.$store.state.editArticle.dir,
+                        "svg":this.svgContent
                     }).then(response=>{
                         if (response.status === 200){
                             if(response.data.publication){
@@ -146,7 +146,8 @@
                         "content":content,
                         "titleImgLink":'',//todo
                         "authorId":this.$store.state.loggedInUserInfo.id,
-                        "authorNickname":this.$store.state.loggedInUserInfo.nickname
+                        "authorNickname":this.$store.state.loggedInUserInfo.nickname,
+                        "svg":this.svgContent
                     }).then(response=>{
                         if (response.status == 200){
                             if(response.data.publication){
@@ -173,6 +174,8 @@
                 return !title || !content || title == '' || content == '';
             },
             changeSVG(content){
+                // eslint-disable-next-line no-console
+                console.log(content)
                 this.svgContent=content
             }
 
@@ -182,7 +185,6 @@
 </script>
 <style>
 .publication-container{
-
     height: auto;
 }
 .pub-page-title{
