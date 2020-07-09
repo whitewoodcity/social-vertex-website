@@ -30,7 +30,7 @@
         },
         methods:{
             svgOK(e){
-                let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 320 320">'+e.target.value+'</svg>'
+                let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">'+e.target.value+'</svg>'
                 if (e&&e.target.value&&isSvg(fullSVG)){
                     this.svgContent = fullSVG
                     this.$emit("changeSVG",fullSVG)
