@@ -9,7 +9,7 @@
 
 
         <div v-if="svgContent!=null" class="svg-box">
-            ${svgContent}
+            `${svgContent}`
         </div>
         <div v-else class="no-content">
             没有预览
