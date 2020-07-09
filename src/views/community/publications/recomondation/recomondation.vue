@@ -34,7 +34,7 @@
                 "type": "publication",
                 "subtype": "history"
             }).then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     if (response.data.publication) {
                         // on query success
                         let listData = this.listData;

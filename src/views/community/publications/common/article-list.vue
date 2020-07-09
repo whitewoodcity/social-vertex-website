@@ -10,7 +10,6 @@
             <div v-else-if="item.subtype==='question'">
                 <single-question v-bind:item="item"/>
             </div>
-
             <!-- article -->
             <div v-else>
                 <single-article v-bind:item="item"/>

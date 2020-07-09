@@ -3,13 +3,13 @@
     <a-row class="brief-row">
       <a-col>
         <div class="article-avatar" v-on:click="()=>{toPersonalPage(item)}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-          </svg>
+          <div v-if="item.svg">
+<!--            <img :src="`data:image/svg+xml;utf8,${encodeURIComponent(item.svg)}`">-->
+            <div v-html="item.svg"/>
+          </div>
+          <div v-else>
+            <default-svg/>
+          </div>
         </div>
         <div class="article-nickname">
           <a v-on:click="()=>{toPersonalPage(item)}">
@@ -46,6 +46,7 @@
     import ARow from "ant-design-vue/es/grid/Row";
     import ACol from "ant-design-vue/es/grid/Col";
     import NicknameSpan from "../../../common/nickname-span/nickname-span";
+    import defaultSvg from '../../../../views/common/svg/default-svg'
 
     export default {
         props: ['item'],
@@ -53,7 +54,8 @@
             ACol,
             ARow,
             ArticleDetail,
-            NicknameSpan
+            NicknameSpan,
+          defaultSvg
         },
         data() {
             return {
@@ -84,6 +86,8 @@
         }
     }
 
+
+
 </script>
 <style scoped>
   .brief-row {
@@ -95,8 +99,13 @@
   }
 
   .article-avatar {
+    position: relative;
     float: left;
     margin-top: 2px;
+  }
+  .article-avatar svg{
+    max-width: 32px;
+
   }
 
   .article-nickname {
