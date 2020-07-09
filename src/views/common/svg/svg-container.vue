@@ -9,7 +9,7 @@
 
 
         <div v-if="svgContent!=null" class="svg-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 500 500"><div v-html="svgContent"></div></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 500 500" v-html="svgContent"></svg>
         </div>
         <div v-else class="no-content">
             没有预览
