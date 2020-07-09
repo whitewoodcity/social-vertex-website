@@ -1,9 +1,15 @@
 <template>
     <div class="svg-container">
-        <a-textarea :auto-size="{minRows: 5}" class="svg-editor" @change="svgOK($event)" placeholder='<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 320 320"> ... </svg>'>
-        </a-textarea>
+        <a-input-group style="width: 50%">
+            <a-input style="display: block" disabled default-value="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;32&quot; height=&quot;32&quot; viewBox=&quot;0 0 320 320&quot;&gt;"></a-input>
+            <a-textarea :auto-size="{minRows: 5}" class="svg-editor" @change="svgOK($event)" placeholder='...'>
+            </a-textarea>
+            <a-input style="display: block" disabled default-value="</svg>"></a-input>
+        </a-input-group>
+
+
         <div v-if="svgContent!=null" class="svg-box">
-            <span v-html="svgContent"></span>
+            <img  :src="`data:image/svg+xml;utf8,${svgContent}`" />
         </div>
         <div v-else class="no-content">
             没有预览
@@ -18,14 +24,14 @@
         name: "svg-container",
         data(){
             return {
-                svgContent:null
+                svgContent:null,
+                svgOriginal:null
             }
         },
         methods:{
             svgOK(e){
-                if (!e.target.value)return
                 let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 320 320">'+e.target.value+'</svg>'
-                if (e&&isSvg(fullSVG)){
+                if (e&&e.target.value&&isSvg(fullSVG)){
                     this.svgContent = fullSVG
                     this.$emit("changeSVG",fullSVG)
                 }else {
@@ -45,14 +51,13 @@
     }
     .svg-editor{
         min-height: 150px;
-        width: 50%;
+        width: 100%;
     }
     .svg-box{
         width: 50%;
         text-align: center;
-        margin-top: 30px;
     }
-    .svg-box svg{
+    .svg-box img{
         width: 128px!important;
         height: 128px!important;
     }
