@@ -9,7 +9,7 @@
 
 
         <div v-if="svgContent!=null" class="svg-box">
-            <img  :src="`data:image/svg+xml;utf8,${svgContent}`" />
+            ${svgContent}
         </div>
         <div v-else class="no-content">
             没有预览
