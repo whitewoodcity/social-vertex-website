@@ -1,6 +1,6 @@
 <template>
     <div class="svg-container">
-        <a-textarea :auto-size="{minRows: 5}" class="svg-editor" @change="svgOK($event)" placeholder='<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"> ... </svg>'>
+        <a-textarea :auto-size="{minRows: 5}" class="svg-editor" @change="svgOK($event)" placeholder='<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 320 320"> ... </svg>'>
         </a-textarea>
         <div v-if="svgContent!=null" class="svg-box">
             <span v-html="svgContent"></span>
@@ -24,7 +24,7 @@
         methods:{
             svgOK(e){
                 if (!e.target.value)return
-                let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">'+e.target.value+'</svg>'
+                let fullSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 320 320">'+e.target.value+'</svg>'
                 if (e&&isSvg(fullSVG)){
                     this.svgContent = fullSVG
                     this.$emit("changeSVG",fullSVG)
