@@ -8,7 +8,7 @@
         </a-input-group>
 
         <div class="svg-box" style="background: #eeeeee;display: flex; align-items: center;box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;">
-            <div v-if="svgContent!=null" style="background: #dddddd;display: inline-block;text-align: center;width:100%">
+            <div v-if="svgContent!=null" style="background: #dddddd;display: inline-block;text-align: center;margin: auto;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 500 500" v-html="svgContent"></svg>
             </div>
             <div v-else style="text-align: center;width:100%">
