@@ -7,16 +7,13 @@
             <a-input style="display: block" disabled default-value="</svg>"></a-input>
         </a-input-group>
 
-
-
-        <div v-if="svgContent!=null" class="svg-box" style="margin: auto auto">
-            <div style="background: #eeeeee;display: inline-block">
+        <div class="svg-box" style="background: #eeeeee;display: inline-block;box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;">
+            <div v-if="svgContent!=null" style="background: #dddddd;display: inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 500 500" v-html="svgContent"></svg>
             </div>
-
-        </div>
-        <div v-else class="no-content">
-            没有预览
+            <div v-else style="background: #dddddd;display: inline-block">
+                没有预览
+            </div>
         </div>
     </div>
 </template>
@@ -65,11 +62,5 @@
     .svg-box img{
         width: 128px!important;
         height: 128px!important;
-    }
-    .no-content{
-        width: 50%;
-        color: lightgray;
-        font-size: 50px;
-        text-align: center;
     }
 </style>
