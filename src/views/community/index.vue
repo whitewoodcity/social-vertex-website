@@ -64,7 +64,7 @@
                   <!--                  <span>服务中心</span>-->
                   <!--                </div>-->
                 </div>
-              <router-view></router-view>
+              <router-view style="margin-bottom: 20px;"></router-view>
             </div>
           </a-col>
 
