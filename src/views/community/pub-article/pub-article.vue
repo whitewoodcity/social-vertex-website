@@ -196,9 +196,6 @@
 .title-input{
 
 }
-.article-content{
- height: 40vh;
-}
 .commit-button-area{
 
 }

@@ -21,13 +21,9 @@
         </div>
       </a-col>
     </a-row>
-    <a-row>
-      <a-col>
-        <div class="article-title">
+      <div class="article-title">
           <h3><a v-on:click="()=>{showArticleDetail(item)}">{{item.title}}</a></h3>
-        </div>
-      </a-col>
-    </a-row>
+      </div>
     <br/>
     <div class="article-content">
       {{item.content}}

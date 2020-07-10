@@ -5,11 +5,18 @@
         </div>
         <a-divider></a-divider>
         <div class="personal-info">
-            <div class="line-unit">
+            <div class="line-unit" v-if="currUserInfo.avatar">
+                <div class="avatar-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 500 500"  v-html="currUserInfo.avatar">
+                    </svg>
+                </div>
+            </div>
+            <div class="line-unit" v-else>
                 <div class="avatar-bar">
                     <a-avatar shape="square" :size="150" icon="user" />
                 </div>
             </div>
+
             <div class="line-unit">
                 <div><h2>{{currUserInfo.nickname}}</h2></div>
                 <br>
