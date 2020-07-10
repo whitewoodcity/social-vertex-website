@@ -149,7 +149,7 @@
                         "authorNickname":this.$store.state.loggedInUserInfo.nickname,
                         "svg":this.svgContent
                     }).then(response=>{
-                        if (response.status == 200){
+                        if (response.status === 200){
                             if(response.data.publication){
                                 this.$message.success('发表成功');
                                 this.$router.push('/community/publications');
@@ -171,7 +171,7 @@
             checkPubContent(){
                 let title = this.title;
                 let content = this.content;
-                return !title || !content || title == '' || content == '';
+                return !title || !content || title === '' || content === '';
             },
             changeSVG(content){
                 // eslint-disable-next-line no-console

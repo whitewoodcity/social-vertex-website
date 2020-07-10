@@ -5,7 +5,10 @@
         <div class="article-avatar" v-on:click="()=>{toPersonalPage(item)}">
           <div v-if="item.svg">
 <!--            <img :src="`data:image/svg+xml;utf8,${encodeURIComponent(item.svg)}`">-->
-            <div v-html="item.svg"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 500 500"  v-html="item.svg">
+
+              </svg>
+<!--            <div v-html="item.svg"/>-->
           </div>
           <div v-else>
             <default-svg/>
