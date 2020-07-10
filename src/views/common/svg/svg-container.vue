@@ -7,11 +7,11 @@
             <a-input style="display: block" disabled default-value="</svg>"></a-input>
         </a-input-group>
 
-        <div class="svg-box" style="background: #eeeeee;display: inline-block;box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;">
+        <div class="svg-box" style="background: #eeeeee;display: flex; align-items: center;box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;">
             <div v-if="svgContent!=null" style="background: #dddddd;display: inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 500 500" v-html="svgContent"></svg>
             </div>
-            <div v-else style="background: #dddddd;display: inline-block">
+            <div v-else style="text-align: center;width:100%">
                 没有预览
             </div>
         </div>
