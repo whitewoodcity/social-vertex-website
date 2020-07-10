@@ -186,6 +186,7 @@
 <style>
 .publication-container{
     height: auto;
+    margin-top: 15px;
 }
 .pub-page-title{
     text-align: center;

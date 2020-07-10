@@ -8,8 +8,12 @@
         </a-input-group>
 
 
-        <div v-if="svgContent!=null" class="svg-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 500 500" v-html="svgContent"></svg>
+
+        <div v-if="svgContent!=null" class="svg-box" style="margin: auto auto">
+            <div style="background: #eeeeee;display: inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 500 500" v-html="svgContent"></svg>
+            </div>
+
         </div>
         <div v-else class="no-content">
             没有预览
@@ -56,6 +60,7 @@
     .svg-box{
         width: 50%;
         text-align: center;
+
     }
     .svg-box img{
         width: 128px!important;
