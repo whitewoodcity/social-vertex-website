@@ -137,6 +137,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+    @import "./css/public.css";
     @import "./css/index.css";
 </style>
 

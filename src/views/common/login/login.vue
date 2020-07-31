@@ -1,12 +1,11 @@
 <template>
-    <div class="login-container">
-        <div class="guiding-line"></div>
-        <div class="bkg-img">
-            <div class="login-form">
+    <div>
+        <div class="form-container">
+            <div class="info-form">
                 <div class="social-vertex">
                     <span><h3>社交节点(Social Vertex)</h3></span>
                 </div>
-                <div>
+                <div class="lottie-circle">
                     <lottie
                             z-index="100"
                             :options="loginAnimationOption"
@@ -15,10 +14,10 @@
                     </lottie>
                 </div>
                 <a-form :form="loginForm" @submit="doLogin">
-                    <a-form-item label="账户" :label-col="{ span: 5 }" :wrapper-col="{ span: 15 }">
+                    <a-form-item label="账户" :label-col="{ span: 3 }" :wrapper-col="{ span: 17 }">
                         <a-input v-decorator="['account',{rules: [{ required: true, message: '请输入用户名' }]}]"/>
                     </a-form-item>
-                    <a-form-item label="密码" :label-col="{ span: 5 }" :wrapper-col="{ span: 15 }">
+                    <a-form-item label="密码" :label-col="{ span: 3 }" :wrapper-col="{ span: 17 }">
                         <a-input v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }]}]" type="password"/>
                     </a-form-item>
                     <a-button type="primary" html-type="submit">登录</a-button>
@@ -100,51 +99,5 @@
 </script>
 
 <style lang="less" scoped>
-    .login-container {
-        height: 92.5vh;
-        background-color: #ffffff;
-    }
-
-    .bkg-img{
-        height: 100%;
-        background-image: url("../../../assets/common/background.png");
-        /*background-image: linear-gradient(135deg,#6f338b, #ffffff);*/
-        background-size: 92.5vw;
-        background-repeat: no-repeat;
-    }
-
-    .login-form{
-        background-color: #dcdcdc;
-        border: 4px solid #6f338b;
-        border-radius: 20px;
-        width: 500px;
-        height: 600px;
-        float: right;
-        margin-right: 1%;
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    @media only screen and (max-width: 700px){
-        .login-form{
-            width: 100%;
-            margin:0px;
-        }
-    }
-    .origin-form{
-        width: 500px;
-        float: left;
-    }
-    .social-vertex{
-        margin-top: 50px;
-
-    }
-    .to-reg-span{
-        margin-top: 20px;
-    }
-    .guiding-line{
-        height: 5px;
-        background-color: #6f338b;
-    }
-
+    @import "../common-css/form.css";
 </style>

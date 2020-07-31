@@ -31,38 +31,6 @@
                     </div>
                     <span>发状态</span>
                   </div>
-<!--                  <div class="icon-item">-->
-<!--                    <div class="icon">-->
-<!--                      <a-button icon="search" @click="routeToPage('/publications')"/>-->
-<!--                    </div>-->
-<!--                    <span>去搜帖</span>-->
-<!--                  </div>-->
-                  <!--                <div class="icon-item">-->
-                  <!--                  <div class="icon">-->
-                  <!--                    <a-button icon="star" @click="routeToPage('/my-collect')"/>-->
-                  <!--                  </div>-->
-                  <!--                  <span>我的收藏</span>-->
-                  <!--                </div>-->
-
-                  <!--                <div class="icon-item">-->
-                  <!--                  <div class="icon">-->
-                  <!--                    <a-button icon="team" @click="routeToPage('/my-following')"/>-->
-                  <!--                  </div>-->
-                  <!--                  <span>关注的人</span>-->
-                  <!--                </div>-->
-                  <!--                <div class="icon-item">-->
-                  <!--                  <div class="icon">-->
-                  <!--                    <a-button icon="message" @click="routeToPage('/my-msg')"/>-->
-                  <!--                  </div>-->
-                  <!--                  <span>我的消息</span>-->
-                  <!--                </div>-->
-
-                  <!--                <div class="icon-item">-->
-                  <!--                  <div class="icon">-->
-                  <!--                    <a-button icon="coffee" @click="routeToPage('/service-center')"/>-->
-                  <!--                  </div>-->
-                  <!--                  <span>服务中心</span>-->
-                  <!--                </div>-->
                 </div>
               <router-view style="margin-bottom: 20px;"></router-view>
             </div>
@@ -70,18 +38,6 @@
 
           <a-col :span="6" class="right-bar">
             <a-affix>
-
-<!--              <br><br><br>-->
-<!--              <div class="links-block">-->
-<!--                <a-button type="primary" name="articles" @click="routeToPage('/publications')" block>去搜帖</a-button>-->
-<!--                <a-button type="default" @click="routeToPage('/my-collect')" block>我的收藏</a-button>-->
-<!--                <a-button @click="routeToPage('/my-following')" block>关注的人</a-button>-->
-<!--                <a-button type="danger" @click="routeToPage('/my-msg')" block>我的消息</a-button>-->
-<!--                <a-button @click="routeToPage('/service-center')" type="dashed" block>服务中心</a-button>-->
-<!--              </div>-->
-<!--              <div>-->
-<!--                <a-divider />-->
-<!--              </div>-->
             </a-affix>
           </a-col>
 

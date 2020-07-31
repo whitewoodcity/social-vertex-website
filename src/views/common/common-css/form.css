@@ -1,0 +1,14 @@
+.form-container {
+    width: 100%;
+    text-align: center;
+}
+
+.info-form{
+    width: 500px;
+    height: 600px;
+    text-align: center;
+    margin: auto;
+}
+.social-vertex{
+    text-align: center;
+}
