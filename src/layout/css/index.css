@@ -210,9 +210,9 @@
   .head .head-box .change-box .change-list-mobile .a1 {
     display: block;
     color: #3c3c3c;
-    font-size: .24rem;
-    padding-left: .6rem;
-    line-height: .7rem;
+    font-size: 1rem;
+    padding-left: 3rem;
+    line-height: 3.5rem;
   }
   .head .head-box .change-box .change-list-mobile .a1:hover {
     color: #782b90;
@@ -220,7 +220,8 @@
   .head .head-box .change-box .change-list-mobile .a-box {
     padding-top: .15rem;
     padding-bottom: .2rem;
-    padding-left: 3.4rem;
+    padding-right: 2rem;
+    float: right;
   }
   .head .head-box .change-box .change-list-mobile .a-box .a2 {
     width: 62px;
@@ -370,9 +371,9 @@
   .head .head-box .change-box .change-list-mobile .a1 {
     display: block;
     color: #3c3c3c;
-    font-size: .24rem;
+    font-size: .9rem;
     padding-left: .6rem;
-    line-height: .6rem;
+    line-height: 3rem;
     float: left;
     width: 100%;
   }

@@ -30,10 +30,10 @@
                           </div>
                       </div>
                       <div class="change-list-mobile" v-show="showChangeList">
-                          <a class="a1" v-on:click="toDocPage">文档</a>
-                          <a class="a1" v-on:click="toCommunityPage">用户社区</a>
-                          <a class="a1" href="https://start.vertx.io/" target="_blank">Starter</a>
-                          <a class="a1" href="https://reactiverse.io/es4x/zh/" target="_blank">ES4X</a>
+                          <a class="a1 flex-text" v-on:click="toDocPage">文档</a>
+                          <a class="a1 flex-text" v-on:click="toCommunityPage">用户社区</a>
+                          <a class="a1 flex-text" href="https://start.vertx.io/" target="_blank">Starter</a>
+                          <a class="a1 flex-text" href="https://reactiverse.io/es4x/zh/" target="_blank">ES4X</a>
                           <div class="a-box clear">
                               <a class="a2 act" href="">V1.0</a>
                               <a class="a3" href="https://search.bilibili.com/all?keyword=vert.x" target="_blank"></a>
@@ -137,7 +137,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    @import "./css/public.css";
     @import "./css/index.css";
 </style>
 
