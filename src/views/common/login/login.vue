@@ -73,7 +73,8 @@
                                         password : pwdMd5,
                                         nickname : response.data.nickname,
                                         friends: response.data.friends,
-                                        notifications: response.data.notifications
+                                        notifications: response.data.notifications,
+                                        loggedInTime: new Date().getTime()
                                     };
                                     this.$store.commit('doLogin',storageInfo);
                                     this.$router.push('/community/publications');

@@ -1,6 +1,8 @@
 import {message,notification} from "ant-design-vue";
-import axios from "axios"
+import axios from "axios";
 import Vue from "vue";
+import store from "../store.js"
+import router from "../router";
 
 let config = {
     // baseURL: process.env.baseURL || process.env.apiUrl || ""
@@ -19,9 +21,16 @@ _axios.interceptors.request.use(
         let pswd = config.data.password;
         let identity = config.data.id;
         if (!pswd || !identity){
-            let loggedInUserInfo = localStorage.loggedInUserInfo;
-            if (loggedInUserInfo){
-                let userInfoJsonObj = JSON.parse(loggedInUserInfo);
+            if (store.getters.loggedIn){
+                let userInfoJsonObj = store.state.loggedInUserInfo;
+                let loggedIntimeStamp = userInfoJsonObj.loggedInTime;
+                let currentTimeStamp = new Date().getTime();
+                //登陆超时
+                if ( !loggedIntimeStamp || tokenOverTime(loggedIntimeStamp,currentTimeStamp)){
+                    store.commit("doLogoff");
+                    router.push("/login");
+                    return Promise.reject(new Error("认证超时，请重新登陆"));
+                }
                 config.data.password = userInfoJsonObj.password;
                 config.data.id = userInfoJsonObj.id;
             }
@@ -36,6 +45,14 @@ _axios.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
+let millsOf7Days = 7 * 24 * 60 * 60 * 1000;
+// let millsOf7Days = 30 * 1000;
+function tokenOverTime(previousTs,currentTs){
+    //单位毫秒
+    let period = currentTs - previousTs;
+    return period > millsOf7Days;
+}
 
 // Add a response interceptor
 _axios.interceptors.response.use(
