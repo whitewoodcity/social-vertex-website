@@ -18,22 +18,18 @@ _axios.interceptors.request.use(
         // Do something before request is sent
         // console.log("config.data",config.data);
         //登录之后的每一次请求都要带着password 和 id
-        let pswd = config.data.password;
-        let identity = config.data.id;
-        if (!pswd || !identity){
-            if (store.getters.loggedIn){
-                let userInfoJsonObj = store.state.loggedInUserInfo;
-                let loggedIntimeStamp = userInfoJsonObj.loggedInTime;
-                let currentTimeStamp = new Date().getTime();
-                //登陆超时
-                if ( !loggedIntimeStamp || tokenOverTime(loggedIntimeStamp,currentTimeStamp)){
-                    store.commit("doLogoff");
-                    router.push("/login");
-                    return Promise.reject(new Error("认证超时，请重新登陆"));
-                }
-                config.data.password = userInfoJsonObj.password;
-                config.data.id = userInfoJsonObj.id;
+        if (store.getters.loggedIn){
+            let userInfoJsonObj = store.state.loggedInUserInfo;
+            let loggedIntimeStamp = userInfoJsonObj.loggedInTime;
+            let currentTimeStamp = new Date().getTime();
+            //登陆超时
+            if ( !loggedIntimeStamp || tokenOverTime(loggedIntimeStamp,currentTimeStamp)){
+                store.commit("doLogoff");
+                router.push("/login");
+                return Promise.reject(new Error("认证超时，请重新登陆"));
             }
+            config.data.password = userInfoJsonObj.password;
+            config.data.id = userInfoJsonObj.id;
         }
         //设置调用版本
         // console.log('version',process.env.VUE_APP_SERVICE_VERSION);
